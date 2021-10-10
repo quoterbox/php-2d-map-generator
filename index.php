@@ -16,8 +16,8 @@ $assetPath = "Assets" . DIRECTORY_SEPARATOR . $AssetPack. DIRECTORY_SEPARATOR;
 $filesExt = "png";
 
 // 50 tiles * 200x * 200y ~ 3 seconds / 50 tiles * 10x * 10y ~ 0.05 seconds
-$xSize = 5;
-$ySize = 5;
+$xSize = 10;
+$ySize = 10;
 
 
 // new TileRotator($assetPath);
@@ -26,7 +26,7 @@ $ySize = 5;
 $TilesSpawner = new TilesSpawner($assetPath, $filesExt, $xSize, $ySize);
 
 $TilesSpawner->buildLocation();
-//$TilesSpawner->saveInFile("./", "png");
+$TilesSpawner->saveInFile("Saved/", "png");
 $map = $TilesSpawner->getMapArray();
 
 
@@ -37,8 +37,7 @@ $map = $TilesSpawner->getMapArray();
 // $TilesSpawner->setStartTile($assetName);
 // $TilesSpawner->setStartCell($x, $y);
 // $TilesSpawner->setCell($assetName, $x, $y);
-// $TilesSpawner->saveInFile($path,$format);
-// $TilesSpawner->generates($path,$format);
+// $TilesSpawner->saveInFile($path, $format);
 // $TilesSpawner->buildLocation();
 // SpawnerAlgorithm $algo = new WFC2D();
 // $TilesSpawner->setAlgorithm($algo);
@@ -70,6 +69,7 @@ $map = $TilesSpawner->getMapArray();
     $callEndTime = microtime(true);
     $callTime = $callEndTime - $callStartTime;
     messInfo($callTime);
+//    messInfo($map);
     ?>
 </body>
 </html>

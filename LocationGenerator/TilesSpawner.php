@@ -40,29 +40,43 @@ class TilesSpawner
 
     public function saveInFile(string $savePath, string $fileExt) : string
     {
+        $fileName = time();
         $this->saveFilePath = $savePath;
         $this->setSaveFileExt($fileExt);
+
         $this->calcSaveFileDimension();
 
         $dest = imagecreatetruecolor($this->saveFileWidth, $this->saveFileHeight);
 
-        foreach ($this->map as $row){
-            foreach ($row as $col){
-                imagecopy($dest, $col['path'], $dx, $dy, 0, 0, $this->saveFileWidth, $this->saveFileHeight);
+        $d_row = 0;
+
+        for($row = 0; $row < $this->xSize; $row++){
+
+            $d_col = 0;
+
+            for($col = 0; $col < $this->ySize; $col++){
+
+                $oneTileImg = imagecreatefrompng($this->map[$row][$col]['path']);
+
+                imagecopy($dest, $oneTileImg, $d_col, $d_row, 0, 0, $this->saveFileWidth, $this->saveFileHeight);
+
+                $d_col += $this->tileHeight;
             }
+
+            $d_row += $this->tileWidth;
         }
 
-
+        imagepng($dest, $this->saveFilePath . $fileName . '.' . $this->saveFileExt);
 
         return $this->saveFilePath;
     }
 
     private function setOneTileDimension()
     {
-        $firstTile = current($this->map);
+        $firstTile = current($this->tiles);
 
         $this->tileWidth = $firstTile['width'];
-        $this->tileHeight = $firstTile['width'];
+        $this->tileHeight = $firstTile['height'];
     }
 
     private function calcSaveFileDimension() : void

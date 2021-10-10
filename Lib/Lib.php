@@ -59,6 +59,8 @@ function getDataFromName(array $tile) : array
     $assetPath = $tile['path'];
     $assetExt = $tile['ext'];
     $assetNameExt = $tile['name_ext'];
+    $assetWidth = $tile['width'];
+    $assetHeight = $tile['height'];
 
     if(strpos($assetName, $delimiter) !== false){
 
@@ -81,6 +83,8 @@ function getDataFromName(array $tile) : array
             'right' => $wholeSides ? $RawProps[2] : $RawProps[3],
             'bottom' => $wholeSides ? $RawProps[2] : $RawProps[4],
             'left' => $wholeSides ? $RawProps[2] : $RawProps[5],
+            'width' => $assetWidth,
+            'height' => $assetHeight
         ];
 
     }else{
