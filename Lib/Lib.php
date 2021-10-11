@@ -240,6 +240,8 @@ function invertSideName(string $side) : string
     }elseif($side === "right"){
         return "left";
     }
+
+    return "";
 }
 
 function getNeighborTiles(array $map, int $x, int $y) : array
