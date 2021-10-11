@@ -46,6 +46,8 @@ class TilesSpawner
 
         $this->calcSaveFileDimension();
 
+        $destFileName = $this->saveFilePath . $fileName . '.' . $this->saveFileExt;
+
         $dest = imagecreatetruecolor($this->saveFileWidth, $this->saveFileHeight);
 
         $d_row = 0;
@@ -66,9 +68,9 @@ class TilesSpawner
             $d_row += $this->tileWidth;
         }
 
-        imagepng($dest, $this->saveFilePath . $fileName . '.' . $this->saveFileExt);
+        imagepng($dest, $destFileName);
 
-        return $this->saveFilePath;
+        return $destFileName;
     }
 
     private function setOneTileDimension()
@@ -116,15 +118,5 @@ class TilesSpawner
         }
 
         $this->setOneTileDimension();
-    }
-
-    private function spawnTile(string $assetName, int $xCurr, int $yCurr) : void
-    {
-        $this->currentTile = new BaseTile($assetName, $xCurr, $yCurr);
-    }
-
-    private function spawnNextTile(BaseTile $currentTile)
-    {
-
     }
 }
