@@ -1,48 +1,5 @@
 <?php
-$callStartTime = microtime(true);
-
-require "Lib/Lib.php";
-require "LocationGenerator/TilesSpawner.php";
-
-use LocationGenerator\TilesSpawner;
-
-//$AssetPack = "RiverPath";
-//$AssetPack = "Angles";
-//$AssetPack = "Angles_2";
-//$AssetPack = "Rivers";
-$AssetPack = "Rivers_2";
-
-$assetPath = "Assets" . DIRECTORY_SEPARATOR . $AssetPack. DIRECTORY_SEPARATOR;
-$filesExt = "png";
-
-// 50 tiles * 200x * 200y ~ 3 seconds / 50 tiles * 10x * 10y ~ 0.05 seconds
-$xSize = 10;
-$ySize = 10;
-
-
-// new TileRotator($assetPath);
-
-// Template Tile Name XX_XX_XX_XX_XX_XX or XX_XX_XX if second XX = 1
-$TilesSpawner = new TilesSpawner($assetPath, $filesExt, $xSize, $ySize);
-
-$TilesSpawner->buildLocation();
-$TilesSpawner->saveInFile("Saved/", "png");
-$map = $TilesSpawner->getMapArray();
-
-
-//
-// API
-//
-// $TilesSpawner->getMapArray();
-// $TilesSpawner->setStartTile($assetName);
-// $TilesSpawner->setStartCell($x, $y);
-// $TilesSpawner->setCell($assetName, $x, $y);
-// $TilesSpawner->saveInFile($path, $format);
-// $TilesSpawner->buildLocation();
-// SpawnerAlgorithm $algo = new WFC2D();
-// $TilesSpawner->setAlgorithm($algo);
-//
-//
+require_once './src/App/app.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -64,13 +21,6 @@ $map = $TilesSpawner->getMapArray();
         <?php endfor;?>
         <br>
     <?php endfor;?>
-
-    <?php
-    $callEndTime = microtime(true);
-    $callTime = $callEndTime - $callStartTime;
-    messInfo($callTime);
-//    messInfo($map);
-    ?>
 </body>
 </html>
 

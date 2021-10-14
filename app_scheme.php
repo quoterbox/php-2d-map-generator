@@ -88,7 +88,16 @@ $TilesSpawner->saveInFile($path, $format) : string;
 $TilesSpawner->buildLocation();
 
 
-class AssetsCollection
+
+
+interface AssetInterface
+{
+    public function getAssets();
+    public function loadAssets();
+}
+
+
+class AssetFilesCollection implements AssetInterface
 {
     private $assets = [];
     private $assetFiles = [];
@@ -103,7 +112,7 @@ class AssetsCollection
 
     public function getAssets() : array {return $this->assets;}
 
-    public function loadFilesFromFolder() : void
+    public function loadAssets() : void
     {
         foreach ($files as &$file){
 
@@ -119,12 +128,38 @@ class AssetsCollection
 
 class Asset
 {
-    private $assetPath;
-    private $assetName;
-    private $assetNameExt;
-    private $assetExt;
+    private string $assetPath;
+    private string $assetName;
+    private string $assetNameExt;
+    private string $assetExt;
 
+    public function __construct(string $assetPath, string $assetName, string $assetNameExt, string $assetExt)
+    {
+        $this->assetPath = $assetPath;
+        $this->assetName = $assetName;
+        $this->assetNameExt = $assetNameExt;
+        $this->assetExt = $assetExt;
+    }
 
+    public function getPath() : string
+    {
+        return $this->assetPath;
+    }
+
+    public function getName() : string
+    {
+        return $this->assetName;
+    }
+
+    public function getNameExt() : string
+    {
+        return $this->assetNameExt;
+    }
+
+    public function getExt() : string
+    {
+        return $this->assetExt;
+    }
 }
 
 class Spawner
@@ -144,9 +179,13 @@ class Map
     private $xSize;
     private $ySize;
 
-    public function __construct(AssetsCollection $assetsCollection, int $xSize, int $ySize){}
-//    public function __construct(string $assetsPath, int $xSize, int $ySize){}
-    public function build() : void {}
+    public function __construct(AssetFilesCollection $assetsCollection, int $xSize, int $ySize){}
+
+    public function build(MapBuilder $builder) : void
+    {
+        $builder->buildMap();
+
+    }
 
     public function loadMapFromArray(array $map){}
     public function addTile(){}
@@ -161,11 +200,7 @@ class Tile
     private $xCoord = 0;
     private $yCoord = 0;
 
-//    private $assetPath;
-//    private $assetName;
-//    private $assetNameExt;
-//    private $assetExt;
-
+    private AssetInterface $asset;
     private $type;
     private $topSide;
     private $rightSide;
@@ -174,25 +209,6 @@ class Tile
 
     public function __construct(string $assetPath, int $xSize, int $ySize){}
 }
-
-
-
-$assetsPath = 'Assets\Pack\\';
-$assetsExt = 'png';
-
-$assetsCollection = new AssetsCollection($assetsPath, $assetsExt);
-$assetsCollection->loadFilesFromFolder();
-
-
-
-$xSize = 10;
-$ySize = 10;
-
-$map = new Map($assetsCollection, $xSize, $ySize);
-
-$map->build();
-
-
 
 
 
@@ -205,30 +221,64 @@ abstract class MapBuilder
 
 class WFCMapBuilder extends MapBuilder
 {
-    public function buildMap()
-    {
-        // TODO: Implement buildMap() method.
-    }
+    private
 
-    public function addTile()
-    {
-        // TODO: Implement addTile() method.
-    }
-
-    public function getMap()
-    {
-        // TODO: Implement getMap() method.
-    }
+    public function buildMap(){}
+    public function addTile(){}
+    public function getMap(){}
 }
 
-MapBuilder $mapBuilder = MapBuilder();
-
-MapBuilder $wfcMapBuilder = new WFCMapBuilder();
 
 
+$WFCMapBuilder = new WFCMapBuilder();
+
+
+$assetsCollection = new AssetFilesCollection('Assets\Pack\\', 'png');
+$assetsCollection->loadAssets();
+//$assetsCollection->rotateAssets();
+
+
+$map = new Map($assetsCollection, 10, 10);
+$map->build($WFCMapBuilder);
+$map->loadFromArray();
+$map->saveToFile();
+$map->saveToManyFiles();
+$map->getArray();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+//abstract class MapBuilder
+//{
+//    abstract public function buildMap();
+//    abstract public function addTile();
+//    abstract public function getMap();
+//}
+//
+//class WFCMapBuilder extends MapBuilder
+//{
+//    public function buildMap(){}
+//    public function addTile(){}
+//    public function getMap(){}
+//}
+
+//MapBuilder $mapBuilder = MapBuilder();
+//MapBuilder $wfcMapBuilder = new WFCMapBuilder();
+//
+//$TilesSpawner = new TilesSpawner($wfcMapBuilder);
+//$map = $wfcMapBuilder->getMap();
 
 
 
