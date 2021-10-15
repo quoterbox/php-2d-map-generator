@@ -71,7 +71,7 @@ function getDataFromName(array $tile) : array
             debug('Invalid file name: ' . $assetName);
         }
 
-        $wholeSides = $RawProps[1];
+
 
         $Props = [
             'name' => $assetName,

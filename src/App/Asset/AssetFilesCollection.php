@@ -2,7 +2,6 @@
 
 namespace App\Asset;
 
-use App\Asset\Asset;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;

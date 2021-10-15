@@ -2,8 +2,6 @@
 
 namespace App\Generator;
 
-use App\Asset\Asset;
-use App\Map\Tile;
 use App\Map\Map;
 
 abstract class AbstractMapBuilder
@@ -23,7 +21,10 @@ abstract class AbstractMapBuilder
 
     abstract public function build() : void;
 
-    public function getMap() : Map{return $this->map;}
+    public function getMap() : Map
+    {
+        return $this->map;
+    }
 
     protected function createMap(int $xSize, int $ySize) : Map
     {

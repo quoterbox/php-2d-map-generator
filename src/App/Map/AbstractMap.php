@@ -2,7 +2,6 @@
 
 namespace App\Map;
 
-use App\Map\Tile;
 use Exception;
 
 /**

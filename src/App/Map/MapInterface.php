@@ -2,8 +2,6 @@
 
 namespace App\Map;
 
-use App\Map\Tile;
-
 interface MapInterface
 {
     public function __construct(int $xSize, int $ySize);
