@@ -1,5 +1,5 @@
 <?php
-require_once './src/App/app.php';
+require_once "./src/app.php";
 ?>
 <!doctype html>
 <html lang="en">

@@ -2,11 +2,11 @@
 
 namespace App\Generator\Algorithm;
 
-use App\Generator\MapBuilder;
+use App\Generator\AbstractMapBuilder;
 
-class SimpleTileBuilder extends MapBuilder
+class SimpleTileBuilder extends AbstractMapBuilder
 {
-    public function buildMap()
+    public function build() : void
     {
         // TODO: Implement buildMap() method.
     }

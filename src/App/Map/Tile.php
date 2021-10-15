@@ -18,5 +18,5 @@ class Tile
     private string $bottomSide;
     private string $leftSide;
 
-    public function __construct(string $assetPath, int $xSize, int $ySize){}
+    public function __construct(AssetInterface $asset, int $xSize, int $ySize){}
 }

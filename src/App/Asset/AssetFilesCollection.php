@@ -2,30 +2,68 @@
 
 namespace App\Asset;
 
+use App\Asset\Asset;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use SplFileInfo;
 use Exception;
 
-class AssetFilesCollection implements AssetInterface
+class AssetFilesCollection implements AssetCollectionInterface
 {
+    /**
+     * @var array|string[]
+     */
     private array $availableExt = ['png','jpg','gif','jpeg','webp'];
+    /**
+     * @var array|Asset[]
+     */
     private array $assets = [];
+    /**
+     * @var string
+     */
     private string $assetsPath;
+    /**
+     * @var string
+     */
     private string $assetsExt;
 
+    /**
+     * @param string $assetsPath
+     * @param string $assetsExt
+     * @throws Exception
+     */
     public function __construct(string $assetsPath, string $assetsExt)
     {
-        $this->setAssetPath($assetsPath);
+        $this->setAssetsPath($assetsPath);
         $this->setAssetsExt($assetsExt);
+        $this->loadAssets();
     }
 
-    private function setAssetPath(string $assetsPath) : void
+    /**
+     * @return array
+     */
+    public function getAssets() : array
+    {
+        return $this->assets;
+    }
+
+    /**
+     * @param string $assetsPath
+     * @throws Exception
+     */
+    private function setAssetsPath(string $assetsPath) : void
     {
         if($this->isValidPath($assetsPath)){
             $this->assetsPath = $assetsPath;
         }else{
-            throw new Exception("Invalid asset path");
+            throw new Exception("Invalid assets path");
         }
     }
 
+    /**
+     * @param string $assetsExt
+     * @throws Exception
+     */
     private function setAssetsExt(string $assetsExt) : void
     {
         if($this->isValidAssetsExt($assetsExt)){
@@ -35,33 +73,47 @@ class AssetFilesCollection implements AssetInterface
         }
     }
 
+    /**
+     * @param string $assetsPath
+     * @return bool
+     */
     private function isValidPath(string $assetsPath) : bool
     {
         return is_dir($assetsPath);
     }
 
+    /**
+     * @param string $assetsExt
+     * @return bool
+     */
     private function isValidAssetsExt(string $assetsExt) : bool
     {
         return in_array($assetsExt, $this->availableExt);
     }
 
-    public function getAssets() : array {return $this->assets;}
-
-    public function loadAssets() : void
+    /**
+     *
+     */
+    private function loadAssets() : void
     {
+        $dir = new RecursiveDirectoryIterator($this->assetsPath);
+        $dirIterators = new RecursiveIteratorIterator($dir);
 
+        foreach($dirIterators as $dirIterator) {
 
-
-
-//        foreach ($files as &$file){
-//
-//            $file = $this->getFileInfo($file);
-//        }
-//
-//        return [];
+            if ($dirIterator->isFile() && $this->assetsExt === $dirIterator->getExtension()) {
+                $this->assets[] = $this->createAsset($dirIterator);
+            }
+        }
     }
 
-    private function getFileInfo(string $assetName) : array {return [];}
-
-
+    /**
+     * @param SplFileInfo $dirItr
+     * @return \App\Asset\Asset
+     * @throws Exception
+     */
+    private function createAsset(SplFileInfo $dirItr) : Asset
+    {
+        return new Asset($dirItr->getPathname(), $dirItr->getFilename(), $dirItr->getExtension());
+    }
 }
