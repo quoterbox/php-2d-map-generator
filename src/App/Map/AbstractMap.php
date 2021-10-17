@@ -4,9 +4,6 @@ namespace App\Map;
 
 use Exception;
 
-/**
- *
- */
 abstract class AbstractMap implements MapInterface
 {
     /**
@@ -52,7 +49,10 @@ abstract class AbstractMap implements MapInterface
     /**
      * @return array
      */
-    abstract public function getArray() : array;
+    public function getArray() : array
+    {
+        return $this->tiles;
+    }
 
     /**
      * @param int $xSize
@@ -146,5 +146,25 @@ abstract class AbstractMap implements MapInterface
         }else{
             return $this->tiles[$xCoord][$yCoord];
         }
+    }
+
+    /**
+     * @param int $xCoord
+     * @param int $yCoord
+     * @return bool
+     */
+    public function isExistTile(int $xCoord, int $yCoord) : bool
+    {
+        return !empty($this->tiles[$xCoord][$yCoord]);
+    }
+
+    public function getNeighborTiles(int $x, int $y) : array
+    {
+        return [
+            'top' => $this->isExistTile($x - 1, $y) ? $this->getTile($x - 1, $y) : false,
+            'right' => $this->isExistTile($x, $y + 1) ? $this->getTile($x, $y + 1) : false,
+            'bottom' => $this->isExistTile($x + 1, $y) ? $this->getTile($x + 1, $y) : false,
+            'left' => $this->isExistTile($x, $y - 1) ? $this->getTile($x, $y - 1) : false,
+        ];
     }
 }

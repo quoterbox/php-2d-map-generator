@@ -11,13 +11,12 @@ require_once "./src/app.php";
     <title>Document</title>
 </head>
 <body>
-    <?php for($x = 0; $x < $xSize; $x++):?>
-        <?php for($y = 0; $y < $ySize; $y++):?>
-            <?php if(!empty($map[$x][$y]['path'])):?>
-                <img src="<?=$map[$x][$y]['path']?>" alt="<?=$map[$x][$y]['name']?>">
-            <?php else:?>
-                <img src="<?="Assets" . DIRECTORY_SEPARATOR . 'empty.' . $filesExt?>" alt="empty">
-            <?php endif?>
+    <strong><?=$map->getWidthInTiles()?></strong><br>
+    <strong><?=$map->getHeightInTiles()?></strong>
+
+    <?php for($x = 0; $x < $map->getWidthInTiles(); $x++):?>
+        <?php for($y = 0; $y < $map->getHeightInTiles(); $y++):?>
+            <img src="<?=$map->getTile($x, $y)->getAsset()->getPath()?>" alt="<?=$map->getTile($x, $y)->getAsset()->getName();?>">
         <?php endfor;?>
         <br>
     <?php endfor;?>

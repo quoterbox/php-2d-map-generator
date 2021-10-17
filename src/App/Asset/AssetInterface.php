@@ -65,4 +65,10 @@ interface AssetInterface
      * @return string
      */
     public function getLeftSide() : string;
+
+    /**
+     * @param string $sideName
+     * @return string
+     */
+    public function getSideByName(string $sideName) : string;
 }

@@ -3,13 +3,14 @@
 namespace App\Map;
 
 use App\Asset\AssetInterface;
+use Exception;
 
 class Tile
 {
-    private int $width = 100;
-    private int $height = 100;
-    private int $xCoord = 0;
-    private int $yCoord = 0;
+    private int $width;
+    private int $height;
+    private int $xCoord;
+    private int $yCoord;
     private AssetInterface $asset;
     private int $type;
     private string $topSide;
@@ -17,16 +18,34 @@ class Tile
     private string $bottomSide;
     private string $leftSide;
 
-    public function __construct(AssetInterface $asset, int $xSize, int $ySize)
+    public function __construct(AssetInterface $asset)
     {
         $this->asset = $asset;
-        $this->width = $xSize;
-        $this->height = $ySize;
+        $this->width = $asset->getWidth();
+        $this->height = $asset->getHeight();
         $this->type = $asset->getType();
         $this->topSide = $asset->getTopSide();
         $this->rightSide = $asset->getRightSide();
         $this->bottomSide = $asset->getBottomSide();
         $this->leftSide = $asset->getLeftSide();
+    }
+
+    public function setXCoord(int $xCoord) : void
+    {
+        if($xCoord > 0){
+            $this->xCoord = $xCoord;
+        }else{
+            throw new Exception("Invalid X coordinate");
+        }
+    }
+
+    public function setYCoord(int $yCoord) : void
+    {
+        if($yCoord > 0){
+            $this->yCoord = $yCoord;
+        }else{
+            throw new Exception("Invalid Y coordinate");
+        }
     }
 
     public function getWidth() : int
@@ -77,5 +96,20 @@ class Tile
     public function getLeftSide() : string
     {
         return $this->leftSide;
+    }
+
+    public function getInvertedSide(string $sideName) : string
+    {
+        if($sideName === "top"){
+            return $this->getBottomSide();
+        }elseif($sideName === "bottom"){
+            return $this->getTopSide();
+        }elseif($sideName === "left"){
+            return $this->getRightSide();
+        }elseif($sideName === "right"){
+            return $this->getLeftSide();
+        }
+
+        return "";
     }
 }

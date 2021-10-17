@@ -6,6 +6,7 @@ use Exception;
 
 class Asset implements AssetInterface
 {
+    private const EMPTY_ASSET_NAME = "EMP";
     /**
      * @var string
      */
@@ -68,7 +69,12 @@ class Asset implements AssetInterface
         $this->setAssetNameExt($assetNameExt);
         $this->setAssetName($this->assetNameExt, $this->assetExt);
         $this->setAssetSize($this->assetPath);
-        $this->setPropsFromName($this->assetName);
+
+        if($this->isEmptyAsset($this->assetName)){
+            $this->setPropsEmptyAsset();
+        }else{
+            $this->setPropsFromName($this->assetName);
+        }
     }
 
     /**
@@ -157,6 +163,25 @@ class Asset implements AssetInterface
     public function getLeftSide() : string
     {
         return $this->tileLeftSide;
+    }
+
+    /**
+     * @param string $sideName
+     * @return string
+     */
+    public function getSideByName(string $sideName) : string
+    {
+        if($sideName === "top"){
+            return $this->getBottomSide();
+        }elseif($sideName === "bottom"){
+            return $this->getTopSide();
+        }elseif($sideName === "left"){
+            return $this->getRightSide();
+        }elseif($sideName === "right"){
+            return $this->getLeftSide();
+        }
+
+        return "";
     }
 
     /**
@@ -293,7 +318,7 @@ class Asset implements AssetInterface
     {
         $rawProps = explode($this->nameDataDelimiter, $assetName);
 
-        if( empty($rawProps)
+        if(empty($rawProps)
             || count($rawProps) !== 6 && empty($rawProps[1])
             || count($rawProps) !== 3 && !empty($rawProps[1]))
         {
@@ -301,5 +326,23 @@ class Asset implements AssetInterface
         }
 
         return true;
+    }
+
+    /**
+     * @param string $assetName
+     * @return bool
+     */
+    private function isEmptyAsset(string $assetName) : bool
+    {
+        return strpos($assetName, self::EMPTY_ASSET_NAME) !== false;
+    }
+
+    private function setPropsEmptyAsset() : void
+    {
+        $this->tileType = 0;
+        $this->tileTopSide = false;
+        $this->tileRightSide = false;
+        $this->tileBottomSide = false;
+        $this->tileLeftSide = false;
     }
 }
