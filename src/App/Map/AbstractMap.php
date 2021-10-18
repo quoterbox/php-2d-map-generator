@@ -131,6 +131,8 @@ abstract class AbstractMap implements MapInterface
     public function addTile(TileInterface $tile, int $xCoord, int $yCoord) : void
     {
         $this->tiles[$xCoord][$yCoord] = $tile;
+        $this->widthPixels += $tile->getWidth();
+        $this->heightPixels += $tile->getHeight();
     }
 
     /**

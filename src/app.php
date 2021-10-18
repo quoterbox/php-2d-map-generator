@@ -5,6 +5,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Asset\AssetFilesCollection;
 use App\Generator\Algorithm\SimpleTileBuilder;
+use App\ImageSaver\ImageSaver;
 
 try{
 
@@ -14,6 +15,10 @@ try{
     $mapBuilder = new SimpleTileBuilder($assets, 10, 10);
     $mapBuilder->build();
     $map = $mapBuilder->getMap();
+
+    $mapSaver = new ImageSaver($map);
+    $mapSaver->saveToFile('Saved\FromImageSaver\FullMap\\', 'png', 'MyFirstMap');
+    $mapSaver->saveToManyFiles('Saved\FromImageSaver\Tiles\\', 'png');
 
     for($x = 0; $x < $map->getWidthInTiles(); $x++){
         for($y = 0; $y < $map->getHeightInTiles(); $y++){
