@@ -25,7 +25,7 @@ abstract class AbstractMap implements MapInterface
     /**
      * @var array|array[]
      */
-    protected array $tiles = [[]];
+    protected array $tiles = [];
 
     /**
      * @param array $mapArray

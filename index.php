@@ -1,6 +1,4 @@
-<?php
-require_once "./src/app.php";
-?>
+<?php require_once "./src/app.php";?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,9 +9,6 @@ require_once "./src/app.php";
     <title>Document</title>
 </head>
 <body>
-    <strong><?=$map->getWidthInTiles()?></strong><br>
-    <strong><?=$map->getHeightInTiles()?></strong>
-
     <?php for($x = 0; $x < $map->getWidthInTiles(); $x++):?>
         <?php for($y = 0; $y < $map->getHeightInTiles(); $y++):?>
             <img src="<?=$map->getTile($x, $y)->getAsset()->getPath()?>" alt="<?=$map->getTile($x, $y)->getAsset()->getName();?>">

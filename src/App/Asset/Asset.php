@@ -172,13 +172,13 @@ class Asset implements AssetInterface
     public function getSideByName(string $sideName) : string
     {
         if($sideName === "top"){
-            return $this->getBottomSide();
-        }elseif($sideName === "bottom"){
             return $this->getTopSide();
+        }elseif($sideName === "bottom"){
+            return $this->getBottomSide();
         }elseif($sideName === "left"){
-            return $this->getRightSide();
-        }elseif($sideName === "right"){
             return $this->getLeftSide();
+        }elseif($sideName === "right"){
+            return $this->getRightSide();
         }
 
         return "";

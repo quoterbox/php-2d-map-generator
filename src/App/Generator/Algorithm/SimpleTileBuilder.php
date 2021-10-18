@@ -39,11 +39,11 @@ class SimpleTileBuilder extends AbstractMapBuilder
         $startAssetIndex = $this->selectStartTileIndex($this->assets);
         $this->map->addTile(new Tile($this->assets[$startAssetIndex]), $xCurr, $yCurr);
 
-        $yStart = ++$yCurr;
+        $yStart = $yCurr + 1;
         $this->feedForward($xCurr, $this->xSize, $yStart, $this->ySize);
 
-        $yStart = $yCurr - 2;
-        $this->feedBackward($xCurr, $this->xSize, $yStart);
+        $yStart = $yCurr - 1;
+        $this->feedBackward($xCurr, $yStart, $this->ySize);
     }
 
     /**
