@@ -4,7 +4,31 @@ namespace App\Map;
 
 class Map extends AbstractMap
 {
-    public function load(array $mapArray) : void {}
-    public function saveToFile(string $destPath, string $destFileExt) : string {return "";}
-    public function saveToManyFiles(string $destPath, string $destFileExt) : string {return "";}
+    /**
+     * @param array $mapArray
+     */
+    public function load(array $mapArray) : void
+    {
+
+    }
+
+    /**
+     * @param string $destPath
+     * @param string $destFileExt
+     * @return string
+     */
+    public function saveToFile(string $destPath, string $destFileExt) : string
+    {
+        return "";
+    }
+
+    /**
+     * @param string $destPath
+     * @param string $destFileExt
+     * @return string
+     */
+    public function saveToManyFiles(string $destPath, string $destFileExt) : string
+    {
+        return "";
+    }
 }

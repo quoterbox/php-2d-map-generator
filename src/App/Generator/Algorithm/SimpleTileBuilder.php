@@ -2,9 +2,10 @@
 
 namespace App\Generator\Algorithm;
 
-use App\Generator\AbstractMapBuilder;
+use App\Asset\AssetInterface;
 use App\Asset\Asset;
-use App\Map\Map;
+use App\Generator\AbstractMapBuilder;
+use App\Map\MapInterface;
 use App\Map\Tile;
 
 class SimpleTileBuilder extends AbstractMapBuilder
@@ -15,9 +16,9 @@ class SimpleTileBuilder extends AbstractMapBuilder
 
     private const EMPTY_ASSET_EXT = 'png';
     /**
-     * @var Map
+     * @var MapInterface
      */
-    protected Map $map;
+    protected MapInterface $map;
     /**
      * @var array
      */
@@ -102,9 +103,9 @@ class SimpleTileBuilder extends AbstractMapBuilder
     /**
      * @param int $xCurr
      * @param int $yCurr
-     * @return Asset
+     * @return AssetInterface
      */
-    private function getFitAsset(int $xCurr, int $yCurr) : Asset
+    private function getFitAsset(int $xCurr, int $yCurr) : AssetInterface
     {
         $neighborTiles = $this->map->getNeighborTiles($xCurr, $yCurr);
         $neededSides = $this->getSidesFitAsset($neighborTiles);
@@ -163,9 +164,9 @@ class SimpleTileBuilder extends AbstractMapBuilder
 
     /**
      * @param array $assets
-     * @return Asset
+     * @return AssetInterface
      */
-    private function chooseOneAsset(array $assets) : Asset
+    private function chooseOneAsset(array $assets) : AssetInterface
     {
         if(empty($assets)){
             return new Asset(self::EMPTY_ASSET_PATH, self::EMPTY_ASSET_NAME, self::EMPTY_ASSET_EXT);

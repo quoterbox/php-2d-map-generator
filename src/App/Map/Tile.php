@@ -5,19 +5,52 @@ namespace App\Map;
 use App\Asset\AssetInterface;
 use Exception;
 
-class Tile
+class Tile implements TileInterface
 {
+    /**
+     * @var int
+     */
     private int $width;
+    /**
+     * @var int
+     */
     private int $height;
+    /**
+     * @var int
+     */
     private int $xCoord;
+    /**
+     * @var int
+     */
     private int $yCoord;
+    /**
+     * @var AssetInterface
+     */
     private AssetInterface $asset;
+    /**
+     * @var int
+     */
     private int $type;
+    /**
+     * @var string
+     */
     private string $topSide;
+    /**
+     * @var string
+     */
     private string $rightSide;
+    /**
+     * @var string
+     */
     private string $bottomSide;
+    /**
+     * @var string
+     */
     private string $leftSide;
 
+    /**
+     * @param AssetInterface $asset
+     */
     public function __construct(AssetInterface $asset)
     {
         $this->asset = $asset;
@@ -30,6 +63,10 @@ class Tile
         $this->leftSide = $asset->getLeftSide();
     }
 
+    /**
+     * @param int $xCoord
+     * @throws Exception
+     */
     public function setXCoord(int $xCoord) : void
     {
         if($xCoord > 0){
@@ -39,6 +76,10 @@ class Tile
         }
     }
 
+    /**
+     * @param int $yCoord
+     * @throws Exception
+     */
     public function setYCoord(int $yCoord) : void
     {
         if($yCoord > 0){
@@ -48,56 +89,90 @@ class Tile
         }
     }
 
+    /**
+     * @return int
+     */
     public function getWidth() : int
     {
         return $this->width;
     }
 
+    /**
+     * @return int
+     */
     public function getHeight() : int
     {
         return $this->height;
     }
 
+    /**
+     * @return int
+     */
     public function getXCoord() : int
     {
         return $this->xCoord;
     }
 
+    /**
+     * @return int
+     */
     public function getYCoord() : int
     {
         return $this->yCoord;
     }
 
+    /**
+     * @return AssetInterface
+     */
     public function getAsset() : AssetInterface
     {
         return $this->asset;
     }
 
+    /**
+     * @return int
+     */
     public function getType() : int
     {
         return $this->type;
     }
 
+    /**
+     * @return string
+     */
     public function getTopSide() : string
     {
         return $this->topSide;
     }
 
+    /**
+     * @return string
+     */
     public function getRightSide() : string
     {
         return $this->rightSide;
     }
 
+    /**
+     * @return string
+     */
     public function getBottomSide() : string
     {
         return $this->bottomSide;
     }
 
+    /**
+     * @return string
+     */
     public function getLeftSide() : string
     {
         return $this->leftSide;
     }
 
+    /**
+     * @param string $sideName
+     * @return string
+     */
     public function getInvertedSide(string $sideName) : string
     {
         if($sideName === "top"){

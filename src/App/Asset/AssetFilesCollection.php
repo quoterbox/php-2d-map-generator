@@ -14,7 +14,7 @@ class AssetFilesCollection implements AssetCollectionInterface
      */
     private array $availableExt = ['png','jpg','gif','jpeg','webp'];
     /**
-     * @var array|Asset[]
+     * @var array|AssetInterface[]
      */
     private array $assets = [];
     /**
@@ -90,9 +90,6 @@ class AssetFilesCollection implements AssetCollectionInterface
         return in_array($assetsExt, $this->availableExt);
     }
 
-    /**
-     *
-     */
     private function loadAssets() : void
     {
         $dir = new RecursiveDirectoryIterator($this->assetsPath);
@@ -108,10 +105,10 @@ class AssetFilesCollection implements AssetCollectionInterface
 
     /**
      * @param SplFileInfo $dirItr
-     * @return \App\Asset\Asset
+     * @return AssetInterface
      * @throws Exception
      */
-    private function createAsset(SplFileInfo $dirItr) : Asset
+    private function createAsset(SplFileInfo $dirItr) : AssetInterface
     {
         return new Asset($dirItr->getPathname(), $dirItr->getFilename(), $dirItr->getExtension());
     }

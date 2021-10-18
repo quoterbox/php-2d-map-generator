@@ -124,11 +124,11 @@ abstract class AbstractMap implements MapInterface
     }
 
     /**
-     * @param \App\Map\Tile $tile
+     * @param \App\Map\TileInterface $tile
      * @param int $xCoord
      * @param int $yCoord
      */
-    public function addTile(Tile $tile, int $xCoord, int $yCoord) : void
+    public function addTile(TileInterface $tile, int $xCoord, int $yCoord) : void
     {
         $this->tiles[$xCoord][$yCoord] = $tile;
     }
@@ -136,10 +136,10 @@ abstract class AbstractMap implements MapInterface
     /**
      * @param int $xCoord
      * @param int $yCoord
-     * @return \App\Map\Tile
+     * @return \App\Map\TileInterface
      * @throws Exception
      */
-    public function getTile(int $xCoord, int $yCoord) : Tile
+    public function getTile(int $xCoord, int $yCoord) : TileInterface
     {
         if(empty($this->tiles[$xCoord][$yCoord])){
             throw new Exception("Tile with coordinates x=" . $xCoord . " y=" . $yCoord . " does not exist");
@@ -158,6 +158,12 @@ abstract class AbstractMap implements MapInterface
         return !empty($this->tiles[$xCoord][$yCoord]);
     }
 
+    /**
+     * @param int $x
+     * @param int $y
+     * @return array
+     * @throws Exception
+     */
     public function getNeighborTiles(int $x, int $y) : array
     {
         return [

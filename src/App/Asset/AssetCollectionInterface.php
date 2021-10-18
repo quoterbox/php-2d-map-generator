@@ -2,9 +2,6 @@
 
 namespace App\Asset;
 
-/**
- *
- */
 interface AssetCollectionInterface
 {
     /**

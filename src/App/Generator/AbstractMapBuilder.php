@@ -2,14 +2,15 @@
 
 namespace App\Generator;
 
+use App\Map\MapInterface;
 use App\Map\Map;
 
 abstract class AbstractMapBuilder
 {
     /**
-     * @var Map
+     * @var MapInterface
      */
-    protected Map $map;
+    protected MapInterface $map;
     /**
      * @var array
      */
@@ -39,9 +40,9 @@ abstract class AbstractMapBuilder
     abstract public function build() : void;
 
     /**
-     * @return Map
+     * @return MapInterface
      */
-    public function getMap() : Map
+    public function getMap() : MapInterface
     {
         return $this->map;
     }
@@ -49,10 +50,10 @@ abstract class AbstractMapBuilder
     /**
      * @param int $xSize
      * @param int $ySize
-     * @return Map
+     * @return MapInterface
      * @throws \Exception
      */
-    protected function createMap(int $xSize, int $ySize) : Map
+    protected function createMap(int $xSize, int $ySize) : MapInterface
     {
         return new Map($this->xSize, $this->ySize);
     }
