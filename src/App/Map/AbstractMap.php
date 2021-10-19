@@ -2,6 +2,7 @@
 
 namespace App\Map;
 
+use App\Map\TileInterface;
 use Exception;
 
 abstract class AbstractMap implements MapInterface
@@ -131,8 +132,8 @@ abstract class AbstractMap implements MapInterface
     public function addTile(TileInterface $tile, int $xCoord, int $yCoord) : void
     {
         $this->tiles[$xCoord][$yCoord] = $tile;
-        $this->widthPixels += $tile->getWidth();
-        $this->heightPixels += $tile->getHeight();
+        $this->widthPixels = $tile->getWidth() * count($this->tiles[$xCoord]);
+        $this->heightPixels = $tile->getHeight() * count($this->tiles);
     }
 
     /**
