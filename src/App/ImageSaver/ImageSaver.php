@@ -28,6 +28,10 @@ class ImageSaver
      * @var array|string[]
      */
     private array $availableSaveExt = ['png','jpg','gif','jpeg','webp'];
+
+    private string $savedImagePath = '';
+    private string $savedImageName = '';
+
     /**
      * @var string
      */
@@ -67,11 +71,72 @@ class ImageSaver
      */
     public function saveToFile(string $destPath, string $destFileExt, string $destFileName = '') : string
     {
+        if($this->isAlreadySaved() && $this->isSameExt($destFileExt) && $this->isSameName($destFileName)){
+
+            return $this->savedImagePath;
+
+        }elseif($this->isAlreadySaved() && $this->isSameExt($destFileExt) && !$this->isSameName($destFileName)){
+
+            return $this->renameImage($this->savedImagePath, $destPath, $destFileExt, $destFileName);
+
+        }elseif($this->isAlreadySaved() && !$this->isSameExt($destFileExt)){
+
+            return $this->convertImageToFormat($this->savedImagePath, $destPath, $destFileExt, $destFileName);
+
+        }else{
+
+            return $this->saveNewFile($destPath, $destFileExt, $destFileName);
+
+        }
+    }
+
+    private function renameImage(string $imageFromPath, string $destPath, string $destFileExt, string $destFileName = '') : string
+    {
+        $newFilePath = $this->makeDestFileName($destPath, $destFileExt, $destFileName);
+
+        if(copy($imageFromPath, $newFilePath)){
+            return $newFilePath;
+        }else{
+            throw new Exception('An error occurred while copy or rename file');
+        }
+    }
+
+    private function convertImageToFormat(string $imageFromPath, string $destPath, string $destFileExt, string $destFileName = '') : string
+    {
+        $oldImg = $this->imageCreate($imageFromPath, $this->destExt);
+        imagecopy($this->gdImgObject, $oldImg, 0, 0, 0, 0, $this->width, $this->height);
+
+        $newFilePath = $this->makeDestFileName($destPath, $destFileExt, $destFileName);
+
+        return $this->saveGDResourceToImage($this->gdImgObject, $newFilePath);
+    }
+
+    private function isAlreadySaved() : bool
+    {
+        return (bool)$this->savedImagePath;
+    }
+
+    private function isSameExt(string $destFileExt) : bool
+    {
+        return $this->destExt === $destFileExt;
+    }
+
+    private function isSameName(string $destFileName) : bool
+    {
+        return $this->savedImageName === $destFileName;
+    }
+
+    private function saveNewFile(string $destPath, string $destFileExt, string $destFileName = '') : string
+    {
         $this->destExt = $destFileExt;
 
         $savePath = $this->makeDestFileName($destPath, $destFileExt, $destFileName);
 
         if($this->saveMapToFile($savePath)){
+
+            $this->savedImagePath = $savePath;
+            $this->savedImageName = $destFileName;
+
             return $savePath;
         }else{
             throw new Exception('An error occurred while saving the file');

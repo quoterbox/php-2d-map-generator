@@ -2,8 +2,11 @@
 
 namespace App\ImageSaver;
 
+use App\Map\MapInterface;
+
 interface ImageSaverInterface
 {
-    public function openImageResource(string $imagePath, string $imageExt);
-    public function saveToFile(string $destPath, string $destFileExt) : bool;
+    public function __construct(MapInterface $map);
+    public function saveToFile(string $destPath, string $destFileExt, string $destFileName = '') : string;
+    public function saveToManyFiles(string $destPath, string $destFileExt) : void;
 }

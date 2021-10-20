@@ -16,20 +16,6 @@ interface MapInterface
     public function load(array $mapArray) : void;
 
     /**
-     * @param string $destPath
-     * @param string $destFileExt
-     * @return string
-     */
-    public function saveToFile(string $destPath, string $destFileExt) : string;
-
-    /**
-     * @param string $destPath
-     * @param string $destFileExt
-     * @return string
-     */
-    public function saveToManyFiles(string $destPath, string $destFileExt) : string;
-
-    /**
      * @return array
      */
     public function getArray() : array;

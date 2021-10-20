@@ -11,24 +11,4 @@ class Map extends AbstractMap
     {
 
     }
-
-    /**
-     * @param string $destPath
-     * @param string $destFileExt
-     * @return string
-     */
-    public function saveToFile(string $destPath, string $destFileExt) : string
-    {
-        return "";
-    }
-
-    /**
-     * @param string $destPath
-     * @param string $destFileExt
-     * @return string
-     */
-    public function saveToManyFiles(string $destPath, string $destFileExt) : string
-    {
-        return "";
-    }
 }
