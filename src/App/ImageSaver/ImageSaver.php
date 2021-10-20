@@ -29,7 +29,13 @@ class ImageSaver
      */
     private array $availableSaveExt = ['png','jpg','gif','jpeg','webp'];
 
+    /**
+     * @var string
+     */
     private string $savedImagePath = '';
+    /**
+     * @var string
+     */
     private string $savedImageName = '';
 
     /**
@@ -71,26 +77,46 @@ class ImageSaver
      */
     public function saveToFile(string $destPath, string $destFileExt, string $destFileName = '') : string
     {
-        if($this->isAlreadySaved() && $this->isSameExt($destFileExt) && $this->isSameName($destFileName)){
+        if($this->isNeedOldImage($destFileExt, $destFileName)){
 
             return $this->savedImagePath;
 
-        }elseif($this->isAlreadySaved() && $this->isSameExt($destFileExt) && !$this->isSameName($destFileName)){
+        }elseif($this->isNeedRename($destFileExt, $destFileName)){
 
             return $this->renameImage($this->savedImagePath, $destPath, $destFileExt, $destFileName);
 
-        }elseif($this->isAlreadySaved() && !$this->isSameExt($destFileExt)){
+        }elseif($this->isNeedConvert($destFileExt)){
 
             return $this->convertImageToFormat($this->savedImagePath, $destPath, $destFileExt, $destFileName);
 
         }else{
-
             return $this->saveNewFile($destPath, $destFileExt, $destFileName);
-
         }
     }
 
-    private function renameImage(string $imageFromPath, string $destPath, string $destFileExt, string $destFileName = '') : string
+    private function isNeedOldImage(string $destFileExt, string $destFileName) : bool
+    {
+        return $this->isAlreadySaved() && $this->isSameExt($destFileExt) && $this->isSameName($destFileName);
+    }
+
+    private function isNeedRename(string $destFileExt, string $destFileName) : bool
+    {
+        return $this->isAlreadySaved() && $this->isSameExt($destFileExt) && !$this->isSameName($destFileName);
+    }
+    private function isNeedConvert(string $destFileExt) : bool
+    {
+        return $this->isAlreadySaved() && !$this->isSameExt($destFileExt);
+    }
+
+    /**
+     * @param string $imageFromPath
+     * @param string $destPath
+     * @param string $destFileExt
+     * @param string $destFileName
+     * @return string
+     * @throws Exception
+     */
+    private function renameImage(string $imageFromPath, string $destPath, string $destFileExt, string $destFileName) : string
     {
         $newFilePath = $this->makeDestFileName($destPath, $destFileExt, $destFileName);
 
@@ -101,7 +127,15 @@ class ImageSaver
         }
     }
 
-    private function convertImageToFormat(string $imageFromPath, string $destPath, string $destFileExt, string $destFileName = '') : string
+    /**
+     * @param string $imageFromPath
+     * @param string $destPath
+     * @param string $destFileExt
+     * @param string $destFileName
+     * @return string
+     * @throws Exception
+     */
+    private function convertImageToFormat(string $imageFromPath, string $destPath, string $destFileExt, string $destFileName) : string
     {
         $oldImg = $this->imageCreate($imageFromPath, $this->destExt);
         imagecopy($this->gdImgObject, $oldImg, 0, 0, 0, 0, $this->width, $this->height);
@@ -111,22 +145,14 @@ class ImageSaver
         return $this->saveGDResourceToImage($this->gdImgObject, $newFilePath);
     }
 
-    private function isAlreadySaved() : bool
-    {
-        return (bool)$this->savedImagePath;
-    }
-
-    private function isSameExt(string $destFileExt) : bool
-    {
-        return $this->destExt === $destFileExt;
-    }
-
-    private function isSameName(string $destFileName) : bool
-    {
-        return $this->savedImageName === $destFileName;
-    }
-
-    private function saveNewFile(string $destPath, string $destFileExt, string $destFileName = '') : string
+    /**
+     * @param string $destPath
+     * @param string $destFileExt
+     * @param string $destFileName
+     * @return string
+     * @throws Exception
+     */
+    private function saveNewFile(string $destPath, string $destFileExt, string $destFileName) : string
     {
         $this->destExt = $destFileExt;
 
@@ -150,7 +176,7 @@ class ImageSaver
     private function saveMapToFile(string $savePath) : bool
     {
         $cnt_row = 0;
-        for($row = 0; $row < $this->map->getHeightInTiles(); $row++){
+        for($row = 0; $row < $this->map->getWidthInTiles(); $row++){
 
             $cnt_col = 0;
 
@@ -179,7 +205,7 @@ class ImageSaver
      * @return string
      * @throws Exception
      */
-    private function makeDestFileName(string $destPath, string $destFileExt, string $destFileName = '') : string
+    private function makeDestFileName(string $destPath, string $destFileExt, string $destFileName) : string
     {
         if(!$this->isValidPath($destPath)){
             if(!mkdir($destPath,0777, true)){
@@ -284,5 +310,31 @@ class ImageSaver
     private function isValidPath(string $assetsPath) : bool
     {
         return is_dir($assetsPath);
+    }
+
+    /**
+     * @return bool
+     */
+    private function isAlreadySaved() : bool
+    {
+        return (bool)$this->savedImagePath;
+    }
+
+    /**
+     * @param string $destFileExt
+     * @return bool
+     */
+    private function isSameExt(string $destFileExt) : bool
+    {
+        return $this->destExt === $destFileExt;
+    }
+
+    /**
+     * @param string $destFileName
+     * @return bool
+     */
+    private function isSameName(string $destFileName) : bool
+    {
+        return $this->savedImageName === $destFileName;
     }
 }
