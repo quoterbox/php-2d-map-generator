@@ -117,8 +117,8 @@ abstract class AbstractMap implements MapInterface
      */
     public function addTile(TileInterface $tile, int $xCoord, int $yCoord) : void
     {
-        $this->tiles[$xCoord][$yCoord] = $tile;
-        $this->widthPixels = $tile->getWidth() * count($this->tiles[$xCoord]);
+        $this->tiles[$yCoord][$xCoord] = $tile;
+        $this->widthPixels = $tile->getWidth() * count($this->tiles[$yCoord]);
         $this->heightPixels = $tile->getHeight() * count($this->tiles);
     }
 
@@ -130,10 +130,10 @@ abstract class AbstractMap implements MapInterface
      */
     public function getTile(int $xCoord, int $yCoord) : TileInterface
     {
-        if(empty($this->tiles[$xCoord][$yCoord])){
+        if(empty($this->tiles[$yCoord][$xCoord])){
             throw new Exception("Tile with coordinates x=" . $xCoord . " y=" . $yCoord . " does not exist");
         }else{
-            return $this->tiles[$xCoord][$yCoord];
+            return $this->tiles[$yCoord][$xCoord];
         }
     }
 
@@ -144,7 +144,7 @@ abstract class AbstractMap implements MapInterface
      */
     public function isExistTile(int $xCoord, int $yCoord) : bool
     {
-        return !empty($this->tiles[$xCoord][$yCoord]);
+        return !empty($this->tiles[$yCoord][$xCoord]);
     }
 
     /**
@@ -156,10 +156,10 @@ abstract class AbstractMap implements MapInterface
     public function getNeighborTiles(int $x, int $y) : array
     {
         return [
-            'top' => $this->isExistTile($x - 1, $y) ? $this->getTile($x - 1, $y) : false,
-            'right' => $this->isExistTile($x, $y + 1) ? $this->getTile($x, $y + 1) : false,
-            'bottom' => $this->isExistTile($x + 1, $y) ? $this->getTile($x + 1, $y) : false,
-            'left' => $this->isExistTile($x, $y - 1) ? $this->getTile($x, $y - 1) : false,
+            'top' => $this->isExistTile($x, $y - 1) ? $this->getTile($x, $y - 1) : false,
+            'right' => $this->isExistTile($x + 1, $y) ? $this->getTile($x + 1, $y) : false,
+            'bottom' => $this->isExistTile($x, $y + 1) ? $this->getTile($x, $y + 1) : false,
+            'left' => $this->isExistTile($x - 1, $y) ? $this->getTile($x - 1, $y) : false,
         ];
     }
 }

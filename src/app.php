@@ -9,10 +9,11 @@ use App\ImageSaver\ImageSaver;
 
 try{
 
-    $assetsCollection = new AssetFilesCollection('Assets\Angles\\', 'png');
+//    $assetsCollection = new AssetFilesCollection('Assets\Angles\\', 'png');
+    $assetsCollection = new AssetFilesCollection('Assets\RiverPath\\', 'png');
     $assets = $assetsCollection->getAssets();
 
-    $mapBuilder = new SimpleTileBuilder($assets, 7, 2);
+    $mapBuilder = new SimpleTileBuilder($assets, 5, 5);
     $mapBuilder->build();
     $map = $mapBuilder->getMap();
 
@@ -23,8 +24,8 @@ try{
     $mapSaver->saveToFile('Saved\FromImageSaver\FullMap\\', 'webp');
     $mapSaver->saveToFile('Saved\FromImageSaver\FullMap\\', 'gif');
 
-    for($x = 0; $x < $map->getWidthInTiles(); $x++){
-        for($y = 0; $y < $map->getHeightInTiles(); $y++){
+    for($y = 0; $y < $map->getHeightInTiles(); $y++){
+        for($x = 0; $x < $map->getWidthInTiles(); $x++){
             echo "<img src=" . $map->getTile($x, $y)->getAsset()->getPath() . " alt=" . $map->getTile($x, $y)->getAsset()->getName() . ">";
         }
         echo "<br>";

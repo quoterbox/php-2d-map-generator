@@ -55,6 +55,6 @@ abstract class AbstractMapBuilder
      */
     protected function createMap(int $xSize, int $ySize) : MapInterface
     {
-        return new Map($this->xSize, $this->ySize);
+        return new Map($xSize, $ySize);
     }
 }

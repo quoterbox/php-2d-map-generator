@@ -94,15 +94,30 @@ class ImageSaver
         }
     }
 
+    /**
+     * @param string $destFileExt
+     * @param string $destFileName
+     * @return bool
+     */
     private function isNeedOldImage(string $destFileExt, string $destFileName) : bool
     {
         return $this->isAlreadySaved() && $this->isSameExt($destFileExt) && $this->isSameName($destFileName);
     }
 
+    /**
+     * @param string $destFileExt
+     * @param string $destFileName
+     * @return bool
+     */
     private function isNeedRename(string $destFileExt, string $destFileName) : bool
     {
         return $this->isAlreadySaved() && $this->isSameExt($destFileExt) && !$this->isSameName($destFileName);
     }
+
+    /**
+     * @param string $destFileExt
+     * @return bool
+     */
     private function isNeedConvert(string $destFileExt) : bool
     {
         return $this->isAlreadySaved() && !$this->isSameExt($destFileExt);
@@ -139,7 +154,6 @@ class ImageSaver
     {
         $oldImg = $this->imageCreate($imageFromPath, $this->destExt);
         imagecopy($this->gdImgObject, $oldImg, 0, 0, 0, 0, $this->width, $this->height);
-
         $newFilePath = $this->makeDestFileName($destPath, $destFileExt, $destFileName);
 
         return $this->saveGDResourceToImage($this->gdImgObject, $newFilePath);
@@ -176,15 +190,15 @@ class ImageSaver
     private function saveMapToFile(string $savePath) : bool
     {
         $cnt_row = 0;
-        for($row = 0; $row < $this->map->getWidthInTiles(); $row++){
+        for($y = 0; $y < $this->map->getHeightInTiles(); $y++){
 
             $cnt_col = 0;
 
-            $tile = $this->map->getTile($row, 0);
+            $tile = $this->map->getTile(0, $y);
 
-            for($col = 0; $col < $this->map->getHeightInTiles(); $col++){
+            for($x = 0; $x < $this->map->getWidthInTiles(); $x++){
 
-                $tile = $this->map->getTile($row, $col);
+                $tile = $this->map->getTile($x, $y);
 
                 $oneTileImg = $this->imageCreate($tile->getAsset()->getPath(), $tile->getAsset()->getExt());
                 imagecopy($this->gdImgObject, $oneTileImg, $cnt_col, $cnt_row, 0, 0, $this->width, $this->height);

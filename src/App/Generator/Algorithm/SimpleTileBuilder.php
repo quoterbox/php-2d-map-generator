@@ -40,11 +40,11 @@ class SimpleTileBuilder extends AbstractMapBuilder
         $startAssetIndex = $this->selectStartTileIndex($this->assets);
         $this->map->addTile(new Tile($this->assets[$startAssetIndex]), $xCurr, $yCurr);
 
-        $yStart = $yCurr + 1;
-        $this->feedForward($xCurr, $this->xSize, $yStart, $this->ySize);
+        $xStart = $xCurr + 1;
+        $this->feedForward($xStart, $this->xSize, $yCurr, $this->ySize);
 
-        $yStart = $yCurr - 1;
-        $this->feedBackward($xCurr, $yStart, $this->ySize);
+        $xStart = $xCurr - 1;
+        $this->feedBackward($xStart, $this->xSize, $yCurr);
     }
 
     /**
@@ -55,48 +55,48 @@ class SimpleTileBuilder extends AbstractMapBuilder
      */
     private function feedForward(int $xStart, int $xEnd, int $yStart, int $yEnd) : void
     {
-        $cnt_x = 0;
+        $cnt_y = 0;
 
-        for ($xCurr = $xStart; $xCurr < $xEnd; $xCurr++){
+        for ($yCurr = $yStart; $yCurr < $yEnd; $yCurr++){
 
-            for ($yCurr = $yStart; $yCurr < $yEnd; $yCurr++){
+            for ($xCurr = $xStart; $xCurr < $xEnd; $xCurr++){
 
                 $asset = $this->getFitAsset($xCurr, $yCurr);
                 $this->map->addTile(new Tile($asset), $xCurr, $yCurr);
 
             }
 
-            if($cnt_x == 0){
-                $yStart = 0;
+            if($cnt_y == 0){
+                $xStart = 0;
             }
 
-            $cnt_x++;
+            $cnt_y++;
         }
     }
 
     /**
      * @param int $xStart
+     * @param int $xEnd
      * @param int $yStart
-     * @param int $yEnd
      */
-    private function feedBackward(int $xStart, int $yStart, int $yEnd) : void
+    private function feedBackward(int $xStart, int $xEnd, int $yStart) : void
     {
-        $cnt_x = 0;
+        $cnt_y = 0;
 
-        for ($xCurr = $xStart; $xCurr >= 0; $xCurr--){
+        for ($yCurr = $yStart; $yCurr >= 0; $yCurr--){
 
-            for ($yCurr = $yStart; $yCurr >= 0; $yCurr--){
+            for ($xCurr = $xStart; $xCurr >= 0; $xCurr--){
 
                 $asset = $this->getFitAsset($xCurr, $yCurr);
                 $this->map->addTile(new Tile($asset), $xCurr, $yCurr);
 
             }
 
-            if($cnt_x == 0){
-                $yStart = $yEnd - 1;
+            if($cnt_y == 0){
+                $xStart = $xEnd - 1;
             }
 
-            $cnt_x++;
+            $cnt_y++;
         }
     }
 
