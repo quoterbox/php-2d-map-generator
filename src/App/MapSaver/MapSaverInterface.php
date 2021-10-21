@@ -1,13 +1,10 @@
 <?php
 
-namespace App\ImageSaver;
+namespace App\MapSaver;
 
 use App\Map\MapInterface;
 
-/**
- *
- */
-interface ImageSaverInterface
+interface MapSaverInterface
 {
     /**
      * @param MapInterface $map

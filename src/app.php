@@ -5,11 +5,10 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Asset\AssetFilesCollection;
 use App\Generator\Algorithm\SimpleTileBuilder;
-use App\ImageSaver\ImageSaver;
+use App\MapSaver\MapSaver;
 
 try{
 
-//    $assetsCollection = new AssetFilesCollection('Assets\Angles\\', 'png');
     $assetsCollection = new AssetFilesCollection('Assets\RiverPath\\', 'png');
     $assets = $assetsCollection->getAssets();
 
@@ -17,12 +16,13 @@ try{
     $mapBuilder->build();
     $map = $mapBuilder->getMap();
 
-    $mapSaver = new ImageSaver($map);
-    $mapSaver->saveToFile('Saved\FromImageSaver\FullMap\\', 'png', 'MyMap3');
+    $mapSaver = new MapSaver($map);
+    $mapSaver->saveToFile('Saved\FromImageSaver\FullMap\\', 'png', 'MyMap1');
     $mapSaver->saveToFile('Saved\FromImageSaver\FullMap\\', 'png');
     $mapSaver->saveToFile('Saved\FromImageSaver\FullMap\\', 'jpg');
     $mapSaver->saveToFile('Saved\FromImageSaver\FullMap\\', 'webp');
     $mapSaver->saveToFile('Saved\FromImageSaver\FullMap\\', 'gif');
+    $mapSaver->saveToManyFiles('Saved\FromImageSaver\TilesMap\\', 'png');
 
     for($y = 0; $y < $map->getHeightInTiles(); $y++){
         for($x = 0; $x < $map->getWidthInTiles(); $x++){

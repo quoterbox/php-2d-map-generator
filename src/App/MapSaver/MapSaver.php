@@ -1,12 +1,12 @@
 <?php
 
-namespace App\ImageSaver;
+namespace App\MapSaver;
 
 use App\Map\MapInterface;
 use App\Asset\AssetInterface;
 use Exception;
 
-class ImageSaver
+class MapSaver implements MapSaverInterface
 {
     /**
      * @var MapInterface
@@ -65,7 +65,19 @@ class ImageSaver
      */
     public function saveToManyFiles(string $destPath, string $destFileExt) : void
     {
+        $this->destExt = $destFileExt;
 
+        for($y = 0; $y < $this->map->getHeightInTiles(); $y++){
+
+            for($x = 0; $x < $this->map->getWidthInTiles(); $x++){
+
+                $destFileName = 'row_' . $y . '__col_' . $x;
+                $savePath = $this->makeDestFileName($destPath, $destFileExt, $destFileName);
+
+                $oneTileImg = $this->imageCreate($this->map->getTile($x, $y)->getAsset()->getPath(), $this->map->getTile($x, $y)->getAsset()->getExt());
+                $this->saveGDResourceToImage($oneTileImg, $savePath);
+            }
+        }
     }
 
     /**
