@@ -34,7 +34,7 @@ abstract class AbstractMapBuilder
         $this->assets = $assets;
         $this->xSize = $xSize;
         $this->ySize = $ySize;
-        $this->map = $this->createMap($xSize, $ySize);
+        $this->map = self::createMap($xSize, $ySize);
     }
 
     abstract public function build() : void;
@@ -53,7 +53,7 @@ abstract class AbstractMapBuilder
      * @return MapInterface
      * @throws \Exception
      */
-    protected function createMap(int $xSize, int $ySize) : MapInterface
+    protected static function createMap(int $xSize, int $ySize) : MapInterface
     {
         return new Map($xSize, $ySize);
     }

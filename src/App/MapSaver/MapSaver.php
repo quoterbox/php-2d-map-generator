@@ -62,6 +62,7 @@ class MapSaver implements MapSaverInterface
     /**
      * @param string $destPath
      * @param string $destFileExt
+     * @throws Exception
      */
     public function saveToManyFiles(string $destPath, string $destFileExt) : void
     {
@@ -235,7 +236,7 @@ class MapSaver implements MapSaverInterface
     {
         if(!$this->isValidPath($destPath)){
             if(!mkdir($destPath,0777, true)){
-                throw new \Exception('Invalid save path');
+                throw new Exception('Invalid save path');
             }
         }
 

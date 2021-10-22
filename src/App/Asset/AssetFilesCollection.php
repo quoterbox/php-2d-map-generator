@@ -98,17 +98,18 @@ class AssetFilesCollection implements AssetCollectionInterface
         foreach($dirIterators as $dirIterator) {
 
             if ($dirIterator->isFile() && $this->assetsExt === $dirIterator->getExtension()) {
-                $this->assets[] = $this->createAsset($dirIterator);
+                $this->assets[] = self::createAsset($dirIterator);
             }
         }
     }
+
 
     /**
      * @param SplFileInfo $dirItr
      * @return AssetInterface
      * @throws Exception
      */
-    private function createAsset(SplFileInfo $dirItr) : AssetInterface
+    private static function createAsset(SplFileInfo $dirItr) : AssetInterface
     {
         return new Asset($dirItr->getPathname(), $dirItr->getFilename(), $dirItr->getExtension());
     }
