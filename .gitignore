@@ -5,6 +5,7 @@
 *cookie*.txt
 .idea
 vendor
+/var
 /node_modules
 /public/hot
 /public/storage
@@ -23,7 +24,7 @@ _deploy/
 *.xlsx
 *.xls
 .env
-.phpunit.result.cache
+*.phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log

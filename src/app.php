@@ -9,7 +9,7 @@ use App\MapSaver\MapSaver;
 
 try{
 
-    $assetsCollection = new AssetFilesCollection('Assets\RiverPath\\', 'png');
+    $assetsCollection = new AssetFilesCollection('Assets\Angles\\', 'png');
     $assets = $assetsCollection->getAssets();
 
     $mapBuilder = new SimpleTileBuilder($assets, 5, 5);
@@ -17,12 +17,12 @@ try{
     $map = $mapBuilder->getMap();
 
     $mapSaver = new MapSaver($map);
-    $mapSaver->saveToFile('Saved\FromImageSaver\FullMap\\', 'png', 'MyMap1');
-    $mapSaver->saveToFile('Saved\FromImageSaver\FullMap\\', 'png');
-    $mapSaver->saveToFile('Saved\FromImageSaver\FullMap\\', 'jpg');
-    $mapSaver->saveToFile('Saved\FromImageSaver\FullMap\\', 'webp');
-    $mapSaver->saveToFile('Saved\FromImageSaver\FullMap\\', 'gif');
-    $mapSaver->saveToManyFiles('Saved\FromImageSaver\TilesMap\\', 'png');
+    $mapSaver->saveToFile('Saved\FromImageSaver\FullMap2\\', 'png', 'MyMap2');
+    $mapSaver->saveToFile('Saved\FromImageSaver\FullMap2\\', 'png');
+    $mapSaver->saveToFile('Saved\FromImageSaver\FullMap2\\', 'jpg');
+    $mapSaver->saveToFile('Saved\FromImageSaver\FullMap2\\', 'webp');
+    $mapSaver->saveToFile('Saved\FromImageSaver\FullMap2\\', 'gif');
+    $mapSaver->saveToManyFiles('Saved\FromImageSaver\TilesMap2\\', 'png');
 
     for($y = 0; $y < $map->getHeightInTiles(); $y++){
         for($x = 0; $x < $map->getWidthInTiles(); $x++){
