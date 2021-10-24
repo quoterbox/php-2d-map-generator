@@ -55,6 +55,14 @@ class AssetTest extends TestCase
         self::assertEquals('R', (self::createAsset())->getLeftSide());
     }
 
+    public function testGetSideByName()
+    {
+        self::assertEquals('G', (self::createAsset())->getSideByName("top"));
+        self::assertEquals('R', (self::createAsset())->getSideByName("right"));
+        self::assertEquals('R', (self::createAsset())->getSideByName("bottom"));
+        self::assertEquals('R', (self::createAsset())->getSideByName("left"));
+    }
+
     private static function createAsset() : AssetInterface
     {
         return new Asset('Assets\Test\\1_0_G_R_R_R.png', "1_0_G_R_R_R.png", "png");
