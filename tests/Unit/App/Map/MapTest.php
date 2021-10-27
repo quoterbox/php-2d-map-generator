@@ -20,22 +20,12 @@ class MapTest extends TestCase
     {
         $asset = self::createAsset();
         $this->tile = self::createTile($asset);
-        $this->map = self::createMap();
-    }
-
-    public function testSetMapWidthInTiles()
-    {
-        self::assertEquals(10, (self::createMap())->getWidthInTiles());
-    }
-
-    public function testSetMapHeightInTiles()
-    {
-        self::assertEquals(15, (self::createMap())->getHeightInTiles());
+        $this->map = self::createMap(10,15);
     }
 
     public function testGetEmptyArray()
     {
-        self::assertEmpty((self::createMap())->getArray());
+        self::assertEmpty((self::createMap(5, 5))->getArray());
     }
 
     public function testAddTile()
@@ -54,6 +44,16 @@ class MapTest extends TestCase
         self::assertEquals(100, $this->map->getTile($x, $y)->getWidth());
         self::assertEquals(100, $this->map->getTile($x, $y)->getHeight());
         self::assertEquals('Assets\Test\1_0_G_R_R_R.png', $this->map->getTile($x, $y)->getAsset()->getPath());
+    }
+
+    public function testSetMapWidthInTiles()
+    {
+        self::assertEquals(10, (self::createMap(10, 15))->getWidthInTiles());
+    }
+
+    public function testSetMapHeightInTiles()
+    {
+        self::assertEquals(15, (self::createMap(10, 15))->getHeightInTiles());
     }
 
     public function testSetWidthInPixels()
@@ -83,8 +83,8 @@ class MapTest extends TestCase
         return new Asset('Assets\Test\1_0_G_R_R_R.png', "1_0_G_R_R_R.png", "png");
     }
 
-    private static function createMap() : MapInterface
+    private static function createMap(int $width, int $height) : MapInterface
     {
-        return new Map(10,15);
+        return new Map($width,$height);
     }
 }
