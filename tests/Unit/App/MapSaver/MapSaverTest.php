@@ -26,12 +26,14 @@ class MapSaverTest extends TestCase
 
         $asset = self::createAsset('Assets\Test\1_0_G_R_R_R.png', "1_0_G_R_R_R.png", "png");
         $tile = self::createTile($asset);
-        $map = self::createMap(2,2);
+        $map = self::createMap(2,3);
 
         $map->addTile($tile, 0,0);
         $map->addTile($tile, 1,0);
         $map->addTile($tile, 0,1);
         $map->addTile($tile, 1,1);
+        $map->addTile($tile, 0,2);
+        $map->addTile($tile, 1,2);
 
         $this->mapSaver = self::createMapSaver($map);
     }
@@ -86,6 +88,16 @@ class MapSaverTest extends TestCase
     {
         $this->mapSaver->saveToFile('Saved\Temp\Test\FullMap\\', 'webp', 'TestMap');
         self::assertFileExists('Saved\Temp\Test\FullMap\TestMap.webp');
+    }
+
+    public function testSizeImageForSavedMap()
+    {
+        $this->mapSaver->saveToFile('Saved\Temp\Test\FullMap\\', 'png' , 'TestMap');
+
+        list($width, $height) = getimagesize('Saved\Temp\Test\FullMap\TestMap.png');
+
+        self::assertEquals(200, $width);
+        self::assertEquals(300, $height);
     }
 
     private function removeTestFiles(string $dir): void
