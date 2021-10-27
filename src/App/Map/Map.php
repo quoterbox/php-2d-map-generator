@@ -7,8 +7,5 @@ class Map extends AbstractMap
     /**
      * @param array $mapArray
      */
-    public function load(array $mapArray) : void
-    {
-
-    }
+    public function load(array $mapArray) : void{}
 }
