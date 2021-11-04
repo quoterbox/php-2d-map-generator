@@ -5,7 +5,7 @@ namespace App\Generator;
 use App\Map\MapInterface;
 use App\Map\Map;
 
-abstract class AbstractMapBuilder
+abstract class AbstractMapBuilder implements MapBuilderInterface
 {
     /**
      * @var MapInterface
@@ -28,8 +28,9 @@ abstract class AbstractMapBuilder
      * @param array $assets
      * @param int $xSize
      * @param $ySize
+     * @throws \Exception
      */
-    public function __construct(array $assets, int $xSize, $ySize)
+    public function __construct(array $assets, int $xSize, int $ySize)
     {
         $this->assets = $assets;
         $this->xSize = $xSize;

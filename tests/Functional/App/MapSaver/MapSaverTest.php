@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Unit\App\MapSaver;
+namespace Test\Functional\App\MapSaver;
 
 use App\Asset\Asset;
 use App\Asset\AssetInterface;
