@@ -13,7 +13,7 @@ class SimpleTileBuilderTest extends TestCase
 
     public function setUp(): void
     {
-        $assetsCollection = new AssetFilesCollection('Assets\Test\\', 'png');
+        $assetsCollection = new AssetFilesCollection('src\public\assets\Test\\', 'png');
         $assets = $assetsCollection->getAssets();
 
         $this->mapBuilder = new SimpleTileBuilder($assets, 5, 7);

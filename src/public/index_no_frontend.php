@@ -1,4 +1,4 @@
-<?php require_once "./src/app.php";?>
+<?php require_once "../app.php";?>
 <!doctype html>
 <html lang="en">
 <head>

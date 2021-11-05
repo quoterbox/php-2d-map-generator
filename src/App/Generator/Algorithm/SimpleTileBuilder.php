@@ -12,7 +12,7 @@ class SimpleTileBuilder extends AbstractMapBuilder
 {
     private const EMPTY_ASSET_NAME = 'EMP.png';
 
-    private const EMPTY_ASSET_PATH = 'Assets' . DIRECTORY_SEPARATOR . self::EMPTY_ASSET_NAME;
+    private const EMPTY_ASSET_PATH = 'assets' . DIRECTORY_SEPARATOR . self::EMPTY_ASSET_NAME;
 
     private const EMPTY_ASSET_EXT = 'png';
     /**

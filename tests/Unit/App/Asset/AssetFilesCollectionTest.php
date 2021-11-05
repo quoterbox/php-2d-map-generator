@@ -26,15 +26,15 @@ class AssetFilesCollectionTest extends TestCase
     public function testGetAssetPath()
     {
         $assets = (self::createAssetFilesCollection())->getAssets();
-        self::assertEquals('Assets\Test\1_0_G_R_R_R.png', $assets[0]->getPath());
-        self::assertEquals('Assets\Test\1_0_R_G_R_R.png', $assets[1]->getPath());
-        self::assertEquals('Assets\Test\1_0_R_R_G_R.png', $assets[2]->getPath());
-        self::assertEquals('Assets\Test\1_0_R_R_R_G.png', $assets[3]->getPath());
-        self::assertEquals('Assets\Test\3_1_G.png', $assets[4]->getPath());
+        self::assertEquals('src\public\assets\Test\1_0_G_R_R_R.png', $assets[0]->getPath());
+        self::assertEquals('src\public\assets\Test\1_0_R_G_R_R.png', $assets[1]->getPath());
+        self::assertEquals('src\public\assets\Test\1_0_R_R_G_R.png', $assets[2]->getPath());
+        self::assertEquals('src\public\assets\Test\1_0_R_R_R_G.png', $assets[3]->getPath());
+        self::assertEquals('src\public\assets\Test\3_1_G.png', $assets[4]->getPath());
     }
 
     private static function createAssetFilesCollection() : AssetFilesCollection
     {
-        return new AssetFilesCollection('Assets\Test\\', 'png');
+        return new AssetFilesCollection('src\public\assets\Test\\', 'png');
     }
 }

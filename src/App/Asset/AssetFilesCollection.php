@@ -90,6 +90,9 @@ class AssetFilesCollection implements AssetCollectionInterface
         return in_array($assetsExt, $this->availableExt);
     }
 
+    /**
+     * @throws Exception
+     */
     private function loadAssets() : void
     {
         $dir = new RecursiveDirectoryIterator($this->assetsPath);
@@ -102,7 +105,6 @@ class AssetFilesCollection implements AssetCollectionInterface
             }
         }
     }
-
 
     /**
      * @param SplFileInfo $dirItr

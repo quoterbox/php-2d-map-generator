@@ -43,7 +43,7 @@ class MapTest extends TestCase
         self::assertEquals('R', $this->map->getTile($x, $y)->getLeftSide());
         self::assertEquals(100, $this->map->getTile($x, $y)->getWidth());
         self::assertEquals(100, $this->map->getTile($x, $y)->getHeight());
-        self::assertEquals('Assets\Test\1_0_G_R_R_R.png', $this->map->getTile($x, $y)->getAsset()->getPath());
+        self::assertEquals('src\public\assets\Test\1_0_G_R_R_R.png', $this->map->getTile($x, $y)->getAsset()->getPath());
     }
 
     public function testSetMapWidthInTiles()
@@ -80,7 +80,7 @@ class MapTest extends TestCase
 
     private static function createAsset() : AssetInterface
     {
-        return new Asset('Assets\Test\1_0_G_R_R_R.png', "1_0_G_R_R_R.png", "png");
+        return new Asset('src\public\assets\Test\1_0_G_R_R_R.png', "1_0_G_R_R_R.png", "png");
     }
 
     private static function createMap(int $width, int $height) : MapInterface

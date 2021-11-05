@@ -22,9 +22,9 @@ class MapSaverTest extends TestCase
 
     public function setUp(): void
     {
-        $this->removeTestFiles('Saved\Temp\Test\\');
+        $this->removeTestFiles('src\public\saved\Temp\Test\\');
 
-        $asset = self::createAsset('Assets\Test\1_0_G_R_R_R.png', "1_0_G_R_R_R.png", "png");
+        $asset = self::createAsset('src\public\assets\Test\1_0_G_R_R_R.png', "1_0_G_R_R_R.png", "png");
         $tile = self::createTile($asset);
         $map = self::createMap(2,3);
 
@@ -40,61 +40,61 @@ class MapSaverTest extends TestCase
 
     public function testSaveMapToFilePNGWithoutName()
     {
-        $savePath = $this->mapSaver->saveToFile('Saved\Temp\Test\FullMap\\', 'png');
-        self::assertDirectoryExists('Saved\Temp\Test\FullMap\\');
+        $savePath = $this->mapSaver->saveToFile('src\public\saved\Temp\Test\FullMap\\', 'png');
+        self::assertDirectoryExists('src\public\saved\Temp\Test\FullMap\\');
         self::assertFileExists($savePath);
     }
 
     public function testSaveMapToFileJPGWithoutName()
     {
-        $savePath = $this->mapSaver->saveToFile('Saved\Temp\Test\FullMap\\', 'jpg');
-        self::assertDirectoryExists('Saved\Temp\Test\FullMap\\');
+        $savePath = $this->mapSaver->saveToFile('src\public\saved\Temp\Test\FullMap\\', 'jpg');
+        self::assertDirectoryExists('src\public\saved\Temp\Test\FullMap\\');
         self::assertFileExists($savePath);
     }
 
     public function testSaveMapToFileGIFWithoutName()
     {
-        $savePath = $this->mapSaver->saveToFile('Saved\Temp\Test\FullMap\\', 'gif');
-        self::assertDirectoryExists('Saved\Temp\Test\FullMap\\');
+        $savePath = $this->mapSaver->saveToFile('src\public\saved\Temp\Test\FullMap\\', 'gif');
+        self::assertDirectoryExists('src\public\saved\Temp\Test\FullMap\\');
         self::assertFileExists($savePath);
     }
 
     public function testSaveMapToFileWEBPWithoutName()
     {
-        $savePath = $this->mapSaver->saveToFile('Saved\Temp\Test\FullMap\\', 'webp');
-        self::assertDirectoryExists('Saved\Temp\Test\FullMap\\');
+        $savePath = $this->mapSaver->saveToFile('src\public\saved\Temp\Test\FullMap\\', 'webp');
+        self::assertDirectoryExists('src\public\saved\Temp\Test\FullMap\\');
         self::assertFileExists($savePath);
     }
 
     public function testSaveMapToFilePNGWithName()
     {
-        $this->mapSaver->saveToFile('Saved\Temp\Test\FullMap\\', 'png' , 'TestMap');
-        self::assertFileExists('Saved\Temp\Test\FullMap\TestMap.png');
+        $this->mapSaver->saveToFile('src\public\saved\Temp\Test\FullMap\\', 'png' , 'TestMap');
+        self::assertFileExists('src\public\saved\Temp\Test\FullMap\TestMap.png');
     }
 
     public function testSaveMapToFileJPGWithName()
     {
-        $this->mapSaver->saveToFile('Saved\Temp\Test\FullMap\\', 'jpg', 'TestMap');
-        self::assertFileExists('Saved\Temp\Test\FullMap\TestMap.jpg');
+        $this->mapSaver->saveToFile('src\public\saved\Temp\Test\FullMap\\', 'jpg', 'TestMap');
+        self::assertFileExists('src\public\saved\Temp\Test\FullMap\TestMap.jpg');
     }
 
     public function testSaveMapToFileGIFWithName()
     {
-        $this->mapSaver->saveToFile('Saved\Temp\Test\FullMap\\', 'gif', 'TestMap');
-        self::assertFileExists('Saved\Temp\Test\FullMap\TestMap.gif');
+        $this->mapSaver->saveToFile('src\public\saved\Temp\Test\FullMap\\', 'gif', 'TestMap');
+        self::assertFileExists('src\public\saved\Temp\Test\FullMap\TestMap.gif');
     }
 
     public function testSaveMapToFileWEBPWithName()
     {
-        $this->mapSaver->saveToFile('Saved\Temp\Test\FullMap\\', 'webp', 'TestMap');
-        self::assertFileExists('Saved\Temp\Test\FullMap\TestMap.webp');
+        $this->mapSaver->saveToFile('src\public\saved\Temp\Test\FullMap\\', 'webp', 'TestMap');
+        self::assertFileExists('src\public\saved\Temp\Test\FullMap\TestMap.webp');
     }
 
     public function testSizeImageForSavedMap()
     {
-        $this->mapSaver->saveToFile('Saved\Temp\Test\FullMap\\', 'png' , 'TestMap');
+        $this->mapSaver->saveToFile('src\public\saved\Temp\Test\FullMap\\', 'png' , 'TestMap');
 
-        list($width, $height) = getimagesize('Saved\Temp\Test\FullMap\TestMap.png');
+        list($width, $height) = getimagesize('src\public\saved\Temp\Test\FullMap\TestMap.png');
 
         self::assertEquals(200, $width);
         self::assertEquals(300, $height);
