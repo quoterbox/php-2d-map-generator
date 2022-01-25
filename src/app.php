@@ -14,8 +14,8 @@ try{
     $assetFolders = new AssetFolder('assets\TestFolders\\');
     $foldersList = $assetFolders->getFolderList();
 
-    $assetsCollection = new AssetFilesCollection('assets\Tiles\Angles\\', 'png');
-//    $assetsCollection = new AssetFilesCollection('assets\Tiles\Angles\\');
+    //$assetsCollection = new AssetFilesCollection('assets\Tiles\Angles\\', 'png');
+    $assetsCollection = new AssetFilesCollection('assets\Tiles\Angles\\');
     $assets = $assetsCollection->getAssets();
 
     messInfo($assets);

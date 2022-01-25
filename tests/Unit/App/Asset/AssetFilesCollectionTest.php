@@ -7,13 +7,13 @@ use PHPUnit\Framework\TestCase;
 
 class AssetFilesCollectionTest extends TestCase
 {
-    public function testCountGetAssets()
+    public function testCountGetAssetsWithExtension()
     {
         $assets = (self::createAssetFilesCollectionWithExtension())->getAssets();
         self::assertCount(5, $assets);
     }
 
-    public function testGetAssetName()
+    public function testGetAssetNameWithExtension()
     {
         $assets = (self::createAssetFilesCollectionWithExtension())->getAssets();
         self::assertEquals('1_0_G_R_R_R.png', $assets[0]->getNameExt());
@@ -23,7 +23,7 @@ class AssetFilesCollectionTest extends TestCase
         self::assertEquals('3_1_G.png', $assets[4]->getNameExt());
     }
 
-    public function testGetAssetPath()
+    public function testGetAssetPathWithExtension()
     {
         $assets = (self::createAssetFilesCollectionWithExtension())->getAssets();
         self::assertEquals('src\public\assets\Test\1_0_G_R_R_R.png', $assets[0]->getPath());
