@@ -31,7 +31,7 @@ class AssetFilesCollection implements AssetCollectionInterface
      * @param string $assetsExt
      * @throws Exception
      */
-    public function __construct(string $assetsPath, string $assetsExt)
+    public function __construct(string $assetsPath, string $assetsExt = '')
     {
         $this->setAssetsPath($assetsPath);
         $this->setAssetsExt($assetsExt);
@@ -65,10 +65,10 @@ class AssetFilesCollection implements AssetCollectionInterface
      */
     private function setAssetsExt(string $assetsExt) : void
     {
-        if($this->isValidAssetsExt($assetsExt)){
+        if($this->isValidAssetsExt($assetsExt)) {
             $this->assetsExt = $assetsExt;
         }else{
-            throw new Exception("Invalid assets extension");
+            $this->assetsExt = '';
         }
     }
 
@@ -98,11 +98,19 @@ class AssetFilesCollection implements AssetCollectionInterface
         $dir = new RecursiveDirectoryIterator($this->assetsPath);
         $dirIterators = new RecursiveIteratorIterator($dir);
 
-        foreach($dirIterators as $dirIterator) {
+        foreach($dirIterators as $dirIterator){
 
-            if ($dirIterator->isFile() && $this->assetsExt === $dirIterator->getExtension()) {
-                $this->assets[] = self::createAsset($dirIterator);
+            if ($dirIterator->isFile()) {
+
+                if( !$this->assetsExt && $this->isValidAssetsExt($dirIterator->getExtension())
+                    || $this->assetsExt === $dirIterator->getExtension()
+                )
+                {
+                    $this->assets[] = self::createAsset($dirIterator);
+                }
+
             }
+
         }
     }
 

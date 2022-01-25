@@ -307,12 +307,12 @@ class Asset implements AssetInterface
      * @throws Exception
      *
      * Template for name where '_' is delimiter ##_##_##_##_##_## or ##_##_## if 2-d parameters is 1
-     * 0 - type
-     * 1 - all sides are same (1) or not (0)
-     * 2 - top side
-     * 3 - right side
-     * 4 - bottom side
-     * 5 - left side
+     * position 0 - type
+     * position 1 - all sides are same (1) or not (0)
+     * position 2 - top side
+     * position 3 - right side
+     * position 4 - bottom side
+     * position 5 - left side
      */
     private function isValidName(string $assetName) : bool
     {

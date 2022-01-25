@@ -30,10 +30,12 @@ class AssetFolder implements AssetFolderInterface
         foreach($dirIterators as $dirIterator) {
 
             if ($dirIterator->isDir() && !$dirIterator->isDot() ) {
+
                 $assetFolders[] = [
                     "name" => $dirIterator->getFileName(),
                     "path" => $dirIterator->getPathname() . DIRECTORY_SEPARATOR,
                 ];
+
             }
         }
 
