@@ -2,6 +2,7 @@
 
 namespace App\Asset;
 
+use Exception;
 use DirectoryIterator;
 
 class AssetFolderCollection implements AssetFolderCollectionInterface
@@ -34,6 +35,10 @@ class AssetFolderCollection implements AssetFolderCollectionInterface
                 $assetFolders[] = new AssetFolder($dirIterator->getFileName(), $dirIterator->getPathname() . DIRECTORY_SEPARATOR);
 
             }
+        }
+
+        if(empty($assetFolders)){
+            throw new Exception("Asset folder is empty");
         }
 
         return $assetFolders;
