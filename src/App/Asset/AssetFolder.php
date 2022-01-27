@@ -2,8 +2,6 @@
 
 namespace App\Asset;
 
-use DirectoryIterator;
-
 class AssetFolder implements AssetFolderInterface
 {
     /**
@@ -12,33 +10,33 @@ class AssetFolder implements AssetFolderInterface
     private string $path;
 
     /**
+     * @var string
+     */
+    private string $name;
+
+    /**
+     * @param string $name
      * @param string $path
      */
-    public function __construct(string $path)
+    public function __construct(string $name, string $path)
     {
+        $this->name = $name;
         $this->path = $path;
     }
 
     /**
-     * @return array
+     * @return string
      */
-    public function getFolderList(): array
+    public function getName(): string
     {
-        $assetFolders = [];
-        $dirIterators = new DirectoryIterator($this->path);
+        return $this->name;
+    }
 
-        foreach($dirIterators as $dirIterator) {
-
-            if ($dirIterator->isDir() && !$dirIterator->isDot() ) {
-
-                $assetFolders[] = [
-                    "name" => $dirIterator->getFileName(),
-                    "path" => $dirIterator->getPathname() . DIRECTORY_SEPARATOR,
-                ];
-
-            }
-        }
-
-        return $assetFolders;
+    /**
+     * @return string
+     */
+    public function getPath(): string
+    {
+        return $this->path;
     }
 }

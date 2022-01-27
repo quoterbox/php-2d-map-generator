@@ -11,15 +11,23 @@ use App\MapSaver\MapSaver;
 
 try{
 
-    $assetFolders = new AssetFolder('assets\TestFolders\\');
-    $foldersList = $assetFolders->getFolderList();
+    $assetFolders = new \App\Asset\AssetFolderCollection('assets\TestFolders\\');
+    $assetsFolders = $assetFolders->getAssetsFolders();
+
+
+    $oneFolder = $assetsFolders[0];
+
+
+
 
     //$assetsCollection = new AssetFilesCollection('assets\Tiles\Angles\\', 'png');
     $assetsCollection = new AssetFilesCollection('assets\Tiles\Angles\\');
     $assets = $assetsCollection->getAssets();
 
+
+
     messInfo($assets);
-    debug($foldersList);
+    debug($assetsFolders);
 
     $mapBuilder = new SimpleTileBuilder($assets, 5, 5);
     $mapBuilder->build();
