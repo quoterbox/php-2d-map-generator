@@ -1,7 +1,21 @@
+@import "fonts";
+
+h1, h2, h3, h4, h5{
+    font-family: 'Roboto_B', serif;
+    color: #222;
+}
+
 h1{
     margin-bottom: 40px;
-    background: red;
     font-size: 48px;
-    color: #fff;
     text-align: center;
+}
+
+.assets{
+    .nav-link{
+        color: #000;
+        &.active{
+            background-color: #575757;
+        }
+    }
 }

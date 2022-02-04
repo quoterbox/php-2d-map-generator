@@ -1,6 +1,5 @@
 const mix = require('laravel-mix');
 
-// mix.setPublicPath('dist');
 mix.setPublicPath('./src/public/dist/');
 
 // minification parameters

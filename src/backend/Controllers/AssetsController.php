@@ -2,25 +2,30 @@
 
 namespace Backend\Controllers;
 
-class AssetController
+use Backend\Services\AssetsService;
+use Backend\Services\AssetsServiceInterface;
+
+class AssetsController
 {
-    public function index()
+    /**
+     * @var AssetsServiceInterface|AssetsService
+     */
+    private AssetsServiceInterface $assetsService;
+
+    /**
+     *
+     */
+    public function __construct()
     {
-        debug('AssetController index');
+        $this->assetsService = new AssetsService('assets\Tiles\\');
     }
 
+    /**
+     * @return string
+     * @throws \Exception
+     */
     public function getAssets(): string
     {
-
-
-
-        $AssetFolders = [
-            [
-                'name' => 'Folder1',
-                'path' => 'Test\Folder\Folder1\\'
-            ]
-        ];
-
-        return json_encode($AssetFolders);
+        return json_encode($this->assetsService->getAssetPacks());
     }
 }

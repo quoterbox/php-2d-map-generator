@@ -9,6 +9,12 @@
                     <h4>Description</h4>
                     <p>{{ assetPack.desc }}</p>
                 </div>
+                <div class="assets__example-map">
+                    <h4>A sample of a map from this asset pack</h4>
+                    <div class="example-map">
+                        <img :src="assetPack.sample_map_path" :alt="assetPack.name">
+                    </div>
+                </div>
             </b-tab>
         </b-tabs>
         Selected pack: {{ selectedPackName }} right now nn
@@ -25,7 +31,7 @@
         },
         computed: {
             selectedPackName(){
-                return this.assetPacks[this.tabIndex] ? this.assetPacks[this.tabIndex].name : '';
+                return this.$store.state.selectedPackName;
             }
         },
         mounted() {
@@ -37,6 +43,13 @@
                     this.assetPacks = response.data;
                 });
             },
+        },
+        watch: {
+            tabIndex() {
+                this.$store.commit('selectPack', {
+                    name: this.assetPacks[this.tabIndex] ? this.assetPacks[this.tabIndex].name : ''
+                });
+            }
         }
     }
 </script>

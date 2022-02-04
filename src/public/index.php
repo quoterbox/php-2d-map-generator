@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../backend/route.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,18 +9,22 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Location Generator</title>
-    <link rel="icon" type="image/svg+xml" href="./dist/assets/favicon.svg">
-    <link rel="icon" type="image/png" href="./dist/assets/favicon.png">
-    <link rel="stylesheet" href="./dist/css/plugins.min.css">
-    <link rel="stylesheet" href="./dist/css/style.min.css">
+    <link rel="icon" type="image/svg+xml" href="dist/assets/favicon.svg">
+    <link rel="icon" type="image/png" href="dist/assets/favicon.png">
+    <link rel="stylesheet" href="dist/css/plugins.min.css">
+    <link rel="stylesheet" href="dist/css/style.min.css">
 </head>
 <body>
+    <header>
+        <div class="container">
+            <h1 class="header__brand">Location Generator with PHP, Vue.js and <nobr>Bootstrap-vue</nobr>.</h1>
+        </div>
+    </header>
     <div class="container">
-        <h1>Location generator with PHP and VueJS</h1>
         <div id="app">
-            <location-generator></location-generator>
+            <location-generator-component></location-generator-component>
         </div>
     </div>
-    <script src="./dist/js/app.min.js"></script>
+    <script src="dist/js/app.min.js"></script>
 </body>
 </html>
