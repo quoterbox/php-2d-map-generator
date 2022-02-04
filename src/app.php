@@ -4,7 +4,7 @@ $callStartTime = microtime(true);
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/backend/route.php';
 
-use App\Asset\AssetFilesCollection;
+use App\Asset\AssetsCollection;
 use App\Asset\AssetFolderCollection;
 use App\Generator\Algorithm\SimpleTileBuilder;
 use App\MapSaver\MapSaver;
@@ -16,9 +16,9 @@ use App\MapSaver\MapSaver;
 //
 //    $oneFolder = $assetsFolders[0];
 //
-////    $assetsCollection = new AssetFilesCollection('assets\Tiles\Angles\\', 'png');
-////    $assetsCollection = new AssetFilesCollection('assets\Tiles\Angles\\');
-//    $assetsCollection = new AssetFilesCollection($oneFolder->getPath(), 'png');
+////    $assetsCollection = new AssetsCollection('assets\Tiles\Angles\\', 'png');
+////    $assetsCollection = new AssetsCollection('assets\Tiles\Angles\\');
+//    $assetsCollection = new AssetsCollection($oneFolder->getPath(), 'png');
 //    $assets = $assetsCollection->getAssets();
 //
 //    $mapBuilder = new SimpleTileBuilder($assets, 5, 5);

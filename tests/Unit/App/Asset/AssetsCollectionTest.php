@@ -2,10 +2,10 @@
 
 namespace Test\Unit\App\Asset;
 
-use App\Asset\AssetFilesCollection;
+use App\Asset\AssetsCollection;
 use PHPUnit\Framework\TestCase;
 
-class AssetFilesCollectionTest extends TestCase
+class AssetsCollectionTest extends TestCase
 {
     public function testCountGetAssetsWithExtension()
     {
@@ -33,9 +33,9 @@ class AssetFilesCollectionTest extends TestCase
         self::assertEquals('src\public\assets\Test\3_1_G.png', $assets[4]->getPath());
     }
 
-    private static function createAssetFilesCollectionWithExtension() : AssetFilesCollection
+    private static function createAssetFilesCollectionWithExtension() : AssetsCollection
     {
-        return new AssetFilesCollection('src\public\assets\Test\\', 'png');
+        return new AssetsCollection('src\public\assets\Test\\', 'png');
     }
 
     public function testCountGetAssetsNoExtension()
@@ -70,8 +70,8 @@ class AssetFilesCollectionTest extends TestCase
         self::assertEquals('src\public\assets\Test\3_1_G.png', $assets[7]->getPath());
     }
 
-    private static function createAssetFilesCollectionNoExtension() : AssetFilesCollection
+    private static function createAssetFilesCollectionNoExtension() : AssetsCollection
     {
-        return new AssetFilesCollection('src\public\assets\Test\\');
+        return new AssetsCollection('src\public\assets\Test\\');
     }
 }

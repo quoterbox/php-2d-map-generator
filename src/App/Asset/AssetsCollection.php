@@ -7,7 +7,7 @@ use RecursiveIteratorIterator;
 use SplFileInfo;
 use Exception;
 
-class AssetFilesCollection implements AssetCollectionInterface
+class AssetsCollection implements AssetsCollectionInterface
 {
     /**
      * @var array|string[]
@@ -122,5 +122,10 @@ class AssetFilesCollection implements AssetCollectionInterface
     private static function createAsset(SplFileInfo $dirItr) : AssetInterface
     {
         return new Asset($dirItr->getPathname(), $dirItr->getFilename(), $dirItr->getExtension());
+    }
+
+    public function getAssetsArray(): array
+    {
+        // TODO: Implement getAssetsArray() method.
     }
 }

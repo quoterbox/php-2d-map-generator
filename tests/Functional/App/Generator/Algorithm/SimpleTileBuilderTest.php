@@ -2,7 +2,7 @@
 
 namespace Test\Functional\App\Generator\Algorithm;
 
-use App\Asset\AssetFilesCollection;
+use App\Asset\AssetsCollection;
 use App\Generator\Algorithm\SimpleTileBuilder;
 use App\Generator\MapBuilderInterface;
 use PHPUnit\Framework\TestCase;
@@ -13,7 +13,7 @@ class SimpleTileBuilderTest extends TestCase
 
     public function setUp(): void
     {
-        $assetsCollection = new AssetFilesCollection('src\public\assets\Test\\', 'png');
+        $assetsCollection = new AssetsCollection('src\public\assets\Test\\', 'png');
         $assets = $assetsCollection->getAssets();
 
         $this->mapBuilder = new SimpleTileBuilder($assets, 5, 7);

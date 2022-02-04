@@ -6,19 +6,20 @@ class AssetController
 {
     public function index()
     {
-        debug('eeeeeeee');
+        debug('AssetController index');
     }
 
-    public function getAssetsFolders(): string
+    public function getAssets(): string
     {
+
+
+
         $AssetFolders = [
             [
                 'name' => 'Folder1',
                 'path' => 'Test\Folder\Folder1\\'
             ]
         ];
-
-        debug('ttttttttt');
 
         return json_encode($AssetFolders);
     }

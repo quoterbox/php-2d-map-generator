@@ -2,10 +2,13 @@
 
 namespace App\Asset;
 
-interface AssetCollectionInterface
+interface AssetsCollectionInterface
 {
     /**
      * @return array
      */
     public function getAssets() : array;
+
+
+    public function getAssetsArray() : array;
 }
