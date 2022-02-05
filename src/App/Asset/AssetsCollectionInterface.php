@@ -7,8 +7,10 @@ interface AssetsCollectionInterface
     /**
      * @return array
      */
-    public function getAssets() : array;
+    public function getAssets(): array;
 
-
-    public function getAssetsArray() : array;
+    /**
+     * @return array
+     */
+    public function getAssetsLikeArray(): array;
 }

@@ -124,8 +124,23 @@ class AssetsCollection implements AssetsCollectionInterface
         return new Asset($dirItr->getPathname(), $dirItr->getFilename(), $dirItr->getExtension());
     }
 
-    public function getAssetsArray(): array
+    /**
+     * @return array
+     */
+    public function getAssetsLikeArray(): array
     {
-        // TODO: Implement getAssetsArray() method.
+        $Assets = [];
+
+        foreach ($this->assets as $asset){
+
+            $Assets[] = [
+                'name' => $asset->getName(),
+                'nameExt' => $asset->getNameExt(),
+                'path' => $asset->getPath(),
+            ];
+
+        }
+
+        return $Assets;
     }
 }

@@ -21,7 +21,8 @@ class AssetFolderCollection implements AssetFolderCollectionInterface
     }
 
     /**
-     * @return array|AssetFolderInterface[]
+     * @return array
+     * @throws Exception
      */
     public function getAssetsFolders(): array
     {

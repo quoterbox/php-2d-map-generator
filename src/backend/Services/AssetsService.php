@@ -3,11 +3,13 @@
 namespace Backend\Services;
 
 use App\Asset\AssetFolderCollection;
+use App\Asset\AssetFolderCollectionInterface;
 use App\Asset\AssetsCollection;
 
 class AssetsService implements AssetsServiceInterface
 {
     private string $assetsPath;
+    private AssetFolderCollectionInterface $assetsFolderCollection;
 
     private string $assetsExt = 'png';
     private string $savedPath = 'saved\Samples\\';
@@ -38,6 +40,7 @@ class AssetsService implements AssetsServiceInterface
     public function __construct(string $assetsPath)
     {
         $this->assetsPath = $assetsPath;
+        $this->assetsFolderCollection = new AssetFolderCollection($this->assetsPath);
     }
 
     /**
@@ -56,39 +59,30 @@ class AssetsService implements AssetsServiceInterface
     private function mergeAssetsAndFolders(): array
     {
         $assetPacks = [];
-        $assetsFolders = (new AssetFolderCollection($this->assetsPath))->getAssetsFolders();
+        $assetsFolders = $this->getFolders();
 
         foreach ($assetsFolders as $assetFolder){
 
-            $assetsArray = [];
-            $assets = (new AssetsCollection($assetFolder->getPath(), $this->assetsExt))->getAssets();
-
-            foreach ($assets as $asset){
-
-                $assetsArray[] = [
-                    'name' => $asset->getName(),
-                    'path' => $asset->getPath(),
-                ];
-
-            }
+            $Assets = (new AssetsCollection($assetFolder->getPath(), $this->assetsExt))->getAssetsLikeArray();
 
             $assetPacks[] = [
                 'name' => $assetFolder->getName(),
                 'path' => $assetFolder->getPath(),
                 'desc' => $this->packDescriptions[$assetFolder->getName()]['desc'],
                 'sample_map_path' => $this->savedPath . $this->packDescriptions[$assetFolder->getName()]['sample_map_path'],
-                'assets' => $assetsArray
+                'assets' => $Assets
             ];
         }
 
         return $assetPacks;
     }
 
-    private function getAssetsCollectionArray(): array{
-
-
-
+    /**
+     * @return array
+     * @throws \Exception
+     */
+    private function getFolders(): array
+    {
+        return $this->assetsFolderCollection->getAssetsFolders();
     }
-
-
 }
