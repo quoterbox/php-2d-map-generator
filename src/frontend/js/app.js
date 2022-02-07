@@ -26,6 +26,7 @@ Vue.use(BootstrapVue)
 
 
 Vue.component('assets-component', require('./components/AssetsComponent.vue').default);
+Vue.component('algorithms-component', require('./components/AlgorithmsComponent.vue').default);
 Vue.component('location-generator-component', require('./components/LocationGeneratorComponent.vue').default);
 
 const app = new Vue({

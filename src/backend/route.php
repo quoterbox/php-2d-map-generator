@@ -11,6 +11,7 @@ try{
     $routes = new RouteCollection();
 
     $routes->add('asset_packs', new Route('/api/assets/', ['controller' => Backend\Controllers\AssetsController::class, 'action' => 'getAssets']));
+    $routes->add('algorithms_list', new Route('/api/algorithms/', ['controller' => Backend\Controllers\AlgorithmsController::class, 'action' => 'getAlgorithms']));
 
     $context = new RequestContext();
     $context->fromRequest(Request::createFromGlobals());

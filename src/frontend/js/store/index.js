@@ -5,14 +5,25 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        selectedPackName: ''
+        packName: '',
+        algorithmName: ''
     },
     mutations: {
-        selectPack(state, payload){
-            state.selectedPackName = payload.name;
-
-            console.log('Store -> mutations -> selectPack');
-            console.log(state.selectedPackName);
+        selectPackName(state, payload){
+            state.packName = payload.name;
+        },
+        selectAlgorithm(state, payload){
+            state.algorithmName = payload.name;
         }
+    },
+    actions: {
+        // async getAlgorithms(context){
+        //     axios.get('/api/algorithms/').then((response) => {
+        //         context.commit('loadAlgorithms', {
+        //             algorithms: response.data
+        //         })
+        //     });
+        // }
     }
+
 })

@@ -17,7 +17,6 @@
                 </div>
             </b-tab>
         </b-tabs>
-        Selected pack: {{ selectedPackName }} right now nn
     </div>
 </template>
 
@@ -38,7 +37,7 @@
             this.getPacks();
         },
         methods: {
-            getPacks(){
+            async getPacks(){
                 axios.get('/api/assets/').then((response) => {
                     this.assetPacks = response.data;
                 });
@@ -46,7 +45,7 @@
         },
         watch: {
             tabIndex() {
-                this.$store.commit('selectPack', {
+                this.$store.commit('selectPackName', {
                     name: this.assetPacks[this.tabIndex] ? this.assetPacks[this.tabIndex].name : ''
                 });
             }
