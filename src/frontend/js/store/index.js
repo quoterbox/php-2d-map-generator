@@ -6,7 +6,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         packName: '',
-        algorithmName: ''
+        algorithmName: '',
+        mapWidth: 5,
+        mapHeight: 5,
+
     },
     mutations: {
         selectPackName(state, payload){

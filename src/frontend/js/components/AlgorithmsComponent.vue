@@ -1,7 +1,7 @@
 <template>
     <div class="algorithms">
         <b-tabs pills class="algorithms__tabs" v-model="algorithmId">
-            <b-tab :active="index === 0" v-for="(algorithm, index) in algorithms" :title="algorithm.name" :key="index">
+            <b-tab :active="index === 0" v-for="(algorithm, index) in algorithms" :title="algorithm.title" :key="index">
                 <div class="algorithms__desc">
                     <h4>Description</h4>
                     <p>{{ algorithm.desc }}</p>
