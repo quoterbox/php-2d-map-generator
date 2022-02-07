@@ -59,7 +59,7 @@ class AssetsService implements AssetsServiceInterface
     private function mergeAssetsAndFolders(): array
     {
         $assetPacks = [];
-        $assetsFolders = $this->getFolders();
+        $assetsFolders = $this->assetsFolderCollection->getAssetsFolders();
 
         foreach ($assetsFolders as $assetFolder){
 
@@ -75,14 +75,5 @@ class AssetsService implements AssetsServiceInterface
         }
 
         return $assetPacks;
-    }
-
-    /**
-     * @return array
-     * @throws \Exception
-     */
-    private function getFolders(): array
-    {
-        return $this->assetsFolderCollection->getAssetsFolders();
     }
 }
