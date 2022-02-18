@@ -7,9 +7,9 @@ export default new Vuex.Store({
     state: {
         packName: '',
         algorithmName: '',
-        mapWidth: 5,
-        mapHeight: 5,
-
+        mapWidth: 0,
+        mapHeight: 0,
+        divideMapIntoTiles: false
     },
     mutations: {
         selectPackName(state, payload){
@@ -17,7 +17,15 @@ export default new Vuex.Store({
         },
         selectAlgorithm(state, payload){
             state.algorithmName = payload.name;
-        }
+        },
+        changeMapWidth(state, payload){
+            state.mapWidth = payload.value;
+            console.log(state.mapWidth);
+        },
+        changeMapHeight(state, payload){
+            state.mapHeight = payload.value;
+            console.log(state.mapHeight);
+        },
     },
     actions: {
         // async getAlgorithms(context){

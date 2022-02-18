@@ -45,3 +45,7 @@ h1 {
 .assets .nav-link.active {
   background-color: #575757;
 }
+
+.assets__example-map .wrap-image-map img {
+  max-width: 100%;
+}

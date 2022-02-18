@@ -11,7 +11,7 @@
                 </div>
                 <div class="assets__example-map">
                     <h4>A sample of a map from this asset pack</h4>
-                    <div class="example-map">
+                    <div class="wrap-image-map">
                         <img :src="assetPack.sample_map_path" :alt="assetPack.name">
                     </div>
                 </div>
@@ -26,11 +26,6 @@
             return {
                 assetPacks: [],
                 tabIndex: 0,
-            }
-        },
-        computed: {
-            selectedPackName(){
-                return this.$store.state.selectedPackName;
             }
         },
         mounted() {

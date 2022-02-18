@@ -20,11 +20,6 @@
                 algorithmId: 0,
             }
         },
-        computed: {
-            selectedPackName(){
-                return this.$store.state.selectedPackName;
-            }
-        },
         mounted() {
             this.getAlgorithms();
         },

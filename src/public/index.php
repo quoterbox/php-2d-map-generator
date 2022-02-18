@@ -25,6 +25,9 @@ require_once __DIR__ . '/../backend/route.php';
             <location-generator-component></location-generator-component>
         </div>
     </div>
+    <footer>
+
+    </footer>
     <script src="dist/js/app.min.js"></script>
 </body>
 </html>
