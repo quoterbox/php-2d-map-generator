@@ -18,7 +18,7 @@
   "license": "ISC",
   "devDependencies": {
     "@popperjs/core": "^2.9.3",
-    "axios": "^0.24.0",
+    "axios": "^0.26.1",
     "bootstrap": "4.5.3",
     "bootstrap-vue": "^2.21.2",
     "laravel-mix": "^6.0.41",

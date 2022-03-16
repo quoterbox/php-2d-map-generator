@@ -35,6 +35,9 @@
             async getPacks(){
                 axios.get('/api/assets/').then((response) => {
                     this.assetPacks = response.data;
+
+                    console.log('AssetsComponent -> methods -> getPacks');
+
                 });
             },
         },

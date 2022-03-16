@@ -20,11 +20,11 @@ require_once __DIR__ . '/../backend/route.php';
             <h1 class="header__brand">Location Generator with PHP, Vue.js and <nobr>Bootstrap-vue</nobr>.</h1>
         </div>
     </header>
-    <div class="container">
+    <main class="container">
         <div id="app">
             <location-generator-component></location-generator-component>
         </div>
-    </div>
+    </main>
     <footer>
 
     </footer>

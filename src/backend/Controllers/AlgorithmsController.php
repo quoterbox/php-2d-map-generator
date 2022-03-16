@@ -16,6 +16,7 @@ class AlgorithmsController
      * @var string
      */
     private string $fileExt = 'php';
+
     /**
      * @var AlgorithmsServiceInterface|AlgorithmsService
      */

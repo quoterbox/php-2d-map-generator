@@ -10,11 +10,29 @@ use Symfony\Component\Routing\RouteCollection;
 try{
     $routes = new RouteCollection();
 
-    $routes->add('asset_packs', new Route('/api/assets/', ['controller' => Backend\Controllers\AssetsController::class, 'action' => 'getAssets']));
-    $routes->add('algorithms_list', new Route('/api/algorithms/', ['controller' => Backend\Controllers\AlgorithmsController::class, 'action' => 'getAlgorithms']));
+    $routes->add('asset_packs',
+        (new Route('/api/assets/', ['controller' => Backend\Controllers\AssetsController::class, 'action' => 'getAssets']))
+            ->setMethods(['GET'])
+    );
+
+    $routes->add('algorithms_list',
+        (new Route('/api/algorithms/', ['controller' => Backend\Controllers\AlgorithmsController::class, 'action' => 'getAlgorithms']))
+            ->setMethods(['GET'])
+    );
+
+    $routes->add('generate_map',
+        (new Route('/api/map-one-file/', ['controller' => Backend\Controllers\GeneratorController::class, 'action' => 'generateOneFileMap']))
+            ->setMethods(['POST'])
+    );
+
+    $routes->add('generate_map_tiles',
+        (new Route('/api/map-many-files/', ['controller' => Backend\Controllers\GeneratorController::class, 'action' => 'generateManyFilesMap']))
+            ->setMethods(['POST'])
+    );
 
     $context = new RequestContext();
-    $context->fromRequest(Request::createFromGlobals());
+    $globalRequest = Request::createFromGlobals();
+    $context->fromRequest($globalRequest);
 
     $matcher = new UrlMatcher($routes, $context);
     $parameters = $matcher->match($context->getPathInfo());
@@ -23,6 +41,13 @@ try{
     $methodName = $parameters['action'];
 
     $controller = new $controllerName;
+
+    $requestBody = $globalRequest->getContent();
+
+    if(!empty($requestBody)){
+        $response = $controller->$methodName($globalRequest->toArray());
+    }
+
     $response = $controller->$methodName();
 
     echo $response;
