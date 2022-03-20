@@ -5,11 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        packName: '',
-        algorithmName: '',
-        mapWidth: 0,
-        mapHeight: 0,
-        divideMapIntoTiles: false,
+        mapProps: {
+            packName: '',
+            algorithmName: '',
+            mapWidth: 0,
+            mapHeight: 0,
+            divideMapIntoTiles: false,
+        },
         map: {
             oneFile: {
                 src: ''
@@ -20,33 +22,33 @@ export default new Vuex.Store({
     mutations: {
 
         selectPackName(state, payload){
-            state.packName = payload.name;
+            state.mapProps.packName = payload.name;
 
-            console.log(state.packName);
-            console.log(state.algorithmName);
-            console.log(state.mapWidth);
-            console.log(state.mapHeight);
-            console.log(state.divideMapIntoTiles);
+            console.log(state.mapProps.packName);
+            console.log(state.mapProps.algorithmName);
+            console.log(state.mapProps.mapWidth);
+            console.log(state.mapProps.mapHeight);
+            console.log(state.mapProps.divideMapIntoTiles);
         },
         selectAlgorithm(state, payload){
-            state.algorithmName = payload.name;
+            state.mapProps.algorithmName = payload.name;
 
-            console.log(state.algorithmName);
+            console.log(state.mapProps.algorithmName);
         },
         changeMapWidth(state, payload){
-            state.mapWidth = payload.value;
+            state.mapProps.mapWidth = payload.value;
 
-            console.log(state.mapWidth);
+            console.log(state.mapProps.mapWidth);
         },
         changeMapHeight(state, payload){
-            state.mapHeight = payload.value;
+            state.mapProps.mapHeight = payload.value;
 
-            console.log(state.mapHeight);
+            console.log(state.mapProps.mapHeight);
         },
         changeDivideMapOption(state, payload){
-            state.divideMapIntoTiles = payload.value;
+            state.mapProps.divideMapIntoTiles = payload.value;
 
-            console.log(state.divideMapIntoTiles);
+            console.log(state.mapProps.divideMapIntoTiles);
         },
         loadMap(state, payload){
 
@@ -66,7 +68,7 @@ export default new Vuex.Store({
 
             let requestUrl = '/api/map-one-file/';
 
-            if(state.divideMapIntoTiles){
+            if(state.mapProps.divideMapIntoTiles){
                 requestUrl = '/api/map-many-files/';
             }
 
@@ -87,7 +89,7 @@ export default new Vuex.Store({
                 //     body: 'new_body',
                 //     userId: 'userid'
                 // },
-                data: state
+                data: state.mapProps
                 // data: {
                 //     title: 'new_title',
                 //     body: 'new_body',

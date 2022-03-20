@@ -1,6 +1,6 @@
 <?php
 /**
- * --*{"id": 0,"name":"SimpleTileBuilder","title":"Simple Tile Model", "desc": "Simple Tile Model provides for you the fastest method to generate your Tile map."}*--
+ * --*{"id": 0,"name":"SimpleTileBuilder","title":"Simple Tile Model", "desc": "Simple Tile Model provides for you the fastest method to generate your map from tiles."}*--
  **/
 
 namespace App\Generator\Algorithm;

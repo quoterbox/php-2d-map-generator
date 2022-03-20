@@ -8,6 +8,11 @@ use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
 try{
+
+    //
+    // Routes
+    //
+
     $routes = new RouteCollection();
 
     $routes->add('asset_packs',
@@ -30,6 +35,11 @@ try{
             ->setMethods(['POST'])
     );
 
+
+    //
+    // Matching URL params
+    //
+
     $context = new RequestContext();
     $globalRequest = Request::createFromGlobals();
     $context->fromRequest($globalRequest);
@@ -39,6 +49,11 @@ try{
 
     $controllerName = $parameters['controller'];
     $methodName = $parameters['action'];
+
+
+    //
+    // Creating Controller and starting method
+    //
 
     $controller = new $controllerName;
 
