@@ -2,8 +2,8 @@
 
 namespace Backend\Controllers;
 
-use Backend\Services\AssetsService;
-use Backend\Services\AssetsServiceInterface;
+use Backend\Services\Assets\AssetsService;
+use Backend\Services\Assets\AssetsServiceInterface;
 
 class AssetsController
 {

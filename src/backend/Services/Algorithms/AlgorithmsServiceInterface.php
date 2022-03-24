@@ -1,6 +1,6 @@
 <?php
 
-namespace Backend\Services;
+namespace Backend\Services\Algorithms;
 
 interface AlgorithmsServiceInterface
 {

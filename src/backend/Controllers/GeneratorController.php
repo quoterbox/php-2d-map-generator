@@ -2,27 +2,35 @@
 
 namespace Backend\Controllers;
 
-use Backend\Services\GeneratorService;
+use Backend\Services\Generator\GeneratorService;
+use Backend\Services\Map\MapParamsStructure;
 
 class GeneratorController
 {
-    public function generateOneFileMap(array $data): string
+    /**
+     * @param array $MapParams
+     * @return string
+     * @throws \Exception
+     */
+    public function generateOneFileMap(array $MapParams) : string
     {
-        $generatorService = new GeneratorService($data);
-        $response = $generatorService->generateOneFileMap();
+        $mapParams = new MapParamsStructure($MapParams);
+        $generatorService = new GeneratorService($mapParams);
 
-        debug($data);
-
-        return json_decode($response);
+        return json_encode($generatorService->generateOneFileMap());
     }
 
-    public function generateManyFilesMap(array $data)
+    /**
+     * @param array $MapParams
+     * @return string
+     * @throws \Exception
+     */
+    public function generateManyFilesMap(array $MapParams) : string
     {
-        $generatorService = new GeneratorService($data);
-        $response = $generatorService->generateManyFilesMap();
+        $mapParams = new MapParamsStructure($MapParams);
+        $generatorService = new GeneratorService($mapParams);
 
-        debug($data);
-
-        return json_decode($response);
+        return json_encode($generatorService->generateManyFilesMap());
     }
 }
+

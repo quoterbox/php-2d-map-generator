@@ -23,5 +23,5 @@ interface MapSaverInterface
      * @param string $destPath
      * @param string $destFileExt
      */
-    public function saveToManyFiles(string $destPath, string $destFileExt) : void;
+    public function saveToManyFiles(string $destPath, string $destFileExt) : array;
 }

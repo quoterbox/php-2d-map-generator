@@ -62,11 +62,13 @@ class MapSaver implements MapSaverInterface
     /**
      * @param string $destPath
      * @param string $destFileExt
+     * @return array
      * @throws Exception
      */
-    public function saveToManyFiles(string $destPath, string $destFileExt) : void
+    public function saveToManyFiles(string $destPath, string $destFileExt) : array
     {
         $this->destExt = $destFileExt;
+        $Files = [];
 
         for($y = 0; $y < $this->map->getHeightInTiles(); $y++){
 
@@ -77,8 +79,11 @@ class MapSaver implements MapSaverInterface
 
                 $oneTileImg = $this->imageCreate($this->map->getTile($x, $y)->getAsset()->getPath(), $this->map->getTile($x, $y)->getAsset()->getExt());
                 $this->saveGDResourceToImage($oneTileImg, $savePath);
+                $Files[] = $savePath;
             }
         }
+
+        return $Files;
     }
 
     /**

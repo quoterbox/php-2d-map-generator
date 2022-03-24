@@ -10,8 +10,8 @@ export default new Vuex.Store({
             algorithmName: '',
             mapWidth: 0,
             mapHeight: 0,
-            divideMapIntoTiles: false,
         },
+        divideMapIntoTiles: false,
         map: {
             oneFile: {
                 src: ''
@@ -68,7 +68,7 @@ export default new Vuex.Store({
 
             let requestUrl = '/api/map-one-file/';
 
-            if(state.mapProps.divideMapIntoTiles){
+            if(state.divideMapIntoTiles){
                 requestUrl = '/api/map-many-files/';
             }
 

@@ -2,23 +2,13 @@
 
 namespace Backend\Controllers;
 
-use Backend\Services\AlgorithmsService;
-use Backend\Services\AlgorithmsServiceInterface;
+use Backend\Services\Algorithms\AlgorithmsService;
+use Backend\Services\Algorithms\AlgorithmsServiceInterface;
 
 class AlgorithmsController
 {
     /**
-     * @var string
-     */
-    private string $algorithmsPath = '..\App\Generator\Algorithm\\';
-
-    /**
-     * @var string
-     */
-    private string $fileExt = 'php';
-
-    /**
-     * @var AlgorithmsServiceInterface|AlgorithmsService
+     * @var \Backend\Services\Algorithms\AlgorithmsServiceInterface|AlgorithmsService
      */
     private AlgorithmsServiceInterface $algorithmsService;
 
@@ -27,7 +17,7 @@ class AlgorithmsController
      */
     public function __construct()
     {
-        $this->algorithmsService = new AlgorithmsService($this->algorithmsPath, $this->fileExt);
+        $this->algorithmsService = new AlgorithmsService('..\App\Generator\Algorithm\\', 'php');
     }
 
     /**
