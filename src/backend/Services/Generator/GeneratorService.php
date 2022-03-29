@@ -13,15 +13,27 @@ class GeneratorService implements GeneratorServiceInterface
     /**
      * @var string
      */
-    private string $oneFileMapPath = 'saved\FromImageSaver\FullMap3\\';
+    private string $algorithmNamespace = 'App\Generator\Algorithm\\';
+
     /**
      * @var string
      */
-    private string $manyFilesMapPath = 'saved\FromImageSaver\FullMap3\\';
+    private string $oneFileMapPath = 'saved\FromImageSaver\OneFileMap\\';
+
+    /**
+     * @var string
+     */
+    private string $manyFilesMapPath = 'saved\FromImageSaver\ManyFilesMap\\';
+
     /**
      * @var string
      */
     private string $savedMapExt = 'png';
+
+    /**
+     * @var MapInterface
+     */
+    private MapInterface $map;
 
     /**
      * @var MapSaverInterface|MapSaver
@@ -35,8 +47,9 @@ class GeneratorService implements GeneratorServiceInterface
     public function __construct(MapParamsStructureInterface $mapParams)
     {
         $assets = $this->createAssetsCollection($mapParams);
-        $map = $this->buildMap($mapParams, $assets);
-        $this->mapSaver = new MapSaver($map);
+        $this->map = $this->buildMap($mapParams, $assets);
+        $this->mapSaver = new MapSaver($this->map);
+
     }
 
     /**
@@ -57,7 +70,7 @@ class GeneratorService implements GeneratorServiceInterface
      */
     private function buildMap(MapParamsStructureInterface $mapParams, array $assets): MapInterface
     {
-        $mapBuilder = new ($mapParams->getAlgorithmName())($assets, $mapParams->getWidth(), $mapParams->getHeight());
+        $mapBuilder = new ($this->algorithmNamespace . $mapParams->getAlgorithmName())($assets, $mapParams->getWidth(), $mapParams->getHeight());
         $mapBuilder->build();
         return $mapBuilder->getMap();
     }
@@ -68,15 +81,23 @@ class GeneratorService implements GeneratorServiceInterface
      */
     public function generateOneFileMap() : string
     {
-        return $this->mapSaver->saveToFile($this->oneFileMapPath, $this->savedMapExt);
+        $this->mapSaver->saveToFile($this->oneFileMapPath, $this->savedMapExt);
+
+        return json_encode($this->mapSaver);
+
+        //return $this->mapSaver->saveToFile($this->oneFileMapPath, $this->savedMapExt);
     }
 
     /**
      * @return array
      * @throws \Exception
      */
-    public function generateManyFilesMap() : array
+    public function generateManyFilesMap() : string
     {
-        return $this->mapSaver->saveToManyFiles($this->manyFilesMapPath, $this->savedMapExt);
+        $this->mapSaver->saveToManyFiles($this->manyFilesMapPath, $this->savedMapExt);
+
+        return json_encode($this->mapSaver);
+
+        //return $this->mapSaver->saveToManyFiles($this->manyFilesMapPath, $this->savedMapExt);
     }
 }

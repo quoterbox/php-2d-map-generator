@@ -337,6 +337,9 @@ class Asset implements AssetInterface
         return strpos($assetName, self::EMPTY_ASSET_NAME) !== false;
     }
 
+    /**
+     * @return void
+     */
     private function setPropsEmptyAsset() : void
     {
         $this->tileType = 0;

@@ -35,10 +35,10 @@ class AlgorithmsService implements AlgorithmsServiceInterface
     {
         $Algorithms = [];
 
-        $algorithmsFiles = $this->readAlgorithmsInDir($this->algorithmsPath, $this->fileExt);
+        $algorithmsFiles = self::readAlgorithmsInDir($this->algorithmsPath, $this->fileExt);
 
         foreach ($algorithmsFiles as $algorithmPath){
-            $Algorithms[] = $this->getAlgorithmInfo($algorithmPath);
+            $Algorithms[] = self::getAlgorithmInfo($algorithmPath);
         }
 
         return $Algorithms;
@@ -49,7 +49,7 @@ class AlgorithmsService implements AlgorithmsServiceInterface
      * @param string $fileExt
      * @return array
      */
-    private function readAlgorithmsInDir(string $path, string $fileExt): array
+    private static function readAlgorithmsInDir(string $path, string $fileExt): array
     {
         $algorithmsFiles = [];
 
@@ -71,7 +71,7 @@ class AlgorithmsService implements AlgorithmsServiceInterface
      * @param string $algorithmPath
      * @return array
      */
-    private function getAlgorithmInfo(string $algorithmPath): array
+    private static function getAlgorithmInfo(string $algorithmPath): array
     {
         $algorithmInfo = [];
 

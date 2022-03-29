@@ -61,9 +61,9 @@ try{
 
     if(!empty($requestBody)){
         $response = $controller->$methodName($globalRequest->toArray());
+    }else{
+        $response = $controller->$methodName();
     }
-
-    $response = $controller->$methodName();
 
     echo $response;
     exit;

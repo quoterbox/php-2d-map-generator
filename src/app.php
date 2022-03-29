@@ -13,11 +13,8 @@ try{
 
     $assetFolderCollection = new AssetFolderCollection('assets\Tiles\\');
     $assetsFolders = $assetFolderCollection->getAssetsFolders();
-
     $oneFolder = $assetsFolders[0];
 
-//    $assetsCollection = new AssetsCollection('assets\Tiles\Angles\\', 'png');
-//    $assetsCollection = new AssetsCollection('assets\Tiles\Angles\\');
     $assetsCollection = new AssetsCollection($oneFolder->getPath(), 'png');
     $assets = $assetsCollection->getAssets();
 

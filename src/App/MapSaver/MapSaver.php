@@ -3,10 +3,10 @@
 namespace App\MapSaver;
 
 use App\Map\MapInterface;
-use App\Asset\AssetInterface;
+use JsonSerializable;
 use Exception;
 
-class MapSaver implements MapSaverInterface
+class MapSaver implements MapSaverInterface, JsonSerializable
 {
     /**
      * @var MapInterface
@@ -59,6 +59,33 @@ class MapSaver implements MapSaverInterface
         $this->gdImgObject = imagecreatetruecolor($this->width, $this->height);
     }
 
+    public function jsonSerialize(): array
+    {
+        return [
+            'meta' => [
+                'tilesQuantity' => count($this->map->getTilesArray()),
+                'tileWidthInPixels' => $this->map->getTile(0,0)->getWidth(),
+                'tileHeightInPixels' => $this->map->getTile(0,0)->getHeight(),
+                'mapWidthInTiles' => $this->map->getWidthInTiles(),
+                'mapHeightInTiles' => $this->map->getHeightInTiles(),
+                'mapWidthInPixels' => $this->map->getWidthInPixels(),
+                'mapHeightInPixels' => $this->map->getHeightInPixels(),
+                'mapOneFileImg' => $this->getSavedImagePath()
+            ],
+            'map' => [
+                'tiles' => $this->map->getTilesArray()
+            ]
+        ];
+    }
+
+    /**
+     * @return string
+     */
+    private function getSavedImagePath(): string
+    {
+        return $this->savedImagePath;
+    }
+
     /**
      * @param string $destPath
      * @param string $destFileExt
@@ -68,22 +95,24 @@ class MapSaver implements MapSaverInterface
     public function saveToManyFiles(string $destPath, string $destFileExt) : array
     {
         $this->destExt = $destFileExt;
-        $Files = [];
 
         for($y = 0; $y < $this->map->getHeightInTiles(); $y++){
 
             for($x = 0; $x < $this->map->getWidthInTiles(); $x++){
 
-                $destFileName = 'row_' . $y . '__col_' . $x;
-                $savePath = $this->makeDestFileName($destPath, $destFileExt, $destFileName);
+                $tile = $this->map->getTile($x, $y);
 
-                $oneTileImg = $this->imageCreate($this->map->getTile($x, $y)->getAsset()->getPath(), $this->map->getTile($x, $y)->getAsset()->getExt());
+                $savePath = $this->makeDestFileName($destPath, $destFileExt, 'row_' . $y . '__col_' . $x);
+
+                $oneTileImg = $this->imageCreate($tile->getAsset()->getPath(), $tile->getAsset()->getExt());
+
                 $this->saveGDResourceToImage($oneTileImg, $savePath);
-                $Files[] = $savePath;
+
+                $tile->setImgPath($savePath);
             }
         }
 
-        return $Files;
+        return $this->map->getTilesArray();
     }
 
     /**
@@ -154,6 +183,9 @@ class MapSaver implements MapSaverInterface
         $newFilePath = $this->makeDestFileName($destPath, $destFileExt, $destFileName);
 
         if(copy($imageFromPath, $newFilePath)){
+
+            $this->savedImagePath = $newFilePath;
+
             return $newFilePath;
         }else{
             throw new Exception('An error occurred while copy or rename file');

@@ -8,12 +8,29 @@ use App\Asset\AssetsCollection;
 
 class AssetsService implements AssetsServiceInterface
 {
+    /**
+     * @var string
+     */
     private string $assetsPath;
+
+    /**
+     * @var AssetFolderCollectionInterface|AssetFolderCollection
+     */
     private AssetFolderCollectionInterface $assetsFolderCollection;
 
+    /**
+     * @var string
+     */
+
     private string $assetsExt = 'png';
+    /**
+     * @var string
+     */
     private string $savedPath = 'saved\Samples\\';
 
+    /**
+     * @var array|\string[][]
+     */
     private array $packDescriptions = [
         'Angles' => [
             'desc' => 'A simple map will be generated from 2 types of tiles: T-shaped and the same on all sides. Due to this combination, the pattern goes through the entire map without collapsing into local areas.',
@@ -37,6 +54,9 @@ class AssetsService implements AssetsServiceInterface
         ],
     ];
 
+    /**
+     * @param string $assetsPath
+     */
     public function __construct(string $assetsPath)
     {
         $this->assetsPath = $assetsPath;

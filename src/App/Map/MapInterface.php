@@ -11,14 +11,9 @@ interface MapInterface
     public function __construct(int $xSize, int $ySize);
 
     /**
-     * @param array $mapArray
-     */
-    public function load(array $mapArray) : void;
-
-    /**
      * @return array
      */
-    public function getArray() : array;
+    public function getTilesArray() : array;
 
     /**
      * @param TileInterface $tile

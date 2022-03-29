@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Test\Unit\App\Map;
 
 use App\Asset\Asset;
@@ -25,7 +24,7 @@ class MapTest extends TestCase
 
     public function testGetEmptyArray()
     {
-        self::assertEmpty((self::createMap(5, 5))->getArray());
+        self::assertEmpty((self::createMap(5, 5))->getTilesArray());
     }
 
     public function testAddTile()

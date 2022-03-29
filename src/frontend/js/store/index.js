@@ -28,43 +28,39 @@ export default new Vuex.Store({
             console.log(state.mapProps.algorithmName);
             console.log(state.mapProps.mapWidth);
             console.log(state.mapProps.mapHeight);
-            console.log(state.mapProps.divideMapIntoTiles);
+            console.log(state.divideMapIntoTiles);
         },
         selectAlgorithm(state, payload){
             state.mapProps.algorithmName = payload.name;
 
-            console.log(state.mapProps.algorithmName);
+            console.log(state);
         },
         changeMapWidth(state, payload){
             state.mapProps.mapWidth = payload.value;
 
-            console.log(state.mapProps.mapWidth);
+            console.log(state);
         },
         changeMapHeight(state, payload){
             state.mapProps.mapHeight = payload.value;
 
-            console.log(state.mapProps.mapHeight);
+            console.log(state);
         },
         changeDivideMapOption(state, payload){
-            state.mapProps.divideMapIntoTiles = payload.value;
+            state.divideMapIntoTiles = payload.value;
 
-            console.log(state.mapProps.divideMapIntoTiles);
+            console.log(state);
         },
         loadMap(state, payload){
-
             console.log('Start -> Index.js -> mutations -> loadMap');
-
             state.map = payload.map;
 
-            console.log(state.map);
+            console.log(state);
         }
     },
     actions: {
 
         async generateMap({ commit, state }){
-
             console.log('Start -> Index.js -> actions -> generateMap');
-
 
             let requestUrl = '/api/map-one-file/';
 
@@ -76,20 +72,19 @@ export default new Vuex.Store({
             console.log(state);
 
 
-
             axios({
                 method: 'post',
+                url: requestUrl,
+                data: state.mapProps
                 // headers: {
                 //     'Content-Type': 'application/x-www-form-urlencoded'
                 // },
-                url: requestUrl,
                 // data: 'title=new_title&body=new_body&userId=userid'
                 // params: {
                 //     title: 'new_title',
                 //     body: 'new_body',
                 //     userId: 'userid'
                 // },
-                data: state.mapProps
                 // data: {
                 //     title: 'new_title',
                 //     body: 'new_body',
@@ -100,16 +95,6 @@ export default new Vuex.Store({
                     map: response.data
                 })
             });
-
-
-            // axios.post(requestUrl, {
-            //     firstName: 'Fred',
-            //     lastName: 'Flintstone'
-            // }, '').then((response) => {
-            //     commit('loadMap', {
-            //         map: response.data
-            //     })
-            // });
 
         }
 

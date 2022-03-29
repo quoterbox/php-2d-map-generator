@@ -8,26 +8,51 @@ class MapParamsStructure implements MapParamsStructureInterface
      * @var string
      */
     private string $assetsPath = 'assets\Tiles\\';
+
     /**
      * @var string
      */
     private string $assetsExt = 'png';
+
     /**
      * @var string|mixed
      */
     private string $packName;
+
     /**
      * @var string|mixed
      */
     private string $algorithmName;
+
     /**
      * @var int|mixed
      */
     private int $mapWidth;
+
     /**
      * @var int|mixed
      */
     private int $mapHeight;
+
+    /**
+     * @var int
+     */
+    private int $minMapWidth = 2;
+
+    /**
+     * @var int
+     */
+    private int $maxMapWidth = 20;
+
+    /**
+     * @var int
+     */
+    private int $minMapHeight = 2;
+
+    /**
+     * @var int
+     */
+    private int $maxMapHeight = 20;
 
     /**
      * @param array $MapParams
@@ -36,8 +61,42 @@ class MapParamsStructure implements MapParamsStructureInterface
     {
         $this->packName = $MapParams['packName'];
         $this->algorithmName = $MapParams['algorithmName'];
-        $this->mapWidth = $MapParams['mapWidth'];
-        $this->mapHeight = $MapParams['mapHeight'];
+        $this->setMapWidth($MapParams['mapWidth']);
+        $this->setMapHeight($MapParams['mapHeight']);
+    }
+
+    /**
+     * @param int $mapWidth
+     * @return void
+     */
+    private function setMapWidth(int $mapWidth)
+    {
+        $this->mapWidth = $mapWidth;
+
+        if($mapWidth < $this->minMapWidth){
+            $this->mapWidth = $this->minMapWidth;
+        }
+
+        if($this->maxMapWidth < $mapWidth){
+            $this->mapWidth = $this->maxMapWidth;
+        }
+    }
+
+    /**
+     * @param int $mapHeight
+     * @return void
+     */
+    private function setMapHeight(int $mapHeight)
+    {
+        $this->mapHeight = $mapHeight;
+
+        if($mapHeight < $this->minMapHeight){
+            $this->mapHeight = $this->minMapHeight;
+        }
+
+        if($this->maxMapHeight < $mapHeight){
+            $this->mapHeight = $this->maxMapHeight;
+        }
     }
 
     /**

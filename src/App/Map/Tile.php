@@ -11,38 +11,52 @@ class Tile implements TileInterface
      * @var int
      */
     private int $width;
+
     /**
      * @var int
      */
     private int $height;
+
     /**
      * @var int
      */
     private int $xCoord;
+
     /**
      * @var int
      */
     private int $yCoord;
+
+    /**
+     * @var string
+     */
+    private string $imgPath;
+
     /**
      * @var AssetInterface
      */
     private AssetInterface $asset;
+
     /**
      * @var int
      */
     private int $type;
+
     /**
      * @var string
      */
     private string $topSide;
+
     /**
      * @var string
      */
     private string $rightSide;
+
     /**
      * @var string
      */
     private string $bottomSide;
+
     /**
      * @var string
      */

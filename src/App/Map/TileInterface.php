@@ -12,6 +12,24 @@ interface TileInterface
     public function __construct(AssetInterface $asset);
 
     /**
+     * @param string $imgPath
+     * @return void
+     */
+    public function setImgPath(string $imgPath): void;
+
+    /**
+     * @param int $xCoord
+     * @return void
+     */
+    public function setXCoord(int $xCoord) : void;
+
+    /**
+     * @param int $yCoord
+     * @return void
+     */
+    public function setYCoord(int $yCoord) : void;
+
+    /**
      * @return int
      */
     public function getWidth() : int;
