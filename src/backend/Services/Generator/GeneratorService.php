@@ -46,10 +46,10 @@ class GeneratorService implements GeneratorServiceInterface
      */
     public function __construct(MapParamsStructureInterface $mapParams)
     {
+        $this->manyFilesMapPath = $this->manyFilesMapPath . DIRECTORY_SEPARATOR . time() . DIRECTORY_SEPARATOR;
         $assets = $this->createAssetsCollection($mapParams);
         $this->map = $this->buildMap($mapParams, $assets);
         $this->mapSaver = new MapSaver($this->map);
-
     }
 
     /**
@@ -70,34 +70,32 @@ class GeneratorService implements GeneratorServiceInterface
      */
     private function buildMap(MapParamsStructureInterface $mapParams, array $assets): MapInterface
     {
-        $mapBuilder = new ($this->algorithmNamespace . $mapParams->getAlgorithmName())($assets, $mapParams->getWidth(), $mapParams->getHeight());
+        $className = $this->algorithmNamespace . $mapParams->getAlgorithmName();
+
+        $mapBuilder = new $className($assets, $mapParams->getWidth(), $mapParams->getHeight());
         $mapBuilder->build();
         return $mapBuilder->getMap();
     }
 
     /**
-     * @return string
+     * @return MapSaverInterface
      * @throws \Exception
      */
-    public function generateOneFileMap() : string
+    public function generateOneFileMap() : MapSaverInterface
     {
         $this->mapSaver->saveToFile($this->oneFileMapPath, $this->savedMapExt);
 
-        return json_encode($this->mapSaver);
-
-        //return $this->mapSaver->saveToFile($this->oneFileMapPath, $this->savedMapExt);
+        return $this->mapSaver;
     }
 
     /**
-     * @return array
+     * @return MapSaverInterface
      * @throws \Exception
      */
-    public function generateManyFilesMap() : string
+    public function generateManyFilesMap() : MapSaverInterface
     {
         $this->mapSaver->saveToManyFiles($this->manyFilesMapPath, $this->savedMapExt);
 
-        return json_encode($this->mapSaver);
-
-        //return $this->mapSaver->saveToManyFiles($this->manyFilesMapPath, $this->savedMapExt);
+        return $this->mapSaver;
     }
 }

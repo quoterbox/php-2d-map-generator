@@ -7,7 +7,7 @@
 
 ---
 
-## Интерфейс Location-Generator 2D
+## Пользовательский интерфейс Location-Generator 2D
 
 
 

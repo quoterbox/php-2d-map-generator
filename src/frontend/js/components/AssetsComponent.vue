@@ -10,7 +10,7 @@
                     <p>{{ assetPack.desc }}</p>
                 </div>
                 <div class="assets__example-map">
-                    <h4>A sample of a map from this asset pack</h4>
+                    <h4>A map sample from this asset pack</h4>
                     <div class="wrap-image-map">
                         <img :src="assetPack.sample_map_path" :alt="assetPack.name">
                     </div>

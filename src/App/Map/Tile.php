@@ -4,8 +4,9 @@ namespace App\Map;
 
 use App\Asset\AssetInterface;
 use Exception;
+use JsonSerializable;
 
-class Tile implements TileInterface
+class Tile implements TileInterface, JsonSerializable
 {
     /**
      * @var int
@@ -30,7 +31,7 @@ class Tile implements TileInterface
     /**
      * @var string
      */
-    private string $imgPath;
+    private string $imgPath = '';
 
     /**
      * @var AssetInterface
@@ -78,6 +79,27 @@ class Tile implements TileInterface
     }
 
     /**
+     * @return array
+     */
+    public function jsonSerialize(): array
+    {
+        return [
+            'img' => $this->getImgPath(),
+        ];
+    }
+
+    /**
+     * @param string $imgPath
+     * @return void
+     */
+    public function setImgPath(string $imgPath): void
+    {
+        if(!empty($imgPath)){
+            $this->imgPath = $imgPath;
+        }
+    }
+
+    /**
      * @param int $xCoord
      * @throws Exception
      */
@@ -101,6 +123,14 @@ class Tile implements TileInterface
         }else{
             throw new Exception("Invalid Y coordinate");
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getImgPath(): string
+    {
+        return $this->imgPath;
     }
 
     /**

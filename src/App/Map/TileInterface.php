@@ -30,6 +30,11 @@ interface TileInterface
     public function setYCoord(int $yCoord) : void;
 
     /**
+     * @return string
+     */
+    public function getImgPath(): string;
+
+    /**
      * @return int
      */
     public function getWidth() : int;

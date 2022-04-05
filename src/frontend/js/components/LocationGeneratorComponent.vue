@@ -1,6 +1,5 @@
 <template>
     <div class="location-generator">
-
         <assets-component></assets-component>
         <algorithms-component></algorithms-component>
         <map-size-component></map-size-component>
@@ -9,10 +8,13 @@
             <b-form-checkbox v-model="divideMap" name="check-button" switch size="lg">divide the map into tiles</b-form-checkbox>
         </div>
 
-        <div class="d-flex justify-content-center">
-            <b-button variant="secondary" size="lg" @click="generateMap">Generate</b-button>
-        </div>
+        <b-overlay :show="$store.state.generating" rounded="sm">
+            <div class="d-flex justify-content-center">
+                <b-button variant="secondary" size="lg" @click="generateMap">Generate</b-button>
+            </div>
+        </b-overlay>
 
+        <map-view-component v-if="showMap"></map-view-component>
         <div style="height: 200px;"></div>
     </div>
 </template>
@@ -21,7 +23,8 @@
     export default {
         data() {
             return {
-                divideMap: false
+                divideMap: false,
+                showMap: false
             }
         },
         methods: {
@@ -30,6 +33,11 @@
             }
         },
         watch: {
+            showMap(){
+                if("meta" in this.$store.state.map && "mapOneFileImg" in this.$store.state.map.meta){
+
+                }
+            },
             divideMap() {
                 this.$store.commit('changeDivideMapOption', {
                     value: this.divideMap

@@ -2,6 +2,7 @@
 
 namespace Backend\Services\Generator;
 
+use App\MapSaver\MapSaverInterface;
 use Backend\Services\Map\MapParamsStructureInterface;
 
 interface GeneratorServiceInterface
@@ -12,12 +13,12 @@ interface GeneratorServiceInterface
     public function __construct(MapParamsStructureInterface $mapParams);
 
     /**
-     * @return string
+     * @return MapSaverInterface
      */
-    public function generateOneFileMap() : string;
+    public function generateOneFileMap() : MapSaverInterface;
 
     /**
-     * @return string
+     * @return MapSaverInterface
      */
-    public function generateManyFilesMap() : string;
+    public function generateManyFilesMap() : MapSaverInterface;
 }

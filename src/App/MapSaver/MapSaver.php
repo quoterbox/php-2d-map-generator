@@ -63,7 +63,7 @@ class MapSaver implements MapSaverInterface, JsonSerializable
     {
         return [
             'meta' => [
-                'tilesQuantity' => count($this->map->getTilesArray()),
+                'tilesQuantity' => $this->map->getWidthInTiles() * $this->map->getHeightInTiles(),
                 'tileWidthInPixels' => $this->map->getTile(0,0)->getWidth(),
                 'tileHeightInPixels' => $this->map->getTile(0,0)->getHeight(),
                 'mapWidthInTiles' => $this->map->getWidthInTiles(),
