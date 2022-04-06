@@ -1,10 +1,12 @@
 <template>
     <div class="map-view">
-        <div class="one-file-map">
+        <div v-if="$store.getters.isMapVisible" class="one-file-map">
             <img :src="$store.state.map.meta.mapOneFileImg" alt="map">
         </div>
-        <div class="many-files-map">
-
+        <div v-if="$store.getters.isMapTilesVisible" class="tiles">
+            <div v-for="row in $store.state.map.map.tiles" class="tiles__row">
+                <img v-for="tile in row" :src="tile.img" alt="tile">
+            </div>
         </div>
     </div>
 </template>

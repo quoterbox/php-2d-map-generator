@@ -49,3 +49,7 @@ h1 {
 .assets__example-map .wrap-image-map img {
   max-width: 100%;
 }
+
+.location-generator {
+  margin-bottom: 5vh;
+}

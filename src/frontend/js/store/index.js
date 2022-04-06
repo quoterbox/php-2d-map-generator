@@ -15,6 +15,14 @@ export default new Vuex.Store({
         divideMapIntoTiles: false,
         generating: false,
     },
+    getters: {
+        isMapVisible: state => {
+            return !!state.map.meta?.mapOneFileImg;
+        },
+        isMapTilesVisible: state => {
+            return !!state.map.map?.tiles?.[0]?.[0]?.img;
+        },
+    },
     mutations: {
         selectPackName(state, payload){
             state.mapProps.packName = payload.name;
