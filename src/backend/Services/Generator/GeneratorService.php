@@ -31,6 +31,11 @@ class GeneratorService implements GeneratorServiceInterface
     private string $savedMapExt = 'png';
 
     /**
+     * @var string
+     */
+    private string $userId;
+
+    /**
      * @var MapInterface
      */
     private MapInterface $map;
@@ -46,7 +51,9 @@ class GeneratorService implements GeneratorServiceInterface
      */
     public function __construct(MapParamsStructureInterface $mapParams)
     {
-        $this->manyFilesMapPath = $this->manyFilesMapPath . DIRECTORY_SEPARATOR . time() . DIRECTORY_SEPARATOR;
+        $this->userId = md5(session_id() . "loc2d");
+        $this->manyFilesMapPath = $this->manyFilesMapPath . DIRECTORY_SEPARATOR . $this->userId . DIRECTORY_SEPARATOR;
+
         $assets = $this->createAssetsCollection($mapParams);
         $this->map = $this->buildMap($mapParams, $assets);
         $this->mapSaver = new MapSaver($this->map);
@@ -83,8 +90,7 @@ class GeneratorService implements GeneratorServiceInterface
      */
     public function generateOneFileMap() : MapSaverInterface
     {
-        $this->mapSaver->saveToFile($this->oneFileMapPath, $this->savedMapExt);
-
+        $this->mapSaver->saveToFile($this->oneFileMapPath, $this->savedMapExt, 'map' . $this->userId);
         return $this->mapSaver;
     }
 
@@ -95,7 +101,6 @@ class GeneratorService implements GeneratorServiceInterface
     public function generateManyFilesMap() : MapSaverInterface
     {
         $this->mapSaver->saveToManyFiles($this->manyFilesMapPath, $this->savedMapExt);
-
         return $this->mapSaver;
     }
 }
