@@ -1,8 +1,9 @@
 <template>
     <div class="algorithms">
+        <h3 class="algorithms__title">Algorithm</h3>
         <b-tabs pills class="algorithms__tabs" v-model="algorithmId">
             <b-tab :active="index === 0" v-for="(algorithm, index) in algorithms" :title="algorithm.title" :key="index">
-                <div class="algorithms__desc">
+                <div class="algorithms__desc desc">
                     <h4>Description</h4>
                     <p>{{ algorithm.desc }}</p>
                 </div>

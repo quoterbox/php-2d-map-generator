@@ -1,4 +1,13 @@
 @import "fonts";
+@import "range";
+
+$button-border: rgba(0,0,0,0);
+$button-active: #63666a;
+$button-active-border: #1c1c1c;
+
+body{
+    font-family: "Roboto_R";
+}
 
 h1, h2, h3, h4, h5{
     font-family: 'Roboto_B', serif;
@@ -6,16 +15,75 @@ h1, h2, h3, h4, h5{
 }
 
 h1{
-    margin-bottom: 40px;
-    font-size: 40px;
+    font-size: 3rem;
     text-align: center;
 }
 
-.assets{
+h2{
+    font-size: 2.5rem;
+}
+
+h3{
+    font-size: 2rem;
+}
+
+h4{
+    font-size: 1.5rem;
+}
+
+header{
+    padding-top: 30px;
+    h1{
+        margin-bottom: 40px;
+    }
+}
+
+.nav{
     .nav-link{
         color: #000;
+        border: 2px solid $button-border;
+        font-size: 1.5rem;
+        font-family: "Roboto_B";
         &.active{
-            background-color: #575757;
+            background-color: $button-active;
+            border-color: $button-active-border;
+        }
+    }
+}
+
+.tab-content{
+    margin-top: 15px;
+}
+
+.desc{
+    margin-top: 30px;
+}
+
+.location-generator{
+    margin-bottom: 5vh;
+}
+
+.assets__list{
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    .asset{
+        margin-right: 3px;
+        margin-bottom: 3px;
+    }
+}
+
+.sample-map{
+    margin-top: 30px;
+    h4{
+        margin-bottom: 0;
+    }
+    .wrap-image-map{
+        margin-top: 12px;
+        max-width: 300px;
+        img{
+            max-width: 100%;
+            max-height: 100%;
         }
     }
 }
@@ -26,8 +94,98 @@ h1{
     }
 }
 
-.location-generator{
-    margin-bottom: 5vh;
+.algorithms{
+    margin-top: 50px;
 }
 
+.algorithms__tabs{
+    margin-top: 20px;
+}
+
+.map-size{
+    margin-top: 50px;
+    .form-control{
+        min-width: 40px;
+        border: 0.2rem solid $button-active-border;
+        border-radius: 0.5rem;
+        background-color: $button-active;
+        text-align: center;
+        font-family: "Roboto_B";
+        font-size: 2rem;
+        color: #000;
+        &:focus{
+            box-shadow: 0 0 0 0.2rem rgb(18 18 18 / 25%);
+        }
+    }
+}
+
+.map-size__title{
+    font-size: 1.5rem;
+    font-family: "Roboto_B";
+    line-height: 3rem;
+}
+
+.range{
+    margin-top: 28px;
+}
+
+//
+//
+//
+// Media breakpoints
+//
+//
+//
+
+//
+// Large device
+//
+
+@media only screen and (max-width: 1459px) {
+
+}
+
+//
+// Medium
+//
+
+@media only screen and (max-width: 1219px) {
+
+}
+
+
+//
+// Tablets
+//
+
+@media only screen and (max-width: 788px) {
+
+}
+
+
+//
+// Extra small
+//
+
+@media only screen and (max-width: 595px) {
+
+}
+
+
+//
+// Special
+//
+
+@media only screen and (max-width: 600px) {
+
+}
+
+
+//
+// Special small
+//
+
+@media only screen and (max-width: 420px) {
+
+}
 

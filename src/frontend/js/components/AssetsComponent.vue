@@ -3,14 +3,14 @@
         <b-tabs pills class="assets__tabs" v-model="tabIndex">
             <b-tab :active="index === 0" v-for="(assetPack, index) in assetPacks" :title="assetPack.name" :key="index">
                 <div class="assets__list">
-                    <img v-for="asset in assetPack.assets" :src="asset.path" :alt="asset.name">
+                    <img v-for="asset in assetPack.assets" :src="asset.path" :alt="asset.name" class="asset">
                 </div>
-                <div class="assets__desc">
+                <div class="assets__desc desc">
                     <h4>Description</h4>
-                    <p>{{ assetPack.desc }}</p>
+                    <p class="text">{{ assetPack.desc }}</p>
                 </div>
-                <div class="assets__example-map">
-                    <h4>A map sample from this asset pack</h4>
+                <div class="sample-map">
+                    <h4>A sample map from this asset pack</h4>
                     <div class="wrap-image-map">
                         <img :src="assetPack.sample_map_path" :alt="assetPack.name">
                     </div>

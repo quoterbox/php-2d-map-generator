@@ -42,7 +42,7 @@ class MapParamsStructure implements MapParamsStructureInterface
     /**
      * @var int
      */
-    private int $maxMapWidth = 20;
+    private int $maxMapWidth = 10;
 
     /**
      * @var int
@@ -52,7 +52,7 @@ class MapParamsStructure implements MapParamsStructureInterface
     /**
      * @var int
      */
-    private int $maxMapHeight = 20;
+    private int $maxMapHeight = 10;
 
     /**
      * @param array $MapParams

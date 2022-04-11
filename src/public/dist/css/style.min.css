@@ -28,28 +28,220 @@
   font-weight: normal;
   font-style: normal;
 }
+[type=range] {
+  -webkit-appearance: none;
+  background: transparent;
+  margin: 14px 0;
+  width: 100%;
+}
+[type=range]::-moz-focus-outer {
+  border: 0;
+}
+[type=range]:focus {
+  border: 0;
+  outline: none;
+}
+[type=range]:focus::-webkit-slider-runnable-track {
+  background: #7c7f84;
+}
+[type=range]:focus::-ms-fill-lower {
+  background: #63666a;
+}
+[type=range]:focus::-ms-fill-upper {
+  background: #7c7f84;
+}
+[type=range]::-webkit-slider-runnable-track {
+  cursor: default;
+  height: 12px;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  width: 100%;
+  background: #63666a;
+  border: 3px solid #1c1c1c;
+  border-radius: 5px;
+}
+[type=range]::-webkit-slider-thumb {
+  background: #3d4043;
+  border: 3px solid #1c1c1c;
+  border-radius: 3px;
+  box-sizing: border-box;
+  cursor: default;
+  height: 28px;
+  width: 28px;
+  -webkit-appearance: none;
+  margin-top: -11px;
+}
+[type=range]::-moz-range-track {
+  cursor: default;
+  height: 12px;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  width: 100%;
+  background: #63666a;
+  border: 3px solid #1c1c1c;
+  border-radius: 5px;
+  height: 6px;
+}
+[type=range]::-moz-range-thumb {
+  background: #3d4043;
+  border: 3px solid #1c1c1c;
+  border-radius: 3px;
+  box-sizing: border-box;
+  cursor: default;
+  height: 28px;
+  width: 28px;
+}
+[type=range]::-ms-track {
+  cursor: default;
+  height: 12px;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  width: 100%;
+  background: transparent;
+  border-color: transparent;
+  border-width: 14px 0;
+  color: transparent;
+}
+[type=range]::-ms-fill-lower {
+  background: #4a4d50;
+  border: 3px solid #1c1c1c;
+  border-radius: 10px;
+}
+[type=range]::-ms-fill-upper {
+  background: #63666a;
+  border: 3px solid #1c1c1c;
+  border-radius: 10px;
+}
+[type=range]::-ms-thumb {
+  background: #3d4043;
+  border: 3px solid #1c1c1c;
+  border-radius: 3px;
+  box-sizing: border-box;
+  cursor: default;
+  height: 28px;
+  width: 28px;
+  margin-top: 3px;
+}
+[type=range]:disabled::-webkit-slider-thumb, [type=range]:disabled::-moz-range-thumb, [type=range]:disabled::-ms-thumb, [type=range]:disabled::-webkit-slider-runnable-track, [type=range]:disabled::-ms-fill-lower, [type=range]:disabled::-ms-fill-upper {
+  cursor: not-allowed;
+}
+
+body {
+  font-family: "Roboto_R";
+}
+
 h1, h2, h3, h4, h5 {
   font-family: "Roboto_B", serif;
   color: #222;
 }
 
 h1 {
-  margin-bottom: 40px;
-  font-size: 40px;
+  font-size: 3rem;
   text-align: center;
 }
 
-.assets .nav-link {
-  color: #000;
+h2 {
+  font-size: 2.5rem;
 }
-.assets .nav-link.active {
-  background-color: #575757;
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+header {
+  padding-top: 30px;
+}
+header h1 {
+  margin-bottom: 40px;
+}
+
+.nav .nav-link {
+  color: #000;
+  border: 2px solid rgba(0, 0, 0, 0);
+  font-size: 1.5rem;
+  font-family: "Roboto_B";
+}
+.nav .nav-link.active {
+  background-color: #63666a;
+  border-color: #1c1c1c;
+}
+
+.tab-content {
+  margin-top: 15px;
+}
+
+.desc {
+  margin-top: 30px;
+}
+
+.location-generator {
+  margin-bottom: 5vh;
+}
+
+.assets__list {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+.assets__list .asset {
+  margin-right: 3px;
+  margin-bottom: 3px;
+}
+
+.sample-map {
+  margin-top: 30px;
+}
+.sample-map h4 {
+  margin-bottom: 0;
+}
+.sample-map .wrap-image-map {
+  margin-top: 12px;
+  max-width: 300px;
+}
+.sample-map .wrap-image-map img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .assets__example-map .wrap-image-map img {
   max-width: 100%;
 }
 
-.location-generator {
-  margin-bottom: 5vh;
+.algorithms {
+  margin-top: 50px;
+}
+
+.algorithms__tabs {
+  margin-top: 20px;
+}
+
+.map-size {
+  margin-top: 50px;
+}
+.map-size .form-control {
+  min-width: 40px;
+  border: 0.2rem solid #1c1c1c;
+  border-radius: 0.5rem;
+  background-color: #63666a;
+  text-align: center;
+  font-family: "Roboto_B";
+  font-size: 2rem;
+  color: #000;
+}
+.map-size .form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(18, 18, 18, 0.25);
+}
+
+.map-size__title {
+  font-size: 1.5rem;
+  font-family: "Roboto_B";
+  line-height: 3rem;
+}
+
+.range {
+  margin-top: 28px;
 }

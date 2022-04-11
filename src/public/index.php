@@ -18,7 +18,7 @@ require_once __DIR__ . '/../backend/route.php';
 <body>
     <header>
         <div class="container">
-            <h1 class="header__brand">Location Generator 2D with PHP, Vue.js and <nobr>Bootstrap-vue</nobr>.</h1>
+            <h1 class="header__brand">Location Generator 2D</h1>
         </div>
     </header>
     <main class="container">

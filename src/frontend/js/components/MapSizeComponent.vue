@@ -7,12 +7,12 @@
                         <b-form-input v-model="width" id="input-width" size="sm" :formatter="formatter" :lazy-formatter="true" @keyup="filterNum($event)"></b-form-input>
                     </div>
                     <div class="col-md-10">
-                        <label for="input-width">map width</label>
+                        <label for="input-width" class="map-size__title">map width</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-8">
-                        <b-form-input v-model="width" type="range" :min="min" :max="max" step="1"></b-form-input>
+                        <input v-model="width" type="range" :min="min" :max="max" step="1" class="range">
                     </div>
                 </div>
             </div>
@@ -22,12 +22,12 @@
                         <b-form-input v-model="height" id="input-height" size="sm" :formatter="formatter" :lazy-formatter="true" @keyup="filterNum($event)"></b-form-input>
                     </div>
                     <div class="col-md-10">
-                        <label for="input-height">map height</label>
+                        <label for="input-height" class="map-size__title">map height</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-8">
-                        <b-form-input v-model="height" type="range" :min="min" :max="max" step="1"></b-form-input>
+                        <input v-model="height" type="range" :min="min" :max="max" step="1" class="range">
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                 width: 5,
                 height: 5,
                 min: 2,
-                max: 20,
+                max: 10,
             }
         },
         mounted() {
