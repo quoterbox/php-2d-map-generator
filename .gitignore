@@ -10,6 +10,7 @@ vendor
 /public/hot
 /public/storage
 /public/saved/FromImageSaver
+/public/saved/FromImageSaver/
 /storage/*.key
 /vendor
 /mysqldata
