@@ -9,6 +9,7 @@ vendor
 /node_modules
 /public/hot
 /public/storage
+/public/saved/FromImageSaver
 /storage/*.key
 /vendor
 /mysqldata

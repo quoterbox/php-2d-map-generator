@@ -13,6 +13,9 @@ $thumb-width: 28px !default;
 $thumb-border-width: 3px !default;
 $thumb-border-color: #1c1c1c !default;
 
+$thumb-active-color: #85898e !default;
+$thumb-active-border-color: #333333 !default;
+
 $track-width: 100% !default;
 $track-height: 12px !default;
 $track-border-width: 3px !default;
@@ -64,6 +67,30 @@ $ie-bottom-track-color: darken($track-color, $contrast) !default;
 
         &::-ms-fill-upper {
             background: lighten($track-color, $contrast);
+        }
+
+        &::-webkit-slider-thumb{
+            background: $thumb-active-color;
+            border-color: $thumb-active-border-color;
+            box-shadow: 0 0 0 0.2rem rgb(18 18 18 / 25%);
+        }
+
+        &::-webkit-slider-thumb{
+            background: $thumb-active-color;
+            border-color: $thumb-active-border-color;
+            box-shadow: 0 0 0 0.2rem rgb(18 18 18 / 25%);
+        }
+
+        &::-ms-thumb{
+            background: $thumb-active-color;
+            border-color: $thumb-active-border-color;
+            box-shadow: 0 0 0 0.2rem rgb(18 18 18 / 25%);
+        }
+
+        &::-moz-range-thumb{
+            background: $thumb-active-color;
+            border-color: $thumb-active-border-color;
+            box-shadow: 0 0 0 0.2rem rgb(18 18 18 / 25%);
         }
     }
 

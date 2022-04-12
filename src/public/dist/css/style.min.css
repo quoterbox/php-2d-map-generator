@@ -50,6 +50,26 @@
 [type=range]:focus::-ms-fill-upper {
   background: #7c7f84;
 }
+[type=range]:focus::-webkit-slider-thumb {
+  background: #85898e;
+  border-color: #333333;
+  box-shadow: 0 0 0 0.2rem rgba(18, 18, 18, 0.25);
+}
+[type=range]:focus::-webkit-slider-thumb {
+  background: #85898e;
+  border-color: #333333;
+  box-shadow: 0 0 0 0.2rem rgba(18, 18, 18, 0.25);
+}
+[type=range]:focus::-ms-thumb {
+  background: #85898e;
+  border-color: #333333;
+  box-shadow: 0 0 0 0.2rem rgba(18, 18, 18, 0.25);
+}
+[type=range]:focus::-moz-range-thumb {
+  background: #85898e;
+  border-color: #333333;
+  box-shadow: 0 0 0 0.2rem rgba(18, 18, 18, 0.25);
+}
 [type=range]::-webkit-slider-runnable-track {
   cursor: default;
   height: 12px;
