@@ -10,7 +10,7 @@
 
         <div class="d-flex justify-content-center">
             <b-overlay :show="$store.state.generating" class="d-inline-block">
-                <b-button :disabled="$store.state.generating" variant="secondary" size="lg" @click="generateMap">Generate</b-button>
+                <b-button :disabled="$store.state.generating" variant="secondary" @click="generateMap" class="generate-button">Generate</b-button>
             </b-overlay>
         </div>
 

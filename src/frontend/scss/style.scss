@@ -2,8 +2,10 @@
 @import "range";
 
 $button-border: rgba(0,0,0,0);
-$button-active: #63666a;
+$button-active: #c1c1c1;
 $button-active-border: #1c1c1c;
+$button-hover: #c1c1c1;
+$checkbox-active: #63666a;
 
 body{
     font-family: "Roboto_R";
@@ -45,6 +47,7 @@ header{
         font-size: 1.5rem;
         font-family: "Roboto_B";
         &.active{
+            color: #000;
             background-color: $button-active;
             border-color: $button-active-border;
         }
@@ -129,43 +132,85 @@ header{
     margin-top: 28px;
 }
 
-.map-split-option .custom-control{
-    &.custom-switch{
-        padding-left: 4rem;
-        .custom-control-label{
-            &::before {
-                top: 0.3125rem;
-                left: -4rem;
-                width: 3.5rem;
-                height: 2rem;
-                border-radius: 1rem;
-                border: 2px solid $button-active-border;
-                background: #c1c1c1;
+.map-split-option {
+    margin-top: 20px;
+    .custom-control {
+        &.custom-switch {
+            padding-left: 4rem;
+
+            .custom-control-label {
+                &::before {
+                    top: 0.3125rem;
+                    left: -4rem;
+                    width: 3.5rem;
+                    height: 2rem;
+                    border-radius: 1rem;
+                    border: 2px solid $button-active-border;
+                    background: #c1c1c1;
+                }
+
+                &::after {
+                    top: calc(0.5rem + 2px);
+                    left: calc(-4rem + 6px);
+                    width: calc(1.6rem - 4px);
+                    height: calc(1.6rem - 4px);
+                    border-radius: 50%;
+                    background-size: 50% 50%;
+                    background-color: #fff;
+                }
             }
-            &::after {
-                top: calc( 0.5rem + 2px );
-                left: calc( -4rem + 6px );
-                width: calc( 1.6rem - 4px );
-                height: calc( 1.6rem - 4px );
-                border-radius: 50%;
-                background-size: 50% 50%;
+
+            .custom-control-input:checked ~ .custom-control-label::after {
                 background-color: #fff;
+                transform: translateX(1.4rem);
             }
-        }
-        .custom-control-input:checked ~ .custom-control-label::after{
-            background-color: #fff;
-            transform: translateX(1.4rem);
-        }
-        .custom-control-input:checked ~ .custom-control-label::before{
-            background-color: $button-active;
-        }
-        .custom-control-input:focus ~ .custom-control-label::before{
-            box-shadow: 0 0 0 0.2rem rgb(18 18 18 / 25%);
+
+            .custom-control-input:checked ~ .custom-control-label::before {
+                background-color: $checkbox-active;
+            }
+
+            .custom-control-input:focus ~ .custom-control-label::before {
+                box-shadow: 0 0 0 0.2rem rgb(18 18 18 / 25%);
+            }
         }
     }
 }
 
+.generate-button.btn-secondary{
+    padding: 0.5rem 2rem;
+    font-family: "Roboto_B";
+    font-size: 2.5rem;
+    color: #000;
+    border: 2px solid $button-active-border;
+    background: $button-active;
+    &.disabled, &:hover, &:active, &:focus, &:not(:disabled):not(.disabled):active{
+        color: #000;
+        border: 2px solid $button-active-border;
+        background: $button-hover;
+    }
+}
 
+.map-view{
+    margin-top: 5vh;
+    .one-file-map{
+        display: flex;
+        justify-content: center;
+    }
+    .tiles{
+        .tiles__row{
+            display: flex;
+            justify-content: center;
+            .tile{
+                margin-right: 3px;
+                margin-bottom: 3px;
+            }
+        }
+    }
+}
+
+.map-view__title{
+    text-align: center;
+}
 
 
 

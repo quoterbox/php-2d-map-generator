@@ -186,7 +186,8 @@ header h1 {
   font-family: "Roboto_B";
 }
 .nav .nav-link.active {
-  background-color: #63666a;
+  color: #000;
+  background-color: #c1c1c1;
   border-color: #1c1c1c;
 }
 
@@ -246,7 +247,7 @@ header h1 {
   min-width: 40px;
   border: 0.2rem solid #1c1c1c;
   border-radius: 0.5rem;
-  background-color: #63666a;
+  background-color: #c1c1c1;
   text-align: center;
   font-family: "Roboto_B";
   font-size: 2rem;
@@ -266,6 +267,9 @@ header h1 {
   margin-top: 28px;
 }
 
+.map-split-option {
+  margin-top: 20px;
+}
 .map-split-option .custom-control.custom-switch {
   padding-left: 4rem;
 }
@@ -296,4 +300,38 @@ header h1 {
 }
 .map-split-option .custom-control.custom-switch .custom-control-input:focus ~ .custom-control-label::before {
   box-shadow: 0 0 0 0.2rem rgba(18, 18, 18, 0.25);
+}
+
+.generate-button.btn-secondary {
+  padding: 0.5rem 2rem;
+  font-family: "Roboto_B";
+  font-size: 2.5rem;
+  color: #000;
+  border: 2px solid #1c1c1c;
+  background: #c1c1c1;
+}
+.generate-button.btn-secondary.disabled, .generate-button.btn-secondary:hover, .generate-button.btn-secondary:active, .generate-button.btn-secondary:focus, .generate-button.btn-secondary:not(:disabled):not(.disabled):active {
+  color: #000;
+  border: 2px solid #1c1c1c;
+  background: #c1c1c1;
+}
+
+.map-view {
+  margin-top: 5vh;
+}
+.map-view .one-file-map {
+  display: flex;
+  justify-content: center;
+}
+.map-view .tiles .tiles__row {
+  display: flex;
+  justify-content: center;
+}
+.map-view .tiles .tiles__row .tile {
+  margin-right: 3px;
+  margin-bottom: 3px;
+}
+
+.map-view__title {
+  text-align: center;
 }
