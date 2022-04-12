@@ -5,7 +5,7 @@
         <map-size-component></map-size-component>
 
         <div class="map-split-option">
-            <b-form-checkbox v-model="divideMap" name="check-button" switch size="lg">divide the map into tiles</b-form-checkbox>
+            <b-form-checkbox v-model="divideMap" name="check-button" switch>divide the map into tiles</b-form-checkbox>
         </div>
 
         <div class="d-flex justify-content-center">

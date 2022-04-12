@@ -129,6 +129,46 @@ header{
     margin-top: 28px;
 }
 
+.map-split-option .custom-control{
+    &.custom-switch{
+        padding-left: 4rem;
+        .custom-control-label{
+            &::before {
+                top: 0.3125rem;
+                left: -4rem;
+                width: 3.5rem;
+                height: 2rem;
+                border-radius: 1rem;
+                border: 2px solid $button-active-border;
+                background: #c1c1c1;
+            }
+            &::after {
+                top: calc( 0.5rem + 2px );
+                left: calc( -4rem + 6px );
+                width: calc( 1.6rem - 4px );
+                height: calc( 1.6rem - 4px );
+                border-radius: 50%;
+                background-size: 50% 50%;
+                background-color: #fff;
+            }
+        }
+        .custom-control-input:checked ~ .custom-control-label::after{
+            background-color: #fff;
+            transform: translateX(1.4rem);
+        }
+        .custom-control-input:checked ~ .custom-control-label::before{
+            background-color: $button-active;
+        }
+        .custom-control-input:focus ~ .custom-control-label::before{
+            box-shadow: 0 0 0 0.2rem rgb(18 18 18 / 25%);
+        }
+    }
+}
+
+
+
+
+
 //
 //
 //
