@@ -88,6 +88,6 @@ class TileTest extends TestCase
 
     private static function createAsset() : AssetInterface
     {
-        return new Asset('src\public\assets\Test\1_0_R_G_R_R.png', "1_0_R_G_R_R.png", "png");
+        return new Asset('src\public\assets\Test\\', "1_0_R_G_R_R", "png");
     }
 }

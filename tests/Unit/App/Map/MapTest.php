@@ -79,7 +79,7 @@ class MapTest extends TestCase
 
     private static function createAsset() : AssetInterface
     {
-        return new Asset('src\public\assets\Test\1_0_G_R_R_R.png', "1_0_G_R_R_R.png", "png");
+        return new Asset('src\public\assets\Test\\', "1_0_G_R_R_R", "png");
     }
 
     private static function createMap(int $width, int $height) : MapInterface

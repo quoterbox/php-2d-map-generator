@@ -121,7 +121,7 @@ class AssetsCollection implements AssetsCollectionInterface
      */
     private static function createAsset(SplFileInfo $dirItr) : AssetInterface
     {
-        return new Asset($dirItr->getPathname(), $dirItr->getFilename(), $dirItr->getExtension());
+        return new Asset($dirItr->getPath() . DIRECTORY_SEPARATOR, $dirItr->getBasename('.' . $dirItr->getExtension()), $dirItr->getExtension());
     }
 
     /**

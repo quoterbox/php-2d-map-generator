@@ -58,16 +58,16 @@ class Asset implements AssetInterface
 
     /**
      * @param string $assetPath
-     * @param string $assetNameExt
+     * @param string $assetName
      * @param string $assetExt
      * @throws Exception
      */
-    public function __construct(string $assetPath, string $assetNameExt, string $assetExt)
+    public function __construct(string $assetPath, string $assetName, string $assetExt)
     {
         $this->setAssetExt($assetExt);
-        $this->setAssetPath($assetPath);
-        $this->setAssetNameExt($assetNameExt);
-        $this->setAssetName($this->assetNameExt, $this->assetExt);
+        $this->setAssetNameExt($assetName, $assetExt);
+        $this->setAssetName($assetName);
+        $this->setAssetPath($assetPath, $this->assetNameExt);
         $this->setAssetSize($this->assetPath);
 
         if($this->isEmptyAsset($this->assetName)){
@@ -199,37 +199,46 @@ class Asset implements AssetInterface
 
     /**
      * @param string $assetPath
+     * @param string $assetNameExt
+     * @return void
      * @throws Exception
      */
-    private function setAssetPath(string $assetPath) : void
+    private function setAssetPath(string $assetPath, string $assetNameExt) : void
     {
-        if(is_file($assetPath)){
-            $this->assetPath = $assetPath;
+        if(is_file($assetPath . $assetNameExt)){
+            $this->assetPath = $assetPath . $assetNameExt;
         }else{
-            throw new Exception("Invalid asset path: " . $assetPath);
+            throw new Exception("Invalid asset path: " . $assetPath . $assetNameExt);
         }
     }
 
     /**
-     * @param string $assetNameExt
-     * @throws Exception
-     */
-    private function setAssetNameExt(string $assetNameExt) : void
-    {
-        if(strpos($assetNameExt, ".")){
-            $this->assetNameExt = $assetNameExt;
-        }else{
-            throw new Exception("Invalid asset name with extension: " . $assetNameExt);
-        }
-    }
-
-    /**
-     * @param string $assetNameExt
+     * @param string $assetName
      * @param string $assetExt
+     * @return void
+     * @throws Exception
      */
-    private function setAssetName(string $assetNameExt, string $assetExt) : void
+    private function setAssetNameExt(string $assetName, string $assetExt) : void
     {
-        $this->assetName = str_replace("." . $assetExt, "", $assetNameExt);
+        if(strpos($assetName, ".") === false && strpos($assetExt, ".") === false){
+            $this->assetNameExt = $assetName . '.' . $assetExt;
+        }else{
+            throw new Exception("Invalid asset name: " . $assetName . ' with extension: ' . $assetExt);
+        }
+    }
+
+    /**
+     * @param string $assetName
+     * @return void
+     * @throws Exception
+     */
+    private function setAssetName(string $assetName) : void
+    {
+        if(strpos($assetName, ".") === false && strlen($assetName) > 1){
+            $this->assetName = $assetName;
+        }else{
+            throw new Exception("Invalid asset name: " . $assetName);
+        }
     }
 
     /**

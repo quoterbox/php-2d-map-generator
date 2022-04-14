@@ -36,17 +36,17 @@ class AssetsService implements AssetsServiceInterface
             'desc' => 'A simple map will be generated from 2 types of tiles: T-shaped and the same on all sides. Due to this combination, the pattern goes through the entire map without collapsing into local areas.',
             'sample_map_path' => 'angles.png'
         ],
-        'Angles_2' => [
-            'desc' => 'Angles_2 description',
-            'sample_map_path' => 'angles_2.png'
+        'AnglesEmpty' => [
+            'desc' => 'Angles Empty description',
+            'sample_map_path' => 'angles_empty.png'
         ],
         'Rivers' => [
             'desc' => 'Rivers description',
             'sample_map_path' => 'rivers.png'
         ],
-        'Rivers_2' => [
-            'desc' => 'Rivers_2 description',
-            'sample_map_path' => 'rivers_2.png'
+        'SquareRivers' => [
+            'desc' => 'SquareRivers description',
+            'sample_map_path' => 'square_rivers.png'
         ],
         'RiverPath' => [
             'desc' => 'RiverPath description',

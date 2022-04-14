@@ -13,11 +13,12 @@ use App\Map\Tile;
 
 class SimpleTileBuilder extends AbstractMapBuilder
 {
-    private const EMPTY_ASSET_NAME = 'EMP.png';
-
-    private const EMPTY_ASSET_PATH = 'assets' . DIRECTORY_SEPARATOR . self::EMPTY_ASSET_NAME;
-
+    private const EMPTY_ASSET_NAME = 'EMP';
+    private const EMPTY_ASSET_PATH = 'assets' . DIRECTORY_SEPARATOR;
     private const EMPTY_ASSET_EXT = 'png';
+    private int $EMPTY_ASSET_WIDTH = 100;
+    private int $EMPTY_ASSET_HEIGHT = 100;
+
     /**
      * @var MapInterface
      */
@@ -35,12 +36,16 @@ class SimpleTileBuilder extends AbstractMapBuilder
      */
     protected int $ySize;
 
+
     public function build() : void
     {
         $xCurr = $this->setStartCoord($this->xSize);
         $yCurr = $this->setStartCoord($this->ySize);
 
         $startAssetIndex = $this->selectStartTileIndex($this->assets);
+
+        $this->setUpAssetDimension($this->assets[$startAssetIndex]);
+
         $this->map->addTile(new Tile($this->assets[$startAssetIndex]), $xCurr, $yCurr);
 
         $xStart = $xCurr + 1;
@@ -48,6 +53,16 @@ class SimpleTileBuilder extends AbstractMapBuilder
 
         $xStart = $xCurr - 1;
         $this->feedBackward($xStart, $this->xSize, $yCurr);
+    }
+
+    /**
+     * @param AssetInterface $asset
+     * @return void
+     */
+    private function setUpAssetDimension(AssetInterface $asset): void
+    {
+        $this->EMPTY_ASSET_WIDTH = $asset->getWidth();
+        $this->EMPTY_ASSET_HEIGHT = $asset->getHeight();
     }
 
     /**
@@ -172,7 +187,8 @@ class SimpleTileBuilder extends AbstractMapBuilder
     private function chooseOneAsset(array $assets) : AssetInterface
     {
         if(empty($assets)){
-            return new Asset(self::EMPTY_ASSET_PATH, self::EMPTY_ASSET_NAME, self::EMPTY_ASSET_EXT);
+            $emptyAssetName = self::EMPTY_ASSET_NAME . '_' . $this->EMPTY_ASSET_WIDTH . '_' . $this->EMPTY_ASSET_HEIGHT;
+            return new Asset(self::EMPTY_ASSET_PATH, $emptyAssetName, self::EMPTY_ASSET_EXT);
         }else{
             $randIndex = rand(0, count($assets) - 1);
             return $assets[$randIndex];

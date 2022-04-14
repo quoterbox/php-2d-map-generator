@@ -37,7 +37,7 @@ class AssetTest extends TestCase
 
     public function testSetPropsEmptyAsset()
     {
-        $asset = new Asset('src\public\assets\\EMP.png', "EMP.png", "png");
+        $asset = new Asset('src\public\assets\\', "EMP_100_100", "png");
 
         self::assertEquals(0, $asset->getType());
         self::assertEmpty($asset->getTopSide());
@@ -65,6 +65,6 @@ class AssetTest extends TestCase
 
     private static function createAsset() : AssetInterface
     {
-        return new Asset('src\public\assets\Test\\1_0_G_R_R_R.png', "1_0_G_R_R_R.png", "png");
+        return new Asset('src\public\assets\Test\\', "1_0_G_R_R_R", "png");
     }
 }

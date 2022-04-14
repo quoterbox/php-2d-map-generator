@@ -24,7 +24,7 @@ class MapSaverTest extends TestCase
     {
         $this->removeTestFiles('src\public\saved\Temp\Test\\');
 
-        $asset = self::createAsset('src\public\assets\Test\1_0_G_R_R_R.png', "1_0_G_R_R_R.png", "png");
+        $asset = self::createAsset('src\public\assets\Test\\', "1_0_G_R_R_R", "png");
         $tile = self::createTile($asset);
         $map = self::createMap(2,3);
 
@@ -117,9 +117,9 @@ class MapSaverTest extends TestCase
         return new Tile($asset);
     }
 
-    private static function createAsset(string $assetPath, string $assetNameExt, string $assetExt) : AssetInterface
+    private static function createAsset(string $assetPath, string $assetName, string $assetExt) : AssetInterface
     {
-        return new Asset($assetPath, $assetNameExt, $assetExt);
+        return new Asset($assetPath, $assetName, $assetExt);
     }
 
     private static function createMap(int $width, int $height) : MapInterface

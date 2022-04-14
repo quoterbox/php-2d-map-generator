@@ -6,10 +6,10 @@ interface AssetInterface
 {
     /**
      * @param string $assetPath
-     * @param string $assetNameExt
+     * @param string $assetName
      * @param string $assetExt
      */
-    public function __construct(string $assetPath, string $assetNameExt, string $assetExt);
+    public function __construct(string $assetPath, string $assetName, string $assetExt);
 
     /**
      * @return string
