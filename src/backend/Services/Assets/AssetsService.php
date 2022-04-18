@@ -40,18 +40,27 @@ class AssetsService implements AssetsServiceInterface
             'desc' => 'Angles Empty description',
             'sample_map_path' => 'angles_empty.png'
         ],
-        'Rivers' => [
-            'desc' => 'Rivers description',
-            'sample_map_path' => 'rivers.png'
-        ],
-        'SquareRivers' => [
-            'desc' => 'SquareRivers description',
-            'sample_map_path' => 'square_rivers.png'
+        'RealLand' => [
+            'desc' => 'Real land description',
+            'sample_map_path' => 'real_land.png'
         ],
         'RiverPath' => [
             'desc' => 'RiverPath description',
             'sample_map_path' => 'river_path.png'
         ],
+        'Rivers' => [
+            'desc' => 'Rivers description',
+            'sample_map_path' => 'rivers.png'
+        ],
+        'SimpleLand' => [
+            'desc' => 'Simple land description',
+            'sample_map_path' => 'simple_land.png'
+        ],
+        'SquareRivers' => [
+            'desc' => 'SquareRivers description',
+            'sample_map_path' => 'square_rivers.png'
+        ],
+
     ];
 
     /**
