@@ -39,8 +39,10 @@ class SimpleTileBuilder extends AbstractMapBuilder
 
     public function build() : void
     {
-        $xCurr = $this->setStartCoord($this->xSize);
-        $yCurr = $this->setStartCoord($this->ySize);
+        $xCurr = 0;
+        $yCurr = 0;
+        //$xCurr = $this->setStartCoord($this->xSize);
+        //$yCurr = $this->setStartCoord($this->ySize);
 
         $startAssetIndex = $this->selectStartTileIndex($this->assets);
 
@@ -122,6 +124,7 @@ class SimpleTileBuilder extends AbstractMapBuilder
      * @param int $xCurr
      * @param int $yCurr
      * @return AssetInterface
+     * @throws \Exception
      */
     private function getFitAsset(int $xCurr, int $yCurr) : AssetInterface
     {
