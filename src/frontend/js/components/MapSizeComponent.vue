@@ -1,32 +1,32 @@
 <template>
     <div class="map-size">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 mt-3 mt-md-0">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <b-form-input v-model="width" id="input-width" size="sm" :formatter="formatter" :lazy-formatter="true" @keyup="filterNum($event)"></b-form-input>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <label for="input-width" class="map-size__title">map width</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-sm-12 col-md-8">
                         <input v-model="width" type="range" :min="min" :max="max" step="1" class="range">
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-5 mt-md-0">
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <b-form-input v-model="height" id="input-height" size="sm" :formatter="formatter" :lazy-formatter="true" @keyup="filterNum($event)"></b-form-input>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <label for="input-height" class="map-size__title">map height</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-sm-12 col-md-8">
                         <input v-model="height" type="range" :min="min" :max="max" step="1" class="range">
                     </div>
                 </div>

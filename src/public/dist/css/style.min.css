@@ -268,10 +268,14 @@ header h1 {
 }
 
 .map-split-option {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 .map-split-option .custom-control.custom-switch {
   padding-left: 4rem;
+}
+.map-split-option .custom-control.custom-switch .custom-control-label {
+  height: 2.5rem;
+  line-height: 2.5rem;
 }
 .map-split-option .custom-control.custom-switch .custom-control-label::before {
   top: 0.3125rem;
@@ -303,6 +307,7 @@ header h1 {
 }
 
 .generate-button.btn-secondary {
+  margin-top: 20px;
   padding: 0.5rem 2rem;
   font-family: "Roboto_B";
   font-size: 2.5rem;
@@ -317,21 +322,60 @@ header h1 {
 }
 
 .map-view {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
   margin-top: 5vh;
+  max-width: 100%;
 }
-.map-view .one-file-map {
-  display: flex;
-  justify-content: center;
-}
-.map-view .tiles .tiles__row {
-  display: flex;
-  justify-content: center;
-}
-.map-view .tiles .tiles__row .tile {
-  margin-right: 3px;
-  margin-bottom: 3px;
+.map-view img {
+  max-width: 100%;
 }
 
 .map-view__title {
   text-align: center;
+}
+
+.one-file-map {
+  display: flex;
+  justify-content: center;
+}
+
+.map-view__tiles {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.map-view__tiles .tiles__row {
+  display: flex;
+  justify-content: center;
+}
+.map-view__tiles .tiles__row .tile {
+  flex-shrink: 1;
+  margin-right: 3px;
+  margin-bottom: 3px;
+}
+.map-view__tiles .tiles__row .tile img {
+  max-width: 100%;
+}
+
+@media only screen and (max-width: 576px) {
+  .map-size {
+    margin-top: 30px;
+  }
+
+  .map-size__title {
+    margin-bottom: 0;
+    display: block;
+    text-align: center;
+  }
+
+  .range {
+    margin: 11px 0;
+  }
+
+  .map-view__tiles .tiles__row .tile {
+    margin-right: 1px;
+    margin-bottom: 1px;
+  }
 }

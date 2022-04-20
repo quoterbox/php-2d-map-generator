@@ -133,12 +133,13 @@ header{
 }
 
 .map-split-option {
-    margin-top: 20px;
+    margin-top: 30px;
     .custom-control {
         &.custom-switch {
             padding-left: 4rem;
-
             .custom-control-label {
+                height: 2.5rem;
+                line-height: 2.5rem;
                 &::before {
                     top: 0.3125rem;
                     left: -4rem;
@@ -148,7 +149,6 @@ header{
                     border: 2px solid $button-active-border;
                     background: #c1c1c1;
                 }
-
                 &::after {
                     top: calc(0.5rem + 2px);
                     left: calc(-4rem + 6px);
@@ -177,6 +177,7 @@ header{
 }
 
 .generate-button.btn-secondary{
+    margin-top: 20px;
     padding: 0.5rem 2rem;
     font-family: "Roboto_B";
     font-size: 2.5rem;
@@ -191,25 +192,41 @@ header{
 }
 
 .map-view{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
     margin-top: 5vh;
-    .one-file-map{
-        display: flex;
-        justify-content: center;
-    }
-    .tiles{
-        .tiles__row{
-            display: flex;
-            justify-content: center;
-            .tile{
-                margin-right: 3px;
-                margin-bottom: 3px;
-            }
-        }
+    max-width: 100%;
+    img{
+        max-width: 100%;
     }
 }
 
 .map-view__title{
     text-align: center;
+}
+
+.one-file-map{
+    display: flex;
+    justify-content: center;
+}
+
+.map-view__tiles{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    .tiles__row{
+        display: flex;
+        justify-content: center;
+        .tile{
+            flex-shrink: 1;
+            margin-right: 3px;
+            margin-bottom: 3px;
+            img{
+                max-width: 100%;
+            }
+        }
+    }
 }
 
 
@@ -222,55 +239,27 @@ header{
 //
 //
 
-//
-// Large device
-//
+@media only screen and (max-width: 576px) {
+    .map-size{
+        margin-top: 30px;
+    }
 
-@media only screen and (max-width: 1459px) {
+    .map-size__title{
+        margin-bottom: 0;
+        display: block;
+        text-align: center;
+    }
 
+    .range{
+        margin: 11px 0;
+    }
+
+    .map-view__tiles{
+        .tiles__row{
+            .tile{
+                margin-right: 1px;
+                margin-bottom: 1px;
+            }
+        }
+    }
 }
-
-//
-// Medium
-//
-
-@media only screen and (max-width: 1219px) {
-
-}
-
-
-//
-// Tablets
-//
-
-@media only screen and (max-width: 788px) {
-
-}
-
-
-//
-// Extra small
-//
-
-@media only screen and (max-width: 595px) {
-
-}
-
-
-//
-// Special
-//
-
-@media only screen and (max-width: 600px) {
-
-}
-
-
-//
-// Special small
-//
-
-@media only screen and (max-width: 420px) {
-
-}
-

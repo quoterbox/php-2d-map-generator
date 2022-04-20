@@ -33,4 +33,3 @@ class GeneratorController
         return json_encode($generatorService->generateManyFilesMap());
     }
 }
-
