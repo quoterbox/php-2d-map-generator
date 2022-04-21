@@ -4,7 +4,7 @@
 $button-border: rgba(0,0,0,0);
 $button-active: #c1c1c1;
 $button-active-border: #1c1c1c;
-$button-hover: #c1c1c1;
+$button-hover: #9e9e9e;
 $checkbox-active: #63666a;
 
 body{
@@ -50,6 +50,9 @@ header{
             color: #000;
             background-color: $button-active;
             border-color: $button-active-border;
+            &:hover{
+                background-color: $button-hover;
+            }
         }
     }
 }
@@ -177,7 +180,6 @@ header{
 }
 
 .generate-button.btn-secondary{
-    margin-top: 20px;
     padding: 0.5rem 2rem;
     font-family: "Roboto_B";
     font-size: 2.5rem;
@@ -226,6 +228,22 @@ header{
                 max-width: 100%;
             }
         }
+    }
+}
+
+footer{
+    padding: 5vh 0;
+}
+
+.social-links{
+    font-size: 3rem;
+    text-align: center;
+}
+
+.link{
+    color: $button-active;
+    &:hover{
+        color: $button-hover;
     }
 }
 

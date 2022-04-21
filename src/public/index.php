@@ -16,19 +16,24 @@ require_once __DIR__ . '/../backend/route.php';
     <link rel="stylesheet" href="dist/css/style.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1 class="header__brand">Location Generator 2D</h1>
-        </div>
-    </header>
-    <main class="container">
-        <div id="app">
+    <div id="app">
+        <header>
+            <div class="container">
+                <h1 class="header__brand">Location Generator 2D</h1>
+            </div>
+        </header>
+        <main class="container">
             <location-generator-component></location-generator-component>
-        </div>
-    </main>
-    <footer>
-
-    </footer>
+        </main>
+        <footer>
+            <div class="container">
+                <div class="social-links">
+                    <a href="https://github.com/quoterbox/php-2d-location-generator" target="_blank" class="link"><i class="bi bi-github"></i></a>
+                    <a href="https://t.me/jqqjoo" target="_blank" class="link"><i class="bi bi-telegram"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
     <script src="dist/js/app.min.js"></script>
 </body>
 </html>
