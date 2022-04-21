@@ -53,9 +53,6 @@ export default new Vuex.Store({
                 requestUrl = '/api/map-many-files/';
             }
 
-            console.log('state:');
-            console.log(state);
-
             axios({
                 method: 'post',
                 url: requestUrl,

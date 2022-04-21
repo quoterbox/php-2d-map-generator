@@ -18,6 +18,8 @@ mix.options({
     }
 });
 
+
+
 // main app vue js
 mix.js('./src/frontend/js/app.js', './src/public/dist/js/app.min.js').vue();
 

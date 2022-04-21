@@ -33,7 +33,7 @@ class AssetsService implements AssetsServiceInterface
      */
     private array $packDescriptions = [
         'Angles' => [
-            'desc' => 'A simple map will be generated from 2 types of tiles: T-shaped and the same on all sides. Due to this combination,'
+            'desc' => 'A simple map will be generated from 2 types of tiles (100x100 pixel tiles): T-shaped and the same on all sides. Due to this combination,'
                 .'the pattern goes through the entire map without collapsing into local areas. But sometimes a map might have mono color areas.',
             'sample_map_path' => 'angles.png'
         ],
@@ -42,7 +42,7 @@ class AssetsService implements AssetsServiceInterface
             'sample_map_path' => 'angles_empty.png'
         ],
         'RealLand' => [
-            'desc' => 'Real land asset pack shows to you a real task solution with the 2d map generator. A generated map will looks like maps from strategy games with top-down or orthogonal views.',
+            'desc' => 'Real land asset pack (48x48 pixel tiles) shows to you a real task solution with the 2d map generator. A generated map will looks like maps from strategy games with top-down or orthogonal views.',
             'sample_map_path' => 'real_land.png'
         ],
         'RiverPath' => [
