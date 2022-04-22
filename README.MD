@@ -1,15 +1,42 @@
-# Простой генератор 2D локаций на PHP (RU)
+# (RU) Простой генератор 2D локаций на PHP
 
 ---
+
+<img src="./Location-Generator-main.png" alt="User interface"/>
+
+---
+
 ## Примеры ассетов и получающихся из них 2D карт
 
+#### 1. Простые ассеты 100 на 100 пикселей. Без возникновения возможных пустых областей:
 
+<img height="50" src="./src/public/saved/Samples/asset_pack_angles.png" alt="asset pack 1"/>
+<br>
+<img height="200" src="./src/public/saved/Samples/angles.png" alt="asset pack 1"/>
 
----
+#### 2. Простые ассеты 100 на 100 пикселей. В большинстве случаев возникают коллизии, из-за неполного набора ассетов:
 
-## Пользовательский интерфейс Location-Generator 2D
+<img height="50" src="./src/public/saved/Samples/asset_pack_angles_empty.png" alt="asset pack 1"/>
+<br>
+<img height="200" src="./src/public/saved/Samples/angles_empty.png" alt="asset pack 1"/>
 
+#### 3. Ассеты 48 на 48 пикселей для создания карты, напоминающей 2D стратегию с видом сверху.
 
+<img height="100" src="./src/public/saved/Samples/asset_pack_real_land.png" alt="asset pack 1"/>
+<br>
+<img height="200" src="./src/public/saved/Samples/real_land.png" alt="asset pack 1"/>
+
+#### 4. Ассеты с множеством подхдящих друг к другу тайлов создают карту, которая быстро "схлапывается" в локальные области и не позволяет создать сложные визуальные структуры.
+
+<img height="150" src="./src/public/saved/Samples/asset_pack_river_path.png" alt="asset pack 1"/>
+<br>
+<img height="200" src="./src/public/saved/Samples/river_path.png" alt="asset pack 1"/>
+
+#### 5. Сильно сокращенное количество ассетов из 3-го набора. В итоге генерируется однообразная и простая карта.
+
+<img height="48" src="./src/public/saved/Samples/asset_pack_simple_land.png" alt="asset pack 1"/>
+<br>
+<img height="200" src="./src/public/saved/Samples/simple_land.png" alt="asset pack 1"/>
 
 ---
 
@@ -87,7 +114,7 @@
 
 ## Работа с 2D генератором
 
-1. **Установка проекта (без Docker, если у вас есть Apache Webserver и PHP не ниже 7.4):**
+1. **Установка проекта (без Docker, если у вас есть Apache/NGINX webserver и PHP не ниже 7.4):**
    1. Клонируйте репозиторий: `git clone git@github.com:quoterbox/php-2d-location-generator.git`
    2. Установите все требуемые пакеты из Composer: `composer install`
    3. Запустить проект обычно можно из вашего веб сервера по адресу http://localhost:8080 либо другим аналогичным способом.
