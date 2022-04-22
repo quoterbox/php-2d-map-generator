@@ -33,28 +33,28 @@ class AssetsService implements AssetsServiceInterface
      */
     private array $packDescriptions = [
         'Angles' => [
-            'desc' => 'A simple map will be generated from 2 types of tiles (100x100 pixel tiles): T-shaped and the same on all sides. Due to this combination,'
-                .'the pattern goes through the entire map without collapsing into local areas. But sometimes a map might have mono color areas.',
+            'desc' => 'A simple map will be generated from 2 types of tiles (100x100 pixel tiles): T-shaped and equal on all sides. Due to this combination, '
+                .'the pattern goes through the entire map without collapsing into local areas. But sometimes the map might have mono color areas.',
             'sample_map_path' => 'angles.png'
         ],
         'AnglesEmpty' => [
-            'desc' => 'This asset pack shows to you what will be if a map has not a fit tile in some areas. Empty tiles will have a white area.',
+            'desc' => 'This asset pack shows what happens if a map has no compatible tile in some areas. Empty tiles will be left blank.',
             'sample_map_path' => 'angles_empty.png'
         ],
         'RealLand' => [
-            'desc' => 'Real land asset pack (48x48 pixel tiles) shows to you a real task solution with the 2d map generator. A generated map will looks like maps from strategy games with top-down or orthogonal views.',
+            'desc' => 'The real land asset pack (48x48 pixel tiles) contains the solution to a real problem. The generated map will resemble a map from strategy games with top-down or orthogonal views.',
             'sample_map_path' => 'real_land.png'
         ],
         'RiverPath' => [
-            'desc' => 'This asset pack shows to you a map with a lot of fit tiles. Every generated map will collapse into local areas too fast.',
+            'desc' => 'This asset pack includes a map with a lot of compatible tiles. The pattern on the generated map will collapse into local areas.',
             'sample_map_path' => 'river_path.png'
         ],
         'Rivers' => [
-            'desc' => 'The Rivers asset pack looks like simplified rivers and very similar to Angles asset pack.',
+            'desc' => 'The Rivers asset pack represents simplified rivers, and it is very similar to the Angles asset pack.',
             'sample_map_path' => 'rivers.png'
         ],
         'SimpleLand' => [
-            'desc' => 'This asset pack has not a lot of fit tiles from RealLand asset pack and looks too simple and repeatable.',
+            'desc' => 'This asset pack has not a lot of compatible tiles from the RealLand asset pack and looks too simple and repeatable.',
             'sample_map_path' => 'simple_land.png'
         ],
         'SquareRivers' => [
