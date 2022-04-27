@@ -35,6 +35,6 @@
         "symfony/http-foundation": "5.4.x-dev"
     },
     "scripts": {
-        "test": "phpunit --colors=always"
+        "test": "vendor/bin/phpunit --colors=always"
     }
 }

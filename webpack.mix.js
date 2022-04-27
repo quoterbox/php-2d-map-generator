@@ -8,7 +8,7 @@ mix.options({
         terserOptions: {
             compress: {
                 drop_console: true,
-                booleans_as_integers: true
+                //booleans_as_integers: true
             },
             mangle: true,
             output: {
