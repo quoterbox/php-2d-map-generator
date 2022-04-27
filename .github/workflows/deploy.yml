@@ -37,5 +37,5 @@ jobs:
     needs: [build-php]
 
     steps:
-      - name Run tests
+      - name: Run tests
         run: composer test
