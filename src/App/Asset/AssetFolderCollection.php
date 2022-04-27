@@ -32,9 +32,7 @@ class AssetFolderCollection implements AssetFolderCollectionInterface
         foreach($dirIterators as $dirIterator) {
 
             if ( $dirIterator->isDir() && !$dirIterator->isDot() ) {
-
                 $assetFolders[] = new AssetFolder($dirIterator->getFileName(), $dirIterator->getPathname() . DIRECTORY_SEPARATOR);
-
             }
         }
 
@@ -42,6 +40,18 @@ class AssetFolderCollection implements AssetFolderCollectionInterface
             throw new Exception("Asset folder is empty");
         }
 
+        usort($assetFolders, [self::class, "sortFoldersByName"]);
+
         return $assetFolders;
+    }
+
+    /**
+     * @param $a
+     * @param $b
+     * @return integer
+     */
+    static function sortFoldersByName($a, $b): int
+    {
+        return mb_strtolower($a->getName()) <=> mb_strtolower($b->getName());
     }
 }
