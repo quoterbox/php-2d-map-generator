@@ -17,7 +17,7 @@ class AlgorithmsController
      */
     public function __construct()
     {
-        $this->algorithmsService = new AlgorithmsService('..\App\Generator\Algorithm\\', 'php');
+        $this->algorithmsService = new AlgorithmsService('../App/Generator/Algorithm/', 'php');
     }
 
     /**

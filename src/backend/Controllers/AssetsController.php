@@ -17,7 +17,7 @@ class AssetsController
      */
     public function __construct()
     {
-        $this->assetsService = new AssetsService('assets\Tiles\\');
+        $this->assetsService = new AssetsService('assets/Tiles/');
     }
 
     /**

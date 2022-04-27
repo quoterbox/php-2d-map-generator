@@ -7,7 +7,7 @@ class MapParamsStructure implements MapParamsStructureInterface
     /**
      * @var string
      */
-    private string $assetsPath = 'assets\Tiles\\';
+    private string $assetsPath = 'assets/Tiles/';
 
     /**
      * @var string
@@ -120,7 +120,7 @@ class MapParamsStructure implements MapParamsStructureInterface
      */
     public function getFullAssetsPath(): string
     {
-        return $this->getAssetsPath() . $this->getPackName() . '\\';
+        return $this->getAssetsPath() . $this->getPackName() . '/';
     }
 
     /**
