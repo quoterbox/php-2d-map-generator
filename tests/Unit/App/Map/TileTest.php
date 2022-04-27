@@ -20,7 +20,7 @@ class TileTest extends TestCase
 
     public function testSetAsset()
     {
-        self::assertEquals('src\public\assets\Test\1_0_R_G_R_R.png', $this->tile->getAsset()->getPath());
+        self::assertEquals('src/public/assets/Test/1_0_R_G_R_R.png', $this->tile->getAsset()->getPath());
         self::assertEquals('1_0_R_G_R_R.png', $this->tile->getAsset()->getNameExt());
         self::assertEquals('1_0_R_G_R_R', $this->tile->getAsset()->getName());
         self::assertEquals('png', $this->tile->getAsset()->getExt());
@@ -88,6 +88,6 @@ class TileTest extends TestCase
 
     private static function createAsset() : AssetInterface
     {
-        return new Asset('src\public\assets\Test\\', "1_0_R_G_R_R", "png");
+        return new Asset('src/public/assets/Test/', "1_0_R_G_R_R", "png");
     }
 }

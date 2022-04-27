@@ -18,12 +18,12 @@ class GeneratorService implements GeneratorServiceInterface
     /**
      * @var string
      */
-    private string $oneFileMapPath = 'saved\FromImageSaver\OneFileMap\\';
+    private string $oneFileMapPath = 'saved/FromImageSaver/OneFileMap/';
 
     /**
      * @var string
      */
-    private string $manyFilesMapPath = 'saved\FromImageSaver\ManyFilesMap\\';
+    private string $manyFilesMapPath = 'saved/FromImageSaver/ManyFilesMap/';
 
     /**
      * @var string

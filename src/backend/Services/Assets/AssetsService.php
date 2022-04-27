@@ -26,7 +26,7 @@ class AssetsService implements AssetsServiceInterface
     /**
      * @var string
      */
-    private string $savedPath = 'saved\Samples\\';
+    private string $savedPath = 'saved/Samples/';
 
     /**
      * @var array|\string[][]

@@ -45,24 +45,24 @@ class AssetsCollectionTest extends TestCase
     public function testGetAssetsPathWithExtension()
     {
         $assets = (self::createAssetFilesCollectionWithExtension())->getAssets();
-        self::assertEquals('src\public\assets\Test\1_0_G_R_R_R.png', $assets[0]->getPath());
-        self::assertEquals('src\public\assets\Test\1_0_R_G_R_R.png', $assets[1]->getPath());
-        self::assertEquals('src\public\assets\Test\1_0_R_R_G_R.png', $assets[2]->getPath());
-        self::assertEquals('src\public\assets\Test\1_0_R_R_R_G.png', $assets[3]->getPath());
-        self::assertEquals('src\public\assets\Test\3_1_G.png', $assets[4]->getPath());
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_G_R_R_R.png', $assets[0]->getPath());
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_R_G_R_R.png', $assets[1]->getPath());
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_R_R_G_R.png', $assets[2]->getPath());
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_R_R_R_G.png', $assets[3]->getPath());
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '3_1_G.png', $assets[4]->getPath());
     }
 
     public function testGetAssetsPathNoExtension()
     {
         $assets = (self::createAssetFilesCollectionNoExtension())->getAssets();
-        self::assertEquals('src\public\assets\Test\1_0_G_G_R_R.jpg', $assets[0]->getPath());
-        self::assertEquals('src\public\assets\Test\1_0_G_R_R_R.png', $assets[1]->getPath());
-        self::assertEquals('src\public\assets\Test\1_0_R_G_G_R.jpg', $assets[2]->getPath());
-        self::assertEquals('src\public\assets\Test\1_0_R_G_R_R.png', $assets[3]->getPath());
-        self::assertEquals('src\public\assets\Test\1_0_R_R_G_R.png', $assets[4]->getPath());
-        self::assertEquals('src\public\assets\Test\1_0_R_R_R_G.png', $assets[5]->getPath());
-        self::assertEquals('src\public\assets\Test\2_1_G.gif', $assets[6]->getPath());
-        self::assertEquals('src\public\assets\Test\3_1_G.png', $assets[7]->getPath());
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_G_G_R_R.jpg', $assets[0]->getPath());
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_G_R_R_R.png', $assets[1]->getPath());
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_R_G_G_R.jpg', $assets[2]->getPath());
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_R_G_R_R.png', $assets[3]->getPath());
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_R_R_G_R.png', $assets[4]->getPath());
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_R_R_R_G.png', $assets[5]->getPath());
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '2_1_G.gif', $assets[6]->getPath());
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '3_1_G.png', $assets[7]->getPath());
     }
 
     public function testGetAssetsNameLikeArrayWithExtension()
@@ -91,33 +91,33 @@ class AssetsCollectionTest extends TestCase
     public function testGetAssetsPathLikeArrayWithExtension()
     {
         $assets = (self::createAssetFilesCollectionWithExtension())->getAssetsLikeArray();
-        self::assertEquals('src\public\assets\Test\1_0_G_R_R_R.png', $assets[0]['path']);
-        self::assertEquals('src\public\assets\Test\1_0_R_G_R_R.png', $assets[1]['path']);
-        self::assertEquals('src\public\assets\Test\1_0_R_R_G_R.png', $assets[2]['path']);
-        self::assertEquals('src\public\assets\Test\1_0_R_R_R_G.png', $assets[3]['path']);
-        self::assertEquals('src\public\assets\Test\3_1_G.png', $assets[4]['path']);
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_G_R_R_R.png', $assets[0]['path']);
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_R_G_R_R.png', $assets[1]['path']);
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_R_R_G_R.png', $assets[2]['path']);
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_R_R_R_G.png', $assets[3]['path']);
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '3_1_G.png', $assets[4]['path']);
     }
 
     public function testGetAssetsPathLikeArrayNoExtension()
     {
         $assets = (self::createAssetFilesCollectionNoExtension())->getAssetsLikeArray();
-        self::assertEquals('src\public\assets\Test\1_0_G_G_R_R.jpg', $assets[0]['path']);
-        self::assertEquals('src\public\assets\Test\1_0_G_R_R_R.png', $assets[1]['path']);
-        self::assertEquals('src\public\assets\Test\1_0_R_G_G_R.jpg', $assets[2]['path']);
-        self::assertEquals('src\public\assets\Test\1_0_R_G_R_R.png', $assets[3]['path']);
-        self::assertEquals('src\public\assets\Test\1_0_R_R_G_R.png', $assets[4]['path']);
-        self::assertEquals('src\public\assets\Test\1_0_R_R_R_G.png', $assets[5]['path']);
-        self::assertEquals('src\public\assets\Test\2_1_G.gif', $assets[6]['path']);
-        self::assertEquals('src\public\assets\Test\3_1_G.png', $assets[7]['path']);
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_G_G_R_R.jpg', $assets[0]['path']);
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_G_R_R_R.png', $assets[1]['path']);
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_R_G_G_R.jpg', $assets[2]['path']);
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_R_G_R_R.png', $assets[3]['path']);
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_R_R_G_R.png', $assets[4]['path']);
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '1_0_R_R_R_G.png', $assets[5]['path']);
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '2_1_G.gif', $assets[6]['path']);
+        self::assertEquals('src/public/assets/Test' . DIRECTORY_SEPARATOR . '3_1_G.png', $assets[7]['path']);
     }
 
     private static function createAssetFilesCollectionWithExtension() : AssetsCollection
     {
-        return new AssetsCollection('src\public\assets\Test\\', 'png');
+        return new AssetsCollection('src/public/assets/Test/', 'png');
     }
 
     private static function createAssetFilesCollectionNoExtension() : AssetsCollection
     {
-        return new AssetsCollection('src\public\assets\Test\\');
+        return new AssetsCollection('src/public/assets/Test/');
     }
 }

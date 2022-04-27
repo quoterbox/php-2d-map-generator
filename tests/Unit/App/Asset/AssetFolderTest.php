@@ -12,12 +12,12 @@ class AssetFolderTest extends TestCase
 
     public function setUp(): void
     {
-        $this->assetFolder = new AssetFolder('TestFolder1','src\public\assets\TestFolders\TestFolder1\\');
+        $this->assetFolder = new AssetFolder('TestFolder1','src/public/assets/TestFolders/TestFolder1/');
     }
 
     public function testGetFolderList()
     {
         self::assertEquals('TestFolder1', $this->assetFolder->getName());
-        self::assertEquals('src\public\assets\TestFolders\TestFolder1\\', $this->assetFolder->getPath());
+        self::assertEquals('src/public/assets/TestFolders/TestFolder1/', $this->assetFolder->getPath());
     }
 }
