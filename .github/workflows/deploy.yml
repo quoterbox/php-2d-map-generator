@@ -38,4 +38,4 @@ jobs:
 
     steps:
       - name: Run tests
-        run: composer test
+        run: composer run-script test
