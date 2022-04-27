@@ -112,6 +112,12 @@ class AssetsCollection implements AssetsCollectionInterface
             }
 
         }
+
+        if(empty($this->assets)){
+            throw new Exception("Not found assets to load");
+        }
+
+        usort($this->assets, "sortArrayByFieldName");
     }
 
     /**

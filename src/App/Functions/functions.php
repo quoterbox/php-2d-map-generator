@@ -19,3 +19,12 @@ if(!function_exists('messInfo')) {
     }
 
 }
+
+if(!function_exists('sortArrayByFieldName')) {
+
+    function sortArrayByFieldName($a, $b): int
+    {
+        return mb_strtolower($a->getName()) <=> mb_strtolower($b->getName());
+    }
+
+}

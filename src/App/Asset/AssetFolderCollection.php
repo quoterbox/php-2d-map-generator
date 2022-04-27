@@ -40,18 +40,8 @@ class AssetFolderCollection implements AssetFolderCollectionInterface
             throw new Exception("Asset folder is empty");
         }
 
-        usort($assetFolders, [self::class, "sortFoldersByName"]);
+        usort($assetFolders, "sortArrayByFieldName");
 
         return $assetFolders;
-    }
-
-    /**
-     * @param $a
-     * @param $b
-     * @return integer
-     */
-    static function sortFoldersByName($a, $b): int
-    {
-        return mb_strtolower($a->getName()) <=> mb_strtolower($b->getName());
     }
 }
