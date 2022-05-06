@@ -25,6 +25,7 @@ _deploy/
 *.xlsx
 *.xls
 .env
+ansible/
 *.phpunit.result.cache
 Homestead.json
 Homestead.yaml
