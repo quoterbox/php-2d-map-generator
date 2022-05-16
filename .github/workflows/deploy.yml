@@ -64,6 +64,18 @@ jobs:
       - name: Build frontend
         run: npm run prod
 
+      #Setup key
+      - name: Set options for command line
+        run: set -eu
+      - name: Create the directory for the SSH key
+        run: mkdir "$HOME/.ssh"
+      - name: Write the SSH key to the KEY-file
+        run: echo "${{ secrets.DEPLOY_KEY_LG2D }}" > "$HOME/.ssh/key"
+      - name: Change permissions for new SSH key
+        run: chmod 600 "$HOME/.ssh/key"
+      # Deploy
+      - name: Deploy to a remote server
+        run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete ./src/ ${{ secrets.DEPLOY_USER_LG2D }}@${{ secrets.DEPLOY_HOST_LG2D }}:${{ secrets.DEPLOY_DEST_LG2D }}
 
 
 
