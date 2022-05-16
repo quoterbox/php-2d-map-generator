@@ -74,12 +74,10 @@ jobs:
       - name: Change permissions for new SSH key
         run: chmod 600 "$HOME/.ssh/key"
 
-      # Deploy vendor
-      - name: Deploy to a remote server
+      - name: Deploy vendor to a remote server
         run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete ./vendor/ ${{ secrets.DEPLOY_USER_LG2D }}@${{ secrets.DEPLOY_HOST_LG2D }}:${{ secrets.DEPLOY_VENDOR_DEST_LG2D }}
 
-      # Deploy project
-      - name: Deploy to a remote server
+      - name: Deploy project files to a remote server
         run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete ./src/ ${{ secrets.DEPLOY_USER_LG2D }}@${{ secrets.DEPLOY_HOST_LG2D }}:${{ secrets.DEPLOY_DEST_LG2D }}
 
 
