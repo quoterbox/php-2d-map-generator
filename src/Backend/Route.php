@@ -49,6 +49,7 @@ try{
     $controllerName = $parameters['controller'];
     $methodName = $parameters['action'];
 
+
     //
     // Creating Controller and starting method
     //
@@ -77,5 +78,4 @@ try{
 //        messInfo('All is good');
 //        messInfo($context->getPathInfo());
 //    }
-
 }
