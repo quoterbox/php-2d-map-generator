@@ -20,7 +20,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/App/",
-            "Backend\\": "src/backend/"
+            "Backend\\": "src/Backend/"
         },
         "files": [
             "src/App/Functions/functions.php"
