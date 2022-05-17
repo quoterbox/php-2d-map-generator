@@ -1,6 +1,4 @@
-# (RU) Простой генератор 2D локаций (карт, паттернов) на PHP
-
----
+# (RU) Простой генератор 2D карт, паттернов на PHP
 
 <img src="./Location-Generator-main.png" alt="User interface"/>
 
