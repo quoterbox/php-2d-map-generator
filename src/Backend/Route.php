@@ -46,10 +46,8 @@ try{
 
     $matcher = new UrlMatcher($routes, $context);
     $parameters = $matcher->match($context->getPathInfo());
-
     $controllerName = $parameters['controller'];
     $methodName = $parameters['action'];
-
 
     //
     // Creating Controller and starting method

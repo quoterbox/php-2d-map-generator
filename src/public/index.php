@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once '../../vendor/autoload.php';
-require_once '../Backend/route.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../Backend/Route.php';
 ?>
 <!doctype html>
 <html lang="en">

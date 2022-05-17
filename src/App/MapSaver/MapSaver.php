@@ -272,7 +272,7 @@ class MapSaver implements MapSaverInterface, JsonSerializable
     private function makeDestFileName(string $destPath, string $destFileExt, string $destFileName) : string
     {
         if(!$this->isValidPath($destPath)){
-            if(!mkdir($destPath,0777, true)){
+            if(!mkdir($destPath,0755, true)){
                 throw new Exception('Invalid save path');
             }
         }
