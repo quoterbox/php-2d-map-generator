@@ -56,7 +56,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies from Composer
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        run: composer install -q --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader --prefer-dist
+
+      - name: Dump autoload for Composer
+        run: composer dump-autoload --optimize
 
       - name: Install dependencies from NPM
         run: npm ci
@@ -64,7 +67,7 @@ jobs:
       - name: Build frontend
         run: npm run prod
 
-      #Setup key
+        #Setup key
       - name: Set options for command line
         run: set -eu
       - name: Create the directory for the SSH key
