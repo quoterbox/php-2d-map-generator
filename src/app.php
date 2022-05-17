@@ -2,7 +2,6 @@
 $callStartTime = microtime(true);
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/backend/route.php';
 
 use App\Asset\AssetsCollection;
 use App\Asset\AssetFolderCollection;
@@ -11,7 +10,7 @@ use App\MapSaver\MapSaver;
 
 try{
 
-    $assetFolderCollection = new AssetFolderCollection('assets\Tiles\\');
+    $assetFolderCollection = new AssetFolderCollection('assets/Tiles/');
     $assetsFolders = $assetFolderCollection->getAssetsFolders();
     $oneFolder = $assetsFolders[0];
 
@@ -23,12 +22,12 @@ try{
     $map = $mapBuilder->getMap();
 
     $mapSaver = new MapSaver($map);
-    $mapSaver->saveToFile('saved\FromImageSaver\FullMap3\\', 'png', 'MyMap2');
-    $mapSaver->saveToFile('saved\FromImageSaver\FullMap3\\', 'png');
-    $mapSaver->saveToFile('saved\FromImageSaver\FullMap3\\', 'jpg');
-    $mapSaver->saveToFile('saved\FromImageSaver\FullMap3\\', 'webp');
-    $mapSaver->saveToFile('saved\FromImageSaver\FullMap3\\', 'gif');
-    $mapSaver->saveToManyFiles('saved\FromImageSaver\TilesMap3\\', 'png');
+    $mapSaver->saveToFile('saved/FromImageSaver/FullMap3/', 'png', 'MyMap2');
+    $mapSaver->saveToFile('saved/FromImageSaver/FullMap3/', 'png');
+    $mapSaver->saveToFile('saved/FromImageSaver/FullMap3/', 'jpg');
+    $mapSaver->saveToFile('saved/FromImageSaver/FullMap3/', 'webp');
+    $mapSaver->saveToFile('saved/FromImageSaver/FullMap3/', 'gif');
+    $mapSaver->saveToManyFiles('saved/FromImageSaver/TilesMap3/', 'png');
 
     for($y = 0; $y < $map->getHeightInTiles(); $y++){
         for($x = 0; $x < $map->getWidthInTiles(); $x++){
