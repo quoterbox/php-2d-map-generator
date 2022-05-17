@@ -14,8 +14,8 @@
         "php": ">=7.4.21",
         "ext-gd": "*",
         "ext-json": "*",
-        "symfony/routing": "5.4.x-dev",
-        "symfony/http-foundation": "5.4.x-dev"
+        "symfony/routing": ">=5.4.x-dev",
+        "symfony/http-foundation": ">=5.4.x-dev"
     },
     "autoload": {
         "psr-4": {
