@@ -35,14 +35,21 @@
             async getPacks(){
                 axios.get('/api/assets/').then((response) => {
                     this.assetPacks = response.data;
+                    this.commitToStore();
                 });
             },
-        },
-        watch: {
-            tabIndex() {
+            commitToStore(){
+
+                console.log('commitToStore');
+
                 this.$store.commit('selectPackName', {
                     name: this.assetPacks[this.tabIndex] ? this.assetPacks[this.tabIndex].name : ''
                 });
+            }
+        },
+        watch: {
+            tabIndex() {
+                this.commitToStore();
             }
         }
     }
