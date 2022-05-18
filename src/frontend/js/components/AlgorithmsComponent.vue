@@ -2,7 +2,7 @@
     <div class="algorithms">
         <h3 class="algorithms__title">Algorithm</h3>
         <b-tabs pills class="algorithms__tabs" v-model="algorithmId">
-            <b-tab :active="index === 0" v-for="(algorithm, index) in algorithms" :title="algorithm.title" :key="index">
+            <b-tab :active="algorithm.id === 0" v-for="(algorithm, index) in algorithms" :title="algorithm.title" :key="index">
                 <div class="algorithms__desc desc">
                     <h4>Description</h4>
                     <p>{{ algorithm.desc }}</p>
@@ -16,9 +16,11 @@
     export default {
         data() {
             return {
-                algorithms: [],
+                algorithms: [
+                    {id: 0, name: "", title: "", desc: ""}
+                ],
                 algorithmName: '',
-                algorithmId: -1,
+                algorithmId: 0,
             }
         },
         mounted() {
@@ -29,26 +31,28 @@
                 axios.get('/api/algorithms/').then((response) => {
                     this.algorithms = response.data;
                     this.changeAlgorithm();
+                    this.commitToStore();
                 });
             },
             changeAlgorithm(){
-                let algorithms = this.algorithms.filter(record => {
-                    return this.algorithmId === record.id ? record : false;
-                });
+                let algorithm = this.algorithms.find(record => this.algorithmId === record.id);
 
-                if(algorithms.length){
-                    this.algorithmName = algorithms.pop().name;
+                if(algorithm){
+                    this.algorithmName = algorithm.name;
                 }
+            },
+            commitToStore(){
+                this.$store.commit('selectAlgorithm', {
+                    name: this.algorithmName
+                });
             }
         },
         watch: {
             algorithmId() {
-
-                this.changeAlgorithm();
-
-                this.$store.commit('selectAlgorithm', {
-                    name: this.algorithmName
-                });
+                if(this.algorithmName){
+                    this.changeAlgorithm();
+                    this.commitToStore();
+                }
             }
         }
     }
