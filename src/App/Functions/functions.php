@@ -28,3 +28,12 @@ if(!function_exists('sortArrayByFieldName')) {
     }
 
 }
+
+if(!function_exists('sortArrayById')) {
+
+    function sortArrayById($a, $b): int
+    {
+        return $a['id'] <=> $b['id'];
+    }
+
+}

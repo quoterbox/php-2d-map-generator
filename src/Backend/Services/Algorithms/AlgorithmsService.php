@@ -41,6 +41,8 @@ class AlgorithmsService implements AlgorithmsServiceInterface
             $Algorithms[] = self::getAlgorithmInfo($algorithmPath);
         }
 
+        usort($Algorithms, "sortArrayById");
+
         return $Algorithms;
     }
 
