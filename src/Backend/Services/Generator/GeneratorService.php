@@ -13,7 +13,7 @@ class GeneratorService implements GeneratorServiceInterface
     /**
      * @var string
      */
-    private string $algorithmNamespace = 'App\Generator\Algorithm\\';
+    private string $algorithmNamespace = 'App/Generator/Algorithm/';
 
     /**
      * @var string
