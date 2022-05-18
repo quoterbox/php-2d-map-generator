@@ -18,7 +18,7 @@
             return {
                 algorithms: [],
                 algorithmName: '',
-                algorithmId: 0,
+                algorithmId: -1,
             }
         },
         mounted() {
