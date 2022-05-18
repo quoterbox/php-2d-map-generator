@@ -28,6 +28,7 @@
             async getAlgorithms(){
                 axios.get('/api/algorithms/').then((response) => {
                     this.algorithms = response.data;
+                    this.changeAlgorithm();
                 });
             },
             changeAlgorithm(){
