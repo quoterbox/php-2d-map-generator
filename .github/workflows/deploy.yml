@@ -84,5 +84,3 @@ jobs:
       - name: Deploy project files to a remote server
         run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete ./src/ ${{ secrets.DEPLOY_USER_LG2D }}@${{ secrets.DEPLOY_HOST_LG2D }}:${{ secrets.DEPLOY_DEST_LG2D }}
 
-
-
