@@ -8,7 +8,7 @@ $button-hover: #9e9e9e;
 $checkbox-active: #63666a;
 
 body{
-    font-family: "Roboto_R";
+    font-family: "Roboto_R", serif;
 }
 
 h1, h2, h3, h4, h5{
@@ -45,7 +45,7 @@ header{
         color: #000;
         border: 2px solid $button-border;
         font-size: 1.5rem;
-        font-family: "Roboto_B";
+        font-family: "Roboto_B", serif;
         &.active{
             color: #000;
             background-color: $button-active;
@@ -116,7 +116,7 @@ header{
         border-radius: 0.5rem;
         background-color: $button-active;
         text-align: center;
-        font-family: "Roboto_B";
+        font-family: "Roboto_B", serif;
         font-size: 2rem;
         color: #000;
         &:focus{
@@ -127,7 +127,7 @@ header{
 
 .map-size__title{
     font-size: 1.5rem;
-    font-family: "Roboto_B";
+    font-family: "Roboto_B", serif;
     line-height: 3rem;
 }
 
@@ -181,7 +181,7 @@ header{
 
 .generate-button.btn-secondary{
     padding: 0.5rem 2rem;
-    font-family: "Roboto_B";
+    font-family: "Roboto_B", serif;
     font-size: 2.5rem;
     color: #000;
     border: 2px solid $button-active-border;
