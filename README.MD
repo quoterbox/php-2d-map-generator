@@ -129,6 +129,8 @@
 3. **Тесты:**
    1. Тесты запускаются простой командой: `composer test`
    
-  
 ## LICENSE
 [MIT License](./LICENSE.md)
+
+## Author
+[JQ/Quoterbox](https://github.com/quoterbox)
