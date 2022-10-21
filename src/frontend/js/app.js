@@ -9,6 +9,7 @@ import store from './store'
 // BootstrapVue
 import { BootstrapVue } from 'bootstrap-vue'
 Vue.use(BootstrapVue)
+
 // import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 // Vue.use(BootstrapVue)
 // Vue.use(IconsPlugin)
