@@ -143,6 +143,8 @@ class AssetsCollection implements AssetsCollectionInterface
                 'name' => $asset->getName(),
                 'nameExt' => $asset->getNameExt(),
                 'path' => $asset->getPath(),
+                'width' => $asset->getWidth(),
+                'height' => $asset->getHeight()
             ];
 
         }
