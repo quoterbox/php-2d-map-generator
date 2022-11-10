@@ -1,3 +1,135 @@
+# (ENG) The simple generator of 2D maps and patterns with PHP
+
+[![Deploy](https://github.com/quoterbox/php-2d-map-generator/actions/workflows/deploy.yml/badge.svg)](https://github.com/quoterbox/php-2d-map-generator/actions/workflows/deploy.yml)
+
+## [Demo](https://joqer.ru)
+
+<img height="800px" src="./Location-Generator-main.png" alt="User interface"/>
+
+---
+
+## Examples of 2D images and assets for creating them
+
+#### 1. Simple 100*100px assets. The image created with these assets has no empty areas:
+
+<img height="50" src="./src/public/saved/Samples/asset_pack_angles.png" alt="asset pack 1"/>
+<br>
+<img height="200" src="./src/public/saved/Samples/angles.png" alt="asset pack 1"/>
+
+#### 2. Simple 100*100px assets. In most cases, collisions occur due to an incomplete assets pack:
+
+<img height="50" src="./src/public/saved/Samples/asset_pack_angles_empty.png" alt="asset pack 1"/>
+<br>
+<img height="200" src="./src/public/saved/Samples/angles_empty.png" alt="asset pack 1"/>
+
+#### 3. Simple 48*48px assets make the map look like a 2D top-down strategy game.
+
+<img height="100" src="./src/public/saved/Samples/asset_pack_real_land.png" alt="asset pack 1"/>
+<br>
+<img height="200" src="./src/public/saved/Samples/real_land.png" alt="asset pack 1"/>
+
+#### 4. The asset pack with many compatible tiles causes the map to collapse into local areas. This is doesn't allow you to make complex and beautiful patterns.
+
+<img height="150" src="./src/public/saved/Samples/asset_pack_river_path.png" alt="asset pack 1"/>
+<br>
+<img height="200" src="./src/public/saved/Samples/river_path.png" alt="asset pack 1"/>
+
+#### 5. A little part of assets from "Real land" asset pack. An image will be created with simple and repeatable patterns.
+
+<img height="48" src="./src/public/saved/Samples/asset_pack_simple_land.png" alt="asset pack 1"/>
+<br>
+<img height="200" src="./src/public/saved/Samples/simple_land.png" alt="asset pack 1"/>
+
+---
+
+### Application structure:
+1. The map generation application is located in the directory `src/App/`
+2. The application **Backend** and **frontend** is located in folders `src/backend/` and `src/frontend/`.
+   They are not part of the map generation application and its are used to only for demonstration purposes only.
+3. The entry point is located in the folder `src/public`. Generation assets is in the `src/public/assets/` and new generated images are in the `src/public/saved/`.
+4. The `tests/Functional/` and `tests/Unit/` folders contain the application's Feature and Unit tests, respectively.
+
+---
+
+### The structure of the main Map Generator classes:
+
+### Namespace `App/Asset`
+
+#### 1. Asset
+Path - `src/App/Asset/Asset.php`
+
+The asset class is responsible for the operation of single asset that will be part of the generated map.
+
+The name of single asset must follow the template below:<br>
+`##_##_##_##_##_##` <br>
+or short version if all asset sides are of the same type:<br>
+`##_##_##` if the second `##` is equals 1<br>
+
+Underscore is used as delimiter `_`
+
+**Each `##` has its own meaning depending on the position:**
+* position 0 - the title type (not type of side), for example, it can be: corners, roads, rivers, mountains etc.
+* position 1 - all sides of an asset are of the same type (1) or different (2)
+* position 2 - the type of the top side (full version of the description) / the type of all sides (for short version of the description)
+* position 3 - the type of the right side (full version of the description)
+* position 4 - the type of the bottom side (full version of the description)
+* position 5 - the type of the left side (full version of the description)
+
+#### 2. AssetsCollection
+AssetsCollection is used to working with the group of assets. It's necessary to get the assets collection that will be used to generate the current map.
+
+#### 3. AssetFolder
+AssetFolder is used to working with one folder with assets.
+
+#### 4. AssetFolderCollection
+AssetFolderCollection is used to get a collection of folders with assets.
+
+### Namespace `App/Generator`
+
+#### 1. Algorithm/SimpleTileBuilder
+This is an example of the Map Generator's implementation according to a certain algorithm.
+In this case it's a Simple Tile Model that compares all sides of the current asset to the sides of other assets.
+After a certain number of correct tiles are selected, a specific tile from this group is randomly selected.
+
+### Namespace `App/Map`
+
+#### 1. Map
+This is the object that consist of many other small tiles. Each single tile in the map has its own coordinates and its own asset.
+The map also has dimension of X by Y tiles.
+
+#### 2. Tile
+This is part for a map that has its own asset, its own dimension in pixels, the type of each side and the coordinates in the map.
+
+### Namespace `App/MapSaver`
+
+#### 1. MapSaver
+MapSaver is the helper class for saving a map as an image with different types (jpg, png, webp).
+It's also possible to save the map as divided images or one single image.
+
+### Namespace `App/backend`
+
+Here are the following components:
+- `route.php` - the Symfony component for handling requests coming from frontend.
+- `Controllers/` - all controllers that redirect requests to appropriate services.
+- `Services/` - this is the logic components for Map Generator application that is required for the frontend to work properly.
+
+---
+
+## Work with 2D Map Generator
+
+1. **Project setup (without Docker, if you have Apache/NGINX webserver and PHP above 7.4 version):**
+    1. Clone the repository: `git clone git@github.com:quoterbox/php-2d-location-generator.git`
+    2. Install required packages from Composer: `composer install`
+    3. In most cases, you can start the project from your web sever at http://localhost:8080 or another address that depends on your web server.
+    4. Also, you can start the project without the frontend at `http://localhost:8080/index_no_frontend.php`
+2. **Developing:**
+    1. NPM and NodeJS is required to build the frontend.
+    2. Install NPM dependencies: `npm install`
+    3. Use one of the commands from `package.json` to build the frontend, for example: `npm run dev` или `npm run prod`.
+    4. More frontend build settings can be set in the `webpack.mix.js` file using a wrapper over Webpack - Laravel-mix.
+3. **Tests:**
+    1. Use this command to start tests: `composer test`
+
 # (RU) Простой генератор 2D карт, паттернов на PHP
 
 [![Deploy](https://github.com/quoterbox/php-2d-map-generator/actions/workflows/deploy.yml/badge.svg)](https://github.com/quoterbox/php-2d-map-generator/actions/workflows/deploy.yml)
@@ -128,7 +260,7 @@
    4. Более подробные настройки билда фронтенда можно установить в файле webpack.mix.js иcпользующем обертку над Webpack - Laravel-mix
 3. **Тесты:**
    1. Тесты запускаются простой командой: `composer test`
-   
+
 ## LICENSE
 [MIT License](./LICENSE.md)
 
