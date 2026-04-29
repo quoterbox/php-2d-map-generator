@@ -132,8 +132,6 @@ Here are the following components:
 
 [![Deploy](https://github.com/quoterbox/php-2d-map-generator/actions/workflows/deploy.yml/badge.svg)](https://github.com/quoterbox/php-2d-map-generator/actions/workflows/deploy.yml)
 
-## [Демо](https://joqer.ru)
-
 <img height="800px" src="./Location-Generator-main.png" alt="User interface"/>
 
 ---
